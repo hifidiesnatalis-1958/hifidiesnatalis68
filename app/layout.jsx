@@ -3,7 +3,7 @@ import './culture.css';
 import './journey.css';
 export const metadata = {
   title:'Dies Natalis HIFI ke-68 · Kasundaan',
-  description:'Ngariung bersama HIFI FMIPA UNPAD. Rangkaian acara, Harewos, undian, dan cerita Dies Natalis ke-68, 24 Oktober 2026.',
+  description:'Patepung lawung keluarga besar HIFI FMIPA UNPAD. Rangkaian perayaan seni, dinding Harewos, undian baraya, dan cenderamata Kasundaan 24 Oktober 2026.',
   icons:{icon:'/assets/kasundaan/favicon.png'},
 };
 export const viewport = {width:'device-width',initialScale:1,themeColor:'#0c575b'};
