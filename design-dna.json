@@ -172,8 +172,8 @@
         "normal": 200,
         "macro": 850
       },
-      "animation_density": "One reversible scroll-led hero scene plus direct interaction feedback",
-      "scroll_behavior": "Native scroll with CSS named view timeline; no wheel interception or React scroll updates; compact static scene for reduced motion or unsupported browsers"
+      "animation_density": "Continuous document-wide landscape plus distinct local surface and original-asset morphing in every chapter",
+      "scroll_behavior": "Reversible native CSS scroll(root block) and view(block); no scroll interception, event listeners or React scroll updates. Compact static layout for reduced motion."
     },
     "components": {
       "button_style": "Teal primary or outlined secondary, pill corners, 43?50px height",
@@ -242,7 +242,7 @@
     "interaction_feel": {
       "feedback_style": "Inline error and success messages, dismissible toast",
       "hover_behavior": "Small button movement and color change",
-      "transition_personality": "Quiet and direct",
+      "transition_personality": "Continuous, reversible cultural composition; stable readable copy and interactive controls",
       "loading_style": "Visible text status, content never gated",
       "microinteraction_density": "Low"
     },
@@ -256,15 +256,15 @@
   },
   "visual_effects": {
     "overview": {
-      "effect_intensity": "One prominent scroll story, restrained elsewhere",
+      "effect_intensity": "Full-page morph journey with quiet functional text and forms",
       "performance_tier": "CSS-native without extra dependencies",
       "fallback_strategy": "Compact static complete hero for reduced motion and browsers without animation-timeline",
-      "primary_technology": "CSS named view timeline, sticky layout, original optimized source artwork"
+      "primary_technology": "Native CSS scroll/view timelines, original local source artwork and rounded surface interpolation"
     },
     "background_effects": {
       "type": "Source megamendung and floral imagery",
-      "description": "A plain CSS surface changes rounded contours and sage-to-gold color behind unchanged original PDF art",
-      "technology": "CSS border-radius, transform and background-color interpolation",
+      "description": "Two plain colored surfaces morph along the full document with the existing original floral batik texture at low opacity",
+      "technology": "CSS border-radius, transform, background-color and native scroll(root block)",
       "params": {
         "opacity": 1,
         "speed": 0,
@@ -343,11 +343,13 @@
       },
       "scroll_morphing": {
         "enabled": true,
-        "description": "Organic backing shape changes contour as the original 68 logo grows into focus; original wayang exits and theme text appears. Artwork pixels and vector paths remain unchanged.",
+        "description": "Global background contours/color/position follow document progress. Each chapter morphs frames and original artwork using its own view timeline; readable content and field geometry remain stable.",
         "scroll_span": {
           "desktop": "320svh",
           "mobile": "300svh"
-        }
+        },
+        "scope": "Entire page from hero through events, theme, Harewos, raffle, merchandise, dress code, feedback, map and footer",
+        "direction": "Continuous in both scroll directions"
       }
     },
     "text_effects": {
@@ -375,7 +377,7 @@
     },
     "image_effects": {
       "type": "Scroll-linked original asset composition",
-      "description": "Original logo scales and translates as original wayang recedes; all image proportions remain natural",
+      "description": "Original emblem, poster, merchandise, decorative source logos and footer ornaments follow local view progress without modifying artwork paths or aspect ratios",
       "technology": "CSS",
       "params": {
         "filter_pipeline": [],
@@ -419,6 +421,6 @@
         "filter_effects": "none"
       }
     },
-    "composite_notes": "Only original Canva/Figma/PDF assets. No generated or external illustration. Native CSS morphing with reduced-motion and unsupported-browser fallbacks; existing auth, moderation, raffle and operator controls preserved."
+    "composite_notes": "Only original Figma/PDF artwork. Full-page reversible CSS morphing with global and local timelines. No additional animation dependency, generated illustration, layout animation on controls, scroll listener or React scroll state. Reduced-motion and unsupported-browser static fallbacks."
   }
 }

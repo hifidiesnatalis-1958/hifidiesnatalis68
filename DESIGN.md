@@ -6,7 +6,7 @@ The user supplied three cultural website references and explicitly requested mor
 
 ## Redesign decisions
 
-The previous version used a dense patterned opening, small-radius controls and full-width dark sections. The new opening pairs original wayang and the 68 emblem with a large, left-aligned welcome. Light sage, terracotta and cream panels create breathing room. Controls use 16px corners, cards use 24–32px, and scene panels use 30–44px. Navigation and buttons use pill shapes. These larger radii follow the user's explicit preference. Design variance: 8; motion: 7 in the opening only; density: 4.
+The previous version used a dense patterned opening, small-radius controls and full-width dark sections. The new opening pairs original wayang and the 68 emblem with a large, left-aligned welcome. Light sage, terracotta and cream panels create breathing room. Controls use 16px corners, cards use 24–32px, and scene panels use 30–44px. Navigation and buttons use pill shapes. These larger radii follow the user's explicit preference. Design variance: 8; motion: 8 across the page; density: 4.
 
 The palette retains deep teal **#0C575B**, burgundy **#8C1927**, gold **#C18A31** and the untouched multicolor source art. The canvas is **#F4F1E8** with **#FFFCF6** surfaces. Local Libre Baskerville carries headings and Montserrat carries controls and body text. The native multicolor Dies Natalis wordmark remains an image; a semantic H1 identifies the celebration.
 
@@ -33,3 +33,12 @@ The confirmed dates remain **17 October 2026** for online activities and **24 Oc
 Browser checks cover responsive widths 1440, 768, 390 and 320px, source image loading, reversible desktop/mobile morphing, reduced motion, anchor navigation, native poster dialogs, theme exploration, anonymous submission, login, raffle privacy and operator controls. The production build is verified separately.
 
 The morph sequence spans 320svh on desktop and 300svh on mobile, about 2.5 times the previous scroll journey. Reduced motion remains a compact static scene.
+
+
+## Full-page morph journey
+
+The scroll story now continues through every section and reverses when scrolling back upward. A fixed decorative landscape changes flat contours, color and position across the entire document. Its only texture is the original PDF floral batik; there are no new illustrations, synthetic cultural motifs, canvas effects or third-party dependencies.
+
+Each chapter also responds to its own viewport progress: event rows and date shapes, poster frame, theme emblem, Harewos wall/cards, raffle ticket, merchandise frames/photos, dress code, message form surface, map frame and footer. Native CSS `scroll(root block)` drives the global layer; anonymous `view(block)` timelines drive local geometry. Native image proportions and vector paths stay intact. Text, input fields, checkbox controls and map contents do not transform. The form's value and layout survive a full scroll round trip.
+
+Only the hero keeps its existing 320svh/300svh scroll length. Other sections keep their normal document height and anchor navigation. The background is noninteractive and isolated behind the page. Reduced motion and browsers without scroll timelines receive the complete static layout. Backend, Vercel configuration, confirmed content, source assets and account/operator behavior are preserved.

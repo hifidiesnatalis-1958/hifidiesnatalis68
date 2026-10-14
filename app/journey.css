@@ -1,0 +1,121 @@
+/* Full-page Kasundaan choreography. Artwork is the original Figma/PDF source.
+   Geometry belongs to surfaces; body copy, controls and source paths stay intact. */
+.festival-page{position:relative;isolation:isolate}
+.journey-atmosphere{display:none}
+
+@keyframes journey-landscape-a{
+  0%{transform:translate(-8vw,-4vh) rotate(-12deg);border-radius:36% 64% 62% 38% / 48% 29% 71% 52%;background:#bfd2be}
+  20%{transform:translate(46vw,16vh) rotate(22deg);border-radius:66% 34% 38% 62% / 34% 66% 34% 66%;background:#e5d0a5}
+  37%{transform:translate(8vw,29vh) rotate(-16deg);border-radius:30% 70% 58% 42% / 60% 33% 67% 40%;background:#e1beb1}
+  55%{transform:translate(51vw,-1vh) rotate(16deg);border-radius:72% 28% 44% 56% / 41% 61% 39% 59%;background:#c6d5bf}
+  73%{transform:translate(11vw,17vh) rotate(-24deg);border-radius:35% 65% 70% 30% / 67% 44% 56% 33%;background:#e5d0a5}
+  90%{transform:translate(49vw,23vh) rotate(8deg);border-radius:56% 44% 30% 70% / 42% 69% 31% 58%;background:#c6d8cc}
+  100%{transform:translate(13vw,-9vh) rotate(-8deg);border-radius:48% 52% 64% 36% / 60% 35% 65% 40%;background:#bfd2be}
+}
+@keyframes journey-landscape-b{
+  0%{transform:translate(15vw,15vh) rotate(15deg);border-radius:65% 35% 30% 70% / 33% 51% 49% 67%;background:#e5d0a5}
+  27%{transform:translate(-39vw,-22vh) rotate(-16deg);border-radius:32% 68% 65% 35% / 67% 38% 62% 33%;background:#bfd2be}
+  48%{transform:translate(8vw,-4vh) rotate(22deg);border-radius:61% 39% 33% 67% / 40% 68% 32% 60%;background:#e5d0a5}
+  70%{transform:translate(-42vw,12vh) rotate(-12deg);border-radius:34% 66% 68% 32% / 59% 35% 65% 41%;background:#e1beb1}
+  100%{transform:translate(5vw,-18vh) rotate(13deg);border-radius:58% 42% 37% 63% / 34% 62% 38% 66%;background:#e5d0a5}
+}
+@keyframes journey-panel-contour{
+  0%{border-radius:var(--morph-wide) var(--morph-tight) var(--morph-wide) var(--morph-tight) / var(--morph-wide) var(--morph-tight) var(--morph-wide) var(--morph-tight)}
+  47%{border-radius:var(--morph-calm)}
+  100%{border-radius:var(--morph-tight) var(--morph-wide) var(--morph-tight) var(--morph-wide) / var(--morph-tight) var(--morph-wide) var(--morph-tight) var(--morph-wide)}
+}
+@keyframes journey-poster-contour{
+  0%{border-radius:64px 24px 100px 24px;rotate:-5deg;translate:0 26px}
+  47%{border-radius:26px;rotate:-1deg;translate:0 0}
+  100%{border-radius:24px 90px 24px 64px;rotate:4deg;translate:0 -22px}
+}
+@keyframes journey-source-orbit{
+  0%{translate:0 24px;rotate:-9deg;scale:.9}
+  48%{translate:0 0;rotate:0deg;scale:1}
+  100%{translate:0 -21px;rotate:7deg;scale:1.07}
+}
+@keyframes journey-product-flow{
+  0%{translate:0 22px;rotate:var(--product-angle,-5deg);scale:.91}
+  48%{translate:0 0;rotate:0deg;scale:1}
+  100%{translate:0 -16px;rotate:calc(var(--product-angle,-5deg) * -1);scale:1.04}
+}
+@keyframes journey-date-flow{
+  0%{border-radius:24px 24px 36px 10px;background:#f0e5d2}
+  50%{border-radius:16px;background:#e8dfc8}
+  100%{border-radius:10px 36px 24px 24px;background:#e1e8dc}
+}
+@keyframes journey-note-contour{
+  0%{border-radius:38px 14px 30px 14px}
+  48%{border-radius:22px}
+  100%{border-radius:14px 38px 14px 30px}
+}
+@keyframes journey-footer-open{
+  0%{border-radius:120px 32px 0 0}
+  100%{border-radius:44px 100px 0 0}
+}
+@keyframes journey-corner-open{
+  0%{translate:0 35px;rotate:-8deg}
+  100%{translate:0 0;rotate:0deg}
+}
+
+@supports (animation-timeline:view()) and (animation-timeline:scroll()){
+  @media(prefers-reduced-motion:no-preference){
+    .journey-atmosphere{display:block;position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+    .journey-shape{position:absolute;width:65vw;height:78vh;overflow:hidden;opacity:.25;contain:paint}
+    .journey-shape::after{content:'';position:absolute;inset:0;background:url('/assets/kasundaan/batik-floral.webp') center/760px;opacity:.25}
+    .journey-shape-a{left:-30vw;top:0;animation:journey-landscape-a 1s linear both;animation-timeline:scroll(root block)}
+    .journey-shape-b{right:-32vw;bottom:-17vh;width:62vw;height:72vh;opacity:.19;animation:journey-landscape-b 1s linear both;animation-timeline:scroll(root block)}
+
+    /* Every chapter has a contour that follows its own position in the viewport.
+       No section receives extra artificial scroll distance. The long hero stays. */
+    .journey-panel{--morph-wide:100px;--morph-tight:30px;--morph-calm:44px;
+      animation:journey-panel-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    .event-strip.journey-panel{--morph-wide:65px;--morph-tight:22px;--morph-calm:28px}
+    .dress-section.journey-panel{--morph-wide:68px;--morph-tight:26px;--morph-calm:32px}
+
+    #rangkaian .poster-preview{animation:journey-poster-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #rangkaian .schedule-poster{transform:none}
+    #rangkaian .timeline-date{animation:journey-date-flow 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #rangkaian .event-row{animation:journey-note-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+
+    #tema .theme-emblem{animation:journey-source-orbit 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #tema .theme-visual::before{--morph-wide:45%;--morph-tight:25%;--morph-calm:50%;
+      animation:journey-panel-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+
+    #menfess .wall-empty{--morph-wide:68px;--morph-tight:24px;--morph-calm:30px;
+      animation:journey-panel-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #menfess .wall-empty>img{animation:journey-source-orbit 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #menfess .note{animation:journey-note-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+
+    #undian .raffle-ticket{--morph-wide:52px;--morph-tight:18px;--morph-calm:28px;
+      animation:journey-panel-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #undian .ticket-top>img,#undian .section-flourish{animation:journey-source-orbit 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+
+    #cinderamata .product-image{animation:journey-note-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #cinderamata .product-image img{animation:journey-product-flow 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #cinderamata .merch-product:nth-child(even){--product-angle:5deg}
+    #dress-code .dress-layout>div:first-child>img{animation:journey-source-orbit 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+
+    #pesan .feedback-form{--morph-wide:54px;--morph-tight:22px;--morph-calm:28px;
+      animation:journey-panel-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #pesan .section-flourish{animation:journey-source-orbit 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+    #lokasi .map{--morph-wide:60px;--morph-tight:24px;--morph-calm:28px;
+      animation:journey-panel-contour 1s linear both;animation-timeline:view(block);animation-range:entry 0% exit 100%}
+
+    .footer.journey-scene{animation:journey-footer-open 1s linear both;animation-timeline:view(block);animation-range:entry 0% entry 100%}
+    .footer.journey-scene .corner{animation:journey-corner-open 1s linear both;animation-timeline:view(block);animation-range:entry 0% entry 100%}
+    .footer.journey-scene .footer-inner>div:first-child>img{animation:journey-source-orbit 1s linear both;animation-timeline:view(block);animation-range:entry 0% entry 100%}
+  }
+  @media(max-width:700px) and (prefers-reduced-motion:no-preference){
+    .journey-shape{width:110vw;height:60vh;opacity:.2}
+    .journey-shape-a{left:-65vw;top:12vh}
+    .journey-shape-b{right:-65vw;bottom:-6vh;width:105vw;height:64vh;opacity:.15}
+    .journey-panel{--morph-wide:42px;--morph-tight:22px;--morph-calm:30px}
+    .event-strip.journey-panel{--morph-wide:36px;--morph-tight:20px;--morph-calm:24px}
+    .dress-section.journey-panel{--morph-wide:38px;--morph-tight:22px;--morph-calm:26px}
+    #menfess .wall-empty{--morph-wide:40px;--morph-tight:20px;--morph-calm:25px}
+    #undian .raffle-ticket,#pesan .feedback-form,#lokasi .map{--morph-wide:38px;--morph-tight:20px;--morph-calm:24px}
+    .footer.journey-scene{--morph-wide:44px}
+  }
+}
+@media(prefers-reduced-motion:reduce){.journey-atmosphere{display:none}}
