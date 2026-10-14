@@ -1,0 +1,36 @@
+{
+  "fileKey": "Vz9Hcjcyc0VCs4wGDyCahp",
+  "source": "https://www.figma.com/design/Vz9Hcjcyc0VCs4wGDyCahp/DISNAT",
+  "assets": [
+    {
+      "file": "logo68.svg",
+      "nodeId": "269:22",
+      "role": "Hero and navigation emblem"
+    },
+    {
+      "file": "batik.png",
+      "nodeId": "220:3",
+      "role": "Background texture"
+    },
+    {
+      "file": "emblem-source.png",
+      "nodeId": "220:22",
+      "role": "Original source retained for reference"
+    },
+    {
+      "file": "flourish.svg",
+      "nodeId": "220:8",
+      "role": "Traditional flourish"
+    },
+    {
+      "file": "ornament-left.svg",
+      "nodeId": "220:30",
+      "role": "Left corner ornament"
+    },
+    {
+      "file": "ornament-right.svg",
+      "nodeId": "220:48",
+      "role": "Right corner ornament"
+    }
+  ]
+}

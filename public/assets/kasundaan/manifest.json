@@ -1,0 +1,293 @@
+{
+  "source": "Canva DAHSvGQu70w / Dies NUT!.pdf",
+  "assets": [
+    {
+      "name": "logo-68",
+      "src": "/assets/kasundaan/logo-68.webp",
+      "width": 1100,
+      "height": 716,
+      "sourcePage": 63,
+      "sourceXref": 5183,
+      "bytes": 457206
+    },
+    {
+      "name": "logo-68-illustrated",
+      "src": "/assets/kasundaan/logo-68-illustrated.webp",
+      "width": 1100,
+      "height": 716,
+      "sourcePage": 68,
+      "sourceXref": 1199,
+      "bytes": 414752
+    },
+    {
+      "name": "logo-physics",
+      "src": "/assets/kasundaan/logo-physics.webp",
+      "width": 1100,
+      "height": 915,
+      "sourcePage": 78,
+      "sourceXref": 1285,
+      "bytes": 631990
+    },
+    {
+      "name": "corner-top-left",
+      "src": "/assets/kasundaan/corner-top-left.webp",
+      "width": 503,
+      "height": 490,
+      "sourcePage": 78,
+      "sourceXref": 1280,
+      "bytes": 119688
+    },
+    {
+      "name": "corner-top-right",
+      "src": "/assets/kasundaan/corner-top-right.webp",
+      "width": 503,
+      "height": 490,
+      "sourcePage": 78,
+      "sourceXref": 1281,
+      "bytes": 116768
+    },
+    {
+      "name": "corner-bottom-left",
+      "src": "/assets/kasundaan/corner-bottom-left.webp",
+      "width": 635,
+      "height": 649,
+      "sourcePage": 78,
+      "sourceXref": 1282,
+      "bytes": 141088
+    },
+    {
+      "name": "corner-bottom-right",
+      "src": "/assets/kasundaan/corner-bottom-right.webp",
+      "width": 635,
+      "height": 649,
+      "sourcePage": 78,
+      "sourceXref": 1283,
+      "bytes": 147616
+    },
+    {
+      "name": "batik-megamendung",
+      "src": "/assets/kasundaan/batik-megamendung.webp",
+      "width": 1100,
+      "height": 458,
+      "sourcePage": 78,
+      "sourceXref": 1279,
+      "bytes": 197872
+    },
+    {
+      "name": "batik-floral",
+      "src": "/assets/kasundaan/batik-floral.webp",
+      "width": 1000,
+      "height": 558,
+      "sourcePage": 52,
+      "sourceXref": 4898,
+      "bytes": 79844
+    },
+    {
+      "name": "logo-kujang",
+      "src": "/assets/kasundaan/logo-kujang.webp",
+      "width": 900,
+      "height": 585,
+      "sourcePage": 52,
+      "sourceXref": 1041,
+      "bytes": 333760
+    },
+    {
+      "name": "cloud-gold",
+      "src": "/assets/kasundaan/cloud-gold.webp",
+      "width": 288,
+      "height": 296,
+      "sourcePage": 46,
+      "sourceXref": 928,
+      "bytes": 49818
+    },
+    {
+      "name": "flourish-gold",
+      "src": "/assets/kasundaan/flourish-gold.webp",
+      "width": 237,
+      "height": 103,
+      "sourcePage": 46,
+      "sourceXref": 906,
+      "bytes": 17466
+    },
+    {
+      "name": "flower",
+      "src": "/assets/kasundaan/flower.webp",
+      "width": 132,
+      "height": 128,
+      "sourcePage": 46,
+      "sourceXref": 907,
+      "bytes": 15022
+    },
+    {
+      "name": "flourish-red",
+      "src": "/assets/kasundaan/flourish-red.webp",
+      "width": 237,
+      "height": 116,
+      "sourcePage": 46,
+      "sourceXref": 916,
+      "bytes": 14344
+    },
+    {
+      "name": "diamond",
+      "src": "/assets/kasundaan/diamond.webp",
+      "width": 70,
+      "height": 82,
+      "sourcePage": 46,
+      "sourceXref": 931,
+      "bytes": 3496
+    },
+    {
+      "name": "ornament-strip",
+      "src": "/assets/kasundaan/ornament-strip.webp",
+      "width": 922,
+      "height": 615,
+      "sourcePage": 77,
+      "sourceXref": 1276,
+      "bytes": 300768
+    },
+    {
+      "name": "wordmark-dies-hifi",
+      "src": "/assets/kasundaan/wordmark-dies-hifi.webp",
+      "width": 759,
+      "height": 288,
+      "sourcePage": 35,
+      "sourceXref": 670,
+      "bytes": 129892
+    },
+    {
+      "name": "poster-merch",
+      "src": "/assets/kasundaan/poster-merch.webp",
+      "width": 675,
+      "height": 1200,
+      "sourcePage": 35,
+      "sourceXref": null,
+      "bytes": 163908
+    },
+    {
+      "name": "poster-online",
+      "src": "/assets/kasundaan/poster-online.webp",
+      "width": 675,
+      "height": 1200,
+      "sourcePage": 43,
+      "sourceXref": null,
+      "bytes": 197576
+    },
+    {
+      "name": "poster-links",
+      "src": "/assets/kasundaan/poster-links.webp",
+      "width": 675,
+      "height": 1200,
+      "sourcePage": 44,
+      "sourceXref": null,
+      "bytes": 207808
+    },
+    {
+      "name": "poster-performance",
+      "src": "/assets/kasundaan/poster-performance.webp",
+      "width": 900,
+      "height": 1200,
+      "sourcePage": 48,
+      "sourceXref": null,
+      "bytes": 240422
+    },
+    {
+      "name": "poster-logo",
+      "src": "/assets/kasundaan/poster-logo.webp",
+      "width": 900,
+      "height": 1200,
+      "sourcePage": 52,
+      "sourceXref": null,
+      "bytes": 111794
+    },
+    {
+      "name": "poster-colors",
+      "src": "/assets/kasundaan/poster-colors.webp",
+      "width": 900,
+      "height": 1200,
+      "sourcePage": 55,
+      "sourceXref": null,
+      "bytes": 130262
+    },
+    {
+      "name": "merch-shirt",
+      "src": "/assets/kasundaan/merch-shirt.webp",
+      "width": 615,
+      "height": 410,
+      "sourcePage": 35,
+      "sourceXref": 663,
+      "bytes": 163326
+    },
+    {
+      "name": "merch-tote",
+      "src": "/assets/kasundaan/merch-tote.webp",
+      "width": 275,
+      "height": 392,
+      "sourcePage": 35,
+      "sourceXref": 666,
+      "bytes": 83978
+    },
+    {
+      "name": "merch-keychain",
+      "src": "/assets/kasundaan/merch-keychain.webp",
+      "width": 700,
+      "height": 467,
+      "sourcePage": 35,
+      "sourceXref": 657,
+      "bytes": 221528
+    },
+    {
+      "name": "merch-stickers",
+      "src": "/assets/kasundaan/merch-stickers.webp",
+      "width": 650,
+      "height": 650,
+      "sourcePage": 35,
+      "sourceXref": 669,
+      "bytes": 247090
+    },
+    {
+      "name": "wayang-semar",
+      "src": "/assets/kasundaan/wayang-semar.webp",
+      "width": 380,
+      "height": 387,
+      "sourcePage": 71,
+      "sourceXref": 5226,
+      "bytes": 150514
+    },
+    {
+      "name": "wayang-arjuna",
+      "src": "/assets/kasundaan/wayang-arjuna.webp",
+      "width": 261,
+      "height": 498,
+      "sourcePage": 71,
+      "sourceXref": 7691,
+      "bytes": 110566
+    },
+    {
+      "name": "cloud-red",
+      "src": "/assets/kasundaan/cloud-red.webp",
+      "width": 1100,
+      "height": 496,
+      "sourcePage": 7,
+      "sourceXref": 173,
+      "bytes": 92106
+    },
+    {
+      "name": "cloud-red-wide",
+      "src": "/assets/kasundaan/cloud-red-wide.webp",
+      "width": 1100,
+      "height": 460,
+      "sourcePage": 7,
+      "sourceXref": 174,
+      "bytes": 67058
+    },
+    {
+      "name": "gunungan-blue",
+      "src": "/assets/kasundaan/gunungan-blue.svg",
+      "width": 420,
+      "height": 1000,
+      "sourcePage": 8,
+      "sourceXref": null,
+      "bytes": 253486
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+import {test,expect} from '@playwright/test';
+import {mkdir} from 'node:fs/promises';
+for(const width of [1440,390,320]) test(`custom account forms fit ${width}px and keep native password controls`,async({page})=>{
+  await page.setViewportSize({width,height:960});await page.goto('/masuk');
+  await expect(page.getByLabel('Nickname',{exact:true})).toHaveValue('');
+  await expect(page.getByLabel('Password',{exact:true})).toHaveAttribute('autocomplete','current-password');
+  await page.getByRole('button',{name:'Daftar',exact:true}).click();
+  await expect(page.getByLabel('Password',{exact:true})).toHaveAttribute('autocomplete','new-password');
+  await page.getByLabel('Nickname',{exact:true}).fill('Nama Saya 😊');
+  await page.getByLabel('Password',{exact:true}).fill('Kalimat sandi pilihan');
+  await page.getByLabel('Ulangi password').fill('Kalimat sandi pilihan');
+  await page.getByRole('button',{name:'Tampilkan password',exact:true}).click();
+  await expect(page.getByLabel('Password',{exact:true})).toHaveAttribute('type','text');
+  await page.getByRole('button',{name:'Sembunyikan password',exact:true}).click();
+  await expect(page.getByLabel('Password',{exact:true})).toHaveAttribute('type','password');
+  await page.evaluate(()=>document.fonts.ready);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  await mkdir('test-results/previews',{recursive:true});await page.screenshot({path:`test-results/previews/register-${width}.png`,fullPage:true});
+});
+test('registration preserves the chosen nickname and rejects mismatched confirmation before sending',async({page})=>{
+  let sent=0;await page.route('**/api/auth/register',route=>{sent++;return route.fulfill({status:409,json:{error:{message:'Nickname sudah digunakan. Pilih nickname lain.'}}});});
+  await page.goto('/masuk?mode=daftar');
+  await page.getByLabel('Nickname',{exact:true}).fill('Akang Éko 😊');
+  await page.getByLabel('Password',{exact:true}).fill('Password milik saya');
+  await page.getByLabel('Ulangi password').fill('Password milik dia');
+  await page.getByRole('button',{name:'Buat akun',exact:true}).click();
+  await expect(page.locator('form').getByRole('alert')).toContainText('Konfirmasi password belum sama');expect(sent).toBe(0);
+  await page.getByLabel('Ulangi password').fill('Password milik saya');
+  await page.getByRole('button',{name:'Buat akun',exact:true}).click();
+  await expect(page.locator('form').getByRole('alert')).toContainText('Nickname sudah digunakan');expect(sent).toBe(1);
+  await expect(page.getByLabel('Nickname',{exact:true})).toHaveValue('Akang Éko 😊');
+});
+test('successful login checks the session and returns to raffle without contacting Google',async({page})=>{
+  const user={id:'test-custom',nickname:'Baraya pilihan',name:'Baraya pilihan',role:'user',admin:false};let body;
+  await page.route('**/api/auth/login',route=>{body=route.request().postDataJSON();return route.fulfill({json:{user}});});
+  await page.route('**/api/session',route=>route.fulfill({json:{user,loginReady:true}}));
+  await page.goto('/masuk?next=%2F%23undian');await page.getByLabel('Nickname',{exact:true}).fill(user.nickname);
+  await page.getByLabel('Password',{exact:true}).fill('Password pilihan saya');
+  await page.getByRole('button',{name:'Masuk',exact:true}).last().click();
+  await expect(page).toHaveURL(/\/?\?welcome=1#undian$/);
+  expect(body).toEqual({nickname:user.nickname,password:'Password pilihan saya'});
+  await expect(page.locator('.user-name')).toHaveText(user.nickname);
+});
+test('failed login shows its error inline and missing cookies do not pretend to authenticate',async({page})=>{
+  await page.route('**/api/auth/login',route=>route.fulfill({status:401,json:{error:{message:'Nickname atau password salah.'}}}));
+  await page.goto('/masuk');await page.getByLabel('Nickname',{exact:true}).fill('Bebas memilih');
+  await page.getByLabel('Password',{exact:true}).fill('Sandi panjang');
+  await page.getByRole('button',{name:'Masuk',exact:true}).last().click();await expect(page.locator('form').getByRole('alert')).toContainText('Nickname atau password salah');
+  await page.route('**/api/auth/login',route=>route.fulfill({json:{user:{id:'cookie-blocked',nickname:'Bebas memilih',role:'user'}}}));
+  await page.route('**/api/session',route=>route.fulfill({json:{user:null,loginReady:true}}));
+  await page.getByRole('button',{name:'Masuk',exact:true}).last().click();await expect(page.locator('form').getByRole('alert')).toContainText('sesi belum tersimpan');await expect(page).toHaveURL(/\/masuk$/);
+});

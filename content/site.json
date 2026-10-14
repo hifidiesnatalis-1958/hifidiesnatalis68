@@ -1,0 +1,75 @@
+{
+  "name": "Dies Natalis HIFI ke-68",
+  "organizer": "HIFI FMIPA UNPAD",
+  "year": 2026,
+  "date": "2026-10-24T09:00:00+07:00",
+  "theme": {
+    "title": "Kasundaan",
+    "description": "Merayakan kebersamaan keluarga Fisika dalam suasana Kasundaan. Ada ruang untuk berkarya, berbagi cerita, dan kembali ngariung bersama baraya HIFI.",
+    "logoDescription": "Angka 68 hadir dalam lengkung biru, merah, dan toska, dikelilingi ornamen berwarna emas. Identitas Dies Natalis tahun ini mempertemukan warna yang meriah dengan ragam hias tradisional."
+  },
+  "events": [
+    {
+      "id": "dress-to-impress",
+      "date": "2026-10-17",
+      "time": "19.30 WIB",
+      "title": "Dress to Impress",
+      "type": "Online · Roblox",
+      "description": "Ikuti lomba Dress to Impress dan bergabung ke server Discord Dies Natalis 68.",
+      "url": "https://discord.gg/5RJrU9crB"
+    },
+    {
+      "id": "pengumpulan",
+      "date": "2026-10-17",
+      "time": "Maksimal 23.59 WIB",
+      "title": "Ngedongeng & Poster Digital",
+      "type": "Batas pengumpulan",
+      "description": "Siapkan karya dan kirim melalui tautan pengumpulan. Ketentuan lomba tersedia pada juknis.",
+      "url": "https://bit.ly/PengumpulanLombaOnlineDies68"
+    },
+    {
+      "id": "check-sound",
+      "date": "2026-10-24",
+      "time": "06.15–08.45 WIB",
+      "title": "Check sound penampil",
+      "type": "Persiapan penampilan",
+      "description": "Jadwal check sound sesuai booklet ketentuan penampilan angkatan, di Auditorium Bale Santika, Universitas Padjadjaran."
+    },
+    {
+      "id": "puncak",
+      "date": "2026-10-24",
+      "time": "09.00 WIB–selesai",
+      "title": "Puncak Dies Natalis ke-68",
+      "type": "Acara utama",
+      "description": "Ngariung bersama keluarga HIFI FMIPA UNPAD di Auditorium Bale Santika, Universitas Padjadjaran. Dress code: Tradisional Sunda (Kebaya, Pangsi, Batik Sunda)."
+    }
+  ],
+  "dressCode": {
+    "title": "Tradisional Sunda",
+    "description": "Pilihan busana:",
+    "items": [
+      "Kebaya",
+      "Pangsi",
+      "Batik Sunda"
+    ]
+  },
+  "location": {
+    "name": "Auditorium Bale Santika",
+    "address": "Universitas Padjadjaran.",
+    "mapQuery": "Auditorium Bale Santika Universitas Padjadjaran"
+  },
+  "contact": {
+    "name": "Zahra Nova Carolyn",
+    "phone": "6285215966864"
+  },
+  "links": {
+    "discord": "https://discord.gg/5RJrU9crB",
+    "juknis": "https://bit.ly/JuknisLombaOnlineDies68",
+    "submission": "https://bit.ly/PengumpulanLombaOnlineDies68"
+  },
+  "raffle": {
+    "open": false,
+    "prize": "Hadiah akan diumumkan",
+    "description": "Satu akun, satu tiket. Pendaftaran undian dibuka oleh panitia."
+  }
+}

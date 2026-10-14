@@ -1,0 +1,1 @@
+export default function NotFound() {return <main className="wrap error-page"><p>Dies Natalis HIFI 68</p><h1>Halamannya belum ada, baraya.</h1><a className="button" href="/">Kembali ke beranda</a></main>;}

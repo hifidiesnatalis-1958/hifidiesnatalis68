@@ -1,0 +1,67 @@
+import {test,expect} from '@playwright/test';
+import {mkdir} from 'node:fs/promises';
+test('public site, nickname login entry, events and original assets work',async({page})=>{
+  await page.goto('/');await expect(page.locator('h1')).toContainText('Dies Natalis');
+  await page.evaluate(()=>document.fonts.ready);
+  await expect(page.locator('#rangkaian .event-row')).toHaveCount(4);
+  await page.getByRole('button',{name:'17 Oktober',exact:true}).click();await expect(page.locator('.event-row')).toHaveCount(2);
+  await page.getByRole('button',{name:'Semua',exact:true}).click();
+  await page.locator('.login-button').click();await expect(page).toHaveURL(/\/masuk\?/);
+  await expect(page.getByLabel('Nickname',{exact:true})).toHaveValue('');await page.goto('/');
+  await expect(page.locator('#dress-code')).toContainText('Tradisional Sunda');
+  await expect(page.locator('#dress-code li')).toHaveText(['Kebaya', 'Pangsi', 'Batik Sunda']);
+  await expect(page.getByRole('link', {name: 'Harewos', exact: true})).toBeVisible();
+  await expect(page.locator('#menfess h2')).toContainText('Harewos');
+  await expect(page.locator('#rangkaian')).toContainText('09.00 WIB–selesai');
+  await expect(page.locator('#menfess')).toContainText('Selalu anonim');
+  await expect(page.locator('#menfess input[type=checkbox]')).toHaveCount(0);
+  await expect(page.locator('#undian')).toContainText('Wajib login.');
+  await expect(page.locator('#undian input[type=checkbox]')).toHaveCount(0);
+  const ticketRequests=[];
+  page.on('request',request=>{if(request.method()==='POST' && request.url().endsWith('/api/raffle')) ticketRequests.push(request);});
+  await page.getByRole('button',{name:'Masuk untuk ikut undian'}).click();
+  await expect(page).toHaveURL(/\/masuk\?/);
+  expect(ticketRequests).toHaveLength(0);
+  await page.goto('/');
+  await expect(page.locator('#lokasi')).toContainText('Auditorium Bale Santika');
+  await expect(page.locator('#lokasi iframe')).toHaveAttribute('src', /Auditorium%20Bale%20Santika/);
+  await page.locator('#tema summary').click();await expect(page.locator('#tema details')).toHaveAttribute('open','');
+  await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>{if(image.complete && image.naturalWidth>0)return;image.loading='eager';return new Promise((resolve,reject)=>{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',reject,{once:true});});})));
+  const images=await page.locator('img').evaluateAll(images=>images.map(image=>({src:image.getAttribute('src'),ok:image.complete && image.naturalWidth>0})));
+  expect(images.every(image=>image.ok)).toBe(true);
+  expect(images.some(image=>image.src==='/assets/kasundaan/logo-68.webp')).toBe(true);
+});
+for(const width of [1440,768,390,320]) test(`responsive layout fits ${width}px`,async({page})=>{
+  await page.setViewportSize({width,height:1000});await page.goto('/');
+  await page.evaluate(()=>document.fonts.ready);await page.waitForTimeout(1100);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
+  if(width<980){await page.getByRole('button',{name:'Buka menu'}).click();await expect(page.locator('.nav-links')).toBeVisible();await page.locator('.nav-links a[href="#undian"]').click();await expect(page.locator('.nav-links')).not.toBeVisible();}
+  await page.goto('/');await page.evaluate(()=>document.fonts.ready);
+  await expect(page.locator('.loading-state')).toHaveCount(0);
+  await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>{if(image.complete && image.naturalWidth>0)return;image.loading='eager';return new Promise((resolve,reject)=>{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',reject,{once:true});});})));
+  await page.emulateMedia({reducedMotion:'reduce'});
+  await mkdir('test-results/previews',{recursive:true});await page.screenshot({path:`test-results/previews/home-${width}.png`,fullPage:true});
+});
+test('private actions reject unauthenticated and cross-origin requests',async({request})=>{
+  const response=await request.post('/api/menfess',{headers:{Origin:'http://localhost:3069'},data:{body:'Test'}});
+  expect(response.status()).toBe(401);
+  const raffle=await request.post('/api/raffle',{headers:{Origin:'http://localhost:3069'},data:{consent:true}});
+  expect(raffle.status()).toBe(401);
+  const attack=await request.post('/api/menfess',{headers:{Origin:'https://example.invalid'},data:{body:'Test'}});
+  expect(attack.status()).toBe(403);
+  expect((await request.get('/api/admin')).status()).toBe(401);
+  const login=await request.get('/api/auth/login',{maxRedirects:0});
+  expect(login.status()).toBe(307);expect(login.headers().location).toBe('http://localhost:3069/masuk');
+  const registration=await request.post('/api/auth/register',{headers:{Origin:'https://example.invalid'},data:{nickname:'Nama bebas',password:'sandi panjang 2026'}});
+  expect(registration.status()).toBe(403);
+});
+test('raffle ticket is hidden immediately after logout even if a stale status response arrives',async({page})=>{
+  await page.route('**/api/session',route=>route.fulfill({json:{user:{id:'10001',nickname:'Baraya bebas',name:'Baraya bebas',role:'user',admin:false},loginReady:true}}));
+  await page.route('**/api/raffle',route=>route.fulfill({json:{open:true,total:1,ticket:{number:'DN68-00001'},winners:[]}}));
+  await page.route('**/api/auth/logout',route=>route.fulfill({json:{ok:true}}));
+  await page.goto('/');await expect(page.locator('#undian')).toContainText('DN68-00001');
+  await page.getByRole('button',{name:'Keluar dari akun'}).click();
+  await expect(page.locator('#undian')).not.toContainText('DN68-00001');
+  await expect(page.getByRole('button',{name:'Masuk untuk ikut undian'})).toBeVisible();
+  await expect(page.locator('#undian input[type=checkbox]')).toHaveCount(0);
+});

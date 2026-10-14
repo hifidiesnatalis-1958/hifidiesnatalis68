@@ -1,0 +1,424 @@
+{
+  "meta": {
+    "name": "Dies Natalis HIFI 68 · Kasundaan Web",
+    "description": "Rounded Kasundaan festival website using only original Figma/PDF artwork, with native scroll-driven morphing and Harewos anonymous messaging and authenticated member interactions.",
+    "source_references": [
+      "https://www.canva.com/design/DAHSvGQu70w/94wi7gCJy0CH8NBvGlQ4yQ/edit",
+      "https://www.figma.com/design/Vz9Hcjcyc0VCs4wGDyCahp/DISNAT--?node-id=350-8"
+    ],
+    "created_at": "2026-10-11",
+    "updated_at": "2026-10-14"
+  },
+  "design_system": {
+    "color": {
+      "palette_type": "multicolor cultural palette",
+      "primary": {
+        "hex": "#0C575B",
+        "role": "Primary actions, type accents, navigation and footer"
+      },
+      "secondary": {
+        "hex": "#8C1927",
+        "role": "Display accents, message labels and status emphasis"
+      },
+      "accent": {
+        "hex": "#C18A31",
+        "role": "Gold accents matching source ornaments"
+      },
+      "neutral": {
+        "scale": [
+          "#FFFCF4",
+          "#FBF4E3",
+          "#D8C9AD",
+          "#596965",
+          "#283F3E"
+        ],
+        "usage": "Original poster cream with teal-tinted ink"
+      },
+      "semantic": {
+        "success": "#0C575B",
+        "error": "#8C1927",
+        "warning": "#70521F",
+        "info": "#0C575B"
+      },
+      "surface": {
+        "background": "#F4F1E8",
+        "card": "#FFFCF6",
+        "elevated": "#FFFCF6",
+        "theme": "#E1E8DC",
+        "menfess": "#F1E0D8",
+        "merch": "#EBE1CB"
+      },
+      "contrast_strategy": "Dark teal, ink and burgundy on light cream, sage or terracotta; cream on primary actions and footer"
+    },
+    "typography": {
+      "type_scale": {
+        "display": {
+          "size": 88,
+          "weight": 700,
+          "line_height": 107,
+          "tracking": -3.52
+        },
+        "heading_1": {
+          "size": 40,
+          "weight": 700,
+          "line_height": 125,
+          "tracking": 0
+        },
+        "heading_2": {
+          "size": 22,
+          "weight": 600,
+          "line_height": 125,
+          "tracking": 5
+        },
+        "heading_3": {
+          "size": 18,
+          "weight": 600,
+          "line_height": 125,
+          "tracking": 1
+        },
+        "body": {
+          "size": 15,
+          "weight": 400,
+          "line_height": 170,
+          "tracking": 0
+        },
+        "body_small": {
+          "size": 14,
+          "weight": 500,
+          "line_height": 150,
+          "tracking": 0
+        },
+        "caption": {
+          "size": 12,
+          "weight": 500,
+          "line_height": 140,
+          "tracking": 0
+        },
+        "overline": {
+          "size": 15,
+          "weight": 600,
+          "line_height": 125,
+          "tracking": 1.5
+        }
+      },
+      "font_families": {
+        "heading": "Libre Baskerville",
+        "body": "Montserrat",
+        "mono": "system monospace for developer documentation only"
+      },
+      "font_style_notes": "Original native Canva wordmark rendered as an image with accessible H1; local Libre Baskerville headings and Montserrat controls."
+    },
+    "spacing": {
+      "base_unit": 8,
+      "scale": [
+        8,
+        16,
+        24,
+        32,
+        48,
+        64,
+        80
+      ],
+      "content_density": "spacious",
+      "section_rhythm": "Framed cultural hero, chronological events, logo exploration, anonymous messages, raffle, merchandise and practical information"
+    },
+    "layout": {
+      "grid_system": "Responsive CSS grid and flex",
+      "max_content_width": 1220,
+      "columns": 2,
+      "gutter": 65,
+      "breakpoints": [
+        360,
+        700,
+        980,
+        1200,
+        1600
+      ],
+      "alignment_tendency": "Asymmetric original wayang/logo collage paired with left-aligned editorial typography; compact mobile stack"
+    },
+    "shape": {
+      "border_radius": {
+        "small": 16,
+        "medium": 24,
+        "large": 44,
+        "pill": 999
+      },
+      "border_usage": "Restrained neutral lines on controls and navigation",
+      "divider_style": "Subtle tonal separators; wide section gaps"
+    },
+    "elevation": {
+      "shadow_style": "none added",
+      "levels": {
+        "low": "none",
+        "medium": "none",
+        "high": "none"
+      },
+      "depth_cues": "tonal shading embedded in original logo"
+    },
+    "iconography": {
+      "style": "Actual Canva ornaments with simple stroke utility icons",
+      "stroke_weight": "original artwork",
+      "size_scale": [
+        180,
+        190,
+        280
+      ],
+      "preferred_set": "public/assets/kasundaan/manifest.json"
+    },
+    "motion": {
+      "easing": "cubic-bezier(.22,1,.36,1)",
+      "duration_scale": {
+        "micro": 150,
+        "normal": 200,
+        "macro": 850
+      },
+      "animation_density": "One reversible scroll-led hero scene plus direct interaction feedback",
+      "scroll_behavior": "Native scroll with CSS named view timeline; no wheel interception or React scroll updates; compact static scene for reduced motion or unsupported browsers"
+    },
+    "components": {
+      "button_style": "Teal primary or outlined secondary, pill corners, 43?50px height",
+      "input_style": "Labelled native controls with 16px corners and visible focus; 16px mobile form text",
+      "card_style": "Rounded paper messages, ticket layout, original product images; 24?44px panel radii explicitly requested by user",
+      "navigation_pattern": "Sticky pill header with mobile expandable menu and preserved anchors",
+      "modal_style": "Native poster dialog with download, Escape close and explicit restored focus",
+      "list_style": "Chronological dates and real event content",
+      "component_notes": "Existing nickname auth, anonymous moderation and operator controls are retained."
+    }
+  },
+  "design_style": {
+    "aesthetic": {
+      "mood": [
+        "hangat",
+        "someah",
+        "lapang",
+        "berbudaya"
+      ],
+      "visual_metaphor": "Original Sundanese print artwork arranged as a spacious editorial invitation",
+      "era_influence": "Traditional Sundanese print celebration expressed in an interactive event site",
+      "genre": "Kasundaan campus festival and authenticated participation portal",
+      "personality_traits": [
+        "ramah",
+        "ekspresif",
+        "tenang"
+      ],
+      "adjectives": [
+        "rounded",
+        "editorial",
+        "asymmetric"
+      ]
+    },
+    "visual_language": {
+      "complexity": "moderate",
+      "ornamentation": "Original wayang, gunungan and cloud assets grouped in the hero; source artwork remains recognizable",
+      "whitespace_usage": "Generous light canvas around cultural artwork and functional sections",
+      "visual_weight_distribution": "Sage theme panel, warm menfess panel and cream information sections with deep teal actions",
+      "focal_strategy": "Wayang and original 68 emblem on the left, welcoming title on the right; emblem becomes the focal point while scrolling",
+      "contrast_level": "high for text, subtle for background",
+      "texture_usage": "Original PDF floral texture used locally at low opacity"
+    },
+    "composition": {
+      "hierarchy_method": "Large left-aligned display type and one original emblem, followed by functional sections",
+      "balance_type": "Asymmetric cultural collage and text",
+      "flow_direction": "top to bottom",
+      "grouping_strategy": "Date rows, a menfess wall, a perforated raffle ticket, and functional forms",
+      "negative_space_role": "Keeps the busy original artwork separate from readable interface text"
+    },
+    "imagery": {
+      "photo_treatment": "Actual merchandise product photos with source alpha masks",
+      "illustration_style": "Exclusively original Figma/PDF artwork; no generated illustrations, external stock or invented motifs",
+      "graphic_elements": [
+        "Canva 68 and physics logos",
+        "Native multicolor wordmark",
+        "Four floral corners",
+        "Batik and original gold/red flourishes",
+        "Unchanged source posters",
+        "Original Semar and Arjuna PDF images",
+        "Original blue gunungan vector",
+        "Original red cloud artwork"
+      ],
+      "pattern_usage": "Actual PDF image assets; no CSS-generated cultural pattern",
+      "image_shape": "Native aspect ratios preserved"
+    },
+    "interaction_feel": {
+      "feedback_style": "Inline error and success messages, dismissible toast",
+      "hover_behavior": "Small button movement and color change",
+      "transition_personality": "Quiet and direct",
+      "loading_style": "Visible text status, content never gated",
+      "microinteraction_density": "Low"
+    },
+    "brand_voice_in_ui": {
+      "tone": "Someah, clear, grounded",
+      "formality": "Natural Indonesian with restrained Sundanese phrases",
+      "cta_style": "Concrete verbs for viewing, sending and registering",
+      "empty_state_approach": "Explain the next step without inventing visitor messages",
+      "error_tone": "Plain, actionable, no implementation details for visitors"
+    }
+  },
+  "visual_effects": {
+    "overview": {
+      "effect_intensity": "One prominent scroll story, restrained elsewhere",
+      "performance_tier": "CSS-native without extra dependencies",
+      "fallback_strategy": "Compact static complete hero for reduced motion and browsers without animation-timeline",
+      "primary_technology": "CSS named view timeline, sticky layout, original optimized source artwork"
+    },
+    "background_effects": {
+      "type": "Source megamendung and floral imagery",
+      "description": "A plain CSS surface changes rounded contours and sage-to-gold color behind unchanged original PDF art",
+      "technology": "CSS border-radius, transform and background-color interpolation",
+      "params": {
+        "opacity": 1,
+        "speed": 0,
+        "density": "source pattern",
+        "blend_mode": "NORMAL",
+        "color_palette": [
+          "#FBF4E3",
+          "#C18A31"
+        ]
+      }
+    },
+    "particle_systems": {
+      "enabled": false,
+      "type": "none",
+      "description": "Tidak digunakan pada cover cetak statis",
+      "technology": "none",
+      "params": {
+        "count": 0,
+        "shape": "none",
+        "size_range": [
+          0,
+          0
+        ],
+        "movement_pattern": "none",
+        "color_behavior": "none",
+        "interaction": "none",
+        "spawn_area": "none"
+      }
+    },
+    "3d_elements": {
+      "enabled": false,
+      "type": "none",
+      "description": "Tidak digunakan pada cover cetak statis",
+      "technology": "none",
+      "params": {
+        "renderer": "none",
+        "lighting": "none",
+        "camera": "none",
+        "materials": "none",
+        "geometry": "none",
+        "post_processing": [],
+        "interaction_model": "none"
+      }
+    },
+    "shader_effects": {
+      "enabled": false,
+      "type": "none",
+      "description": "Tidak digunakan pada cover cetak statis",
+      "technology": "none",
+      "params": {
+        "uniforms": [],
+        "vertex_manipulation": "none",
+        "fragment_output": "none",
+        "noise_type": "none",
+        "distortion": "none"
+      }
+    },
+    "scroll_effects": {
+      "parallax": {
+        "enabled": false,
+        "layers": 0,
+        "depth_range": [
+          0,
+          0
+        ],
+        "speed_curve": "none"
+      },
+      "scroll_triggered_animations": {
+        "enabled": true,
+        "trigger_points": [
+          "hero contain 0%",
+          "hero contain 100%"
+        ],
+        "animation_type": "Reversible artwork translation and fade; text handoff",
+        "scrub_behavior": "Native CSS view timeline, no custom scrolling"
+      },
+      "scroll_morphing": {
+        "enabled": true,
+        "description": "Organic backing shape changes contour as the original 68 logo grows into focus; original wayang exits and theme text appears. Artwork pixels and vector paths remain unchanged.",
+        "scroll_span": {
+          "desktop": "320svh",
+          "mobile": "300svh"
+        }
+      }
+    },
+    "text_effects": {
+      "type": "Source wordmark imagery",
+      "description": "Canva decorative letters are preserved as their original image; all interface text remains semantic",
+      "technology": "Native image and DOM text",
+      "params": {
+        "split_strategy": "none",
+        "animation_per_unit": "none",
+        "stagger": 0,
+        "effect_style": "none"
+      }
+    },
+    "cursor_effects": {
+      "enabled": false,
+      "type": "none",
+      "description": "not applicable",
+      "params": {
+        "shape": "none",
+        "size": 0,
+        "blend_mode": "NORMAL",
+        "trail": "none",
+        "interaction_zone": "none"
+      }
+    },
+    "image_effects": {
+      "type": "Scroll-linked original asset composition",
+      "description": "Original logo scales and translates as original wayang recedes; all image proportions remain natural",
+      "technology": "CSS",
+      "params": {
+        "filter_pipeline": [],
+        "hover_transform": "Small product image scale and rotation",
+        "reveal_animation": "Native scroll progress, reversed by scrolling up",
+        "distortion_type": "None on source artwork"
+      }
+    },
+    "glassmorphism_neumorphism": {
+      "enabled": false,
+      "style": "none",
+      "params": {
+        "blur_radius": 0,
+        "transparency": 0,
+        "border_treatment": "none",
+        "shadow_type": "none",
+        "light_source_angle": "none"
+      }
+    },
+    "canvas_drawings": {
+      "enabled": false,
+      "type": "none",
+      "description": "Not used: original Figma assets already carry the cultural identity",
+      "technology": "none",
+      "params": {
+        "draw_method": "none",
+        "animation_loop": false,
+        "color_scheme": "none",
+        "responsiveness": "Responsive CSS",
+        "interaction": "none"
+      }
+    },
+    "svg_animations": {
+      "enabled": false,
+      "type": "none",
+      "description": "static original Figma vectors",
+      "params": {
+        "animation_method": "none",
+        "path_morphing": false,
+        "stroke_animation": "none",
+        "filter_effects": "none"
+      }
+    },
+    "composite_notes": "Only original Canva/Figma/PDF assets. No generated or external illustration. Native CSS morphing with reduced-motion and unsupported-browser fallbacks; existing auth, moderation, raffle and operator controls preserved."
+  }
+}
