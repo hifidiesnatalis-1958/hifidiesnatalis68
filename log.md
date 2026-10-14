@@ -136,3 +136,4 @@ Bagi pengembang / asisten kecerdasan buatan selanjutnya (**GPT Sol**):
      npm run build
      ```
    - Semua nama tombol dan selector pada file `tests/ui/*.spec.mjs` telah disinkronkan dan terbukti lulus seluruhnya.
+
