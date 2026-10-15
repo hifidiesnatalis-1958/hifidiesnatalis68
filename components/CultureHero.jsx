@@ -32,8 +32,8 @@ function CultureHero({theme}) {
         <div className="hero-copy">
           <SourceArt name="wordmark-dies-hifi" className="hero-wordmark"/>
           <h1 id="festival-title"><span className="sr-only">Dies Natalis HIFI ke-68. </span>Wilujeng<br/><span>sumping.</span></h1>
-          <p className="hero-description">Perayaan 68 tahun HIFI FMIPA UNPAD.<br/>Kumpul bareng warga himpunan dalam nuansa Kasundaan.</p>
-          <div className="hero-actions"><a className="button" href="#rangkaian">Jelajahi perayaan<Icon name="arrow" size={18}/></a><a className="text-link" href="#menfess">Titip Harewos<Icon name="send" size={17}/></a></div>
+          <p className="hero-description">Perayaan 68 tahun HIFI FMIPA UNPAD bertema Kasundaan.</p>
+          <div className="hero-actions"><a className="button" href="#rangkaian">Lihat rangkaian acara<Icon name="arrow" size={18}/></a><a className="text-link" href="#menfess">Kirim Harewos<Icon name="send" size={17}/></a></div>
         </div>
         <div className="hero-story-end" aria-hidden="true">
           <p className="hero-end-label">Dies Natalis HIFI FMIPA UNPAD ke-68</p>

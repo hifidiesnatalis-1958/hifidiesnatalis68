@@ -66,11 +66,30 @@ Selain itu, pembaruan ini menuntaskan perbaikan ketajaman aset visual **Gunungan
   - `tests/origin.test.mjs`: Menambah uji atribut cookie.
   - CSRF tetap tertahan: semua POST memeriksa header Origin dan mewajibkan `application/json`.
 
+### Perombakan Salinan Teks (Copywriting) Gaya Sandzh (Anti-Overexplain)
+- **Tujuan:** Menghapus seluruh keterangan birokratis berulang, over-explain, dan catatan berlebihan di semua section agar lugas, to the point, dan berenergi, dengan tetap mempertahankan seluruh sapaan dan frasa Basa Sunda (*Wilujeng sumping*, *Hatur nuhun*, *Harewos HIFI*, *Hayu urang Haharewosan! 👀*, *Kasundaan*).
+- **Perubahan Spesifik:**
+  - `components/Home.jsx`:
+    - Form Harewos: menghapus repetisi *"Selalu anonim · nama tidak ditampilkan"* menjadi *"Selalu anonim"*, memangkas paragraf bantuan panjang menjadi *"Pesan tayang setelah disetujui panitia."*.
+    - Empty state Harewos: menghapus teks ganda berulang menjadi *"Belum ada pesan."* dan *"Jadilah yang pertama mengirim Harewos."*.
+    - Undian: memadatkan keterangan menjadi *"Satu tiket per NPM. Wajib masuk akun."*, serta menyederhanakan teks kartu undian dan persetujuan.
+    - Cenderamata & Pesan: deskripsi dipadatkan langsung ke pokok informasi barang dan ajakan pesan tanpa kalimat pengantar generik.
+    - Label warna & poster: dipersingkat menjadi deskripsi fungsional padat.
+  - `components/Auth.jsx`:
+    - Mengganti judul bertele-tele menjadi *"Daftar Akun"*, *"Masuk Akun"*, *"Masuk Panitia"*.
+    - Memangkas petunjuk input NPM dan sandi menjadi ringkas (*"Format 12 digit (140310...)"*, *"Minimal 10 karakter"*).
+    - Catatan privasi dibuat padat: *"Harewos selalu anonim."*.
+  - `components/CultureHero.jsx`: Deskripsi hero langsung ke inti tema, tombol aksi menggunakan ajakan aktif (*"Lihat rangkaian acara"*, *"Kirim Harewos"*).
+  - `components/LogoPhilosophy.jsx`: Merapikan panel filosofi agar tidak terjadi pengulangan antara kalimat utama dan rincian.
+  - `content/site.json`: Memadatkan deskripsi tema, lomba online (Roblox, ngedongeng, poster), check sound, dan acara puncak.
+  - `app/layout.jsx`: Menyingkat meta description menjadi padat dan lugas.
+
 ---
 
 ## 4. Status Verifikasi
 
 - `npm test`: **28 / 28 lulus**
 - `npm run build`: **Turbopack Next.js 16.4.0 sukses tanpa peringatan**
-- `npx playwright test tests/ui/site.spec.mjs`: **7 / 7 lulus**
+- `npx playwright test tests/ui/site.spec.mjs`: **Lulus**
 - Status Git: Bersih, tersinkronisasi, dan siap di-deploy secara otomatis ke Vercel melalui branch `main`.
+

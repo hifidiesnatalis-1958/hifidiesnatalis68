@@ -4,11 +4,11 @@ import artwork from '@/public/assets/kasundaan/manifest.json';
 import Icon from './Icon.jsx';
 const assets=Object.fromEntries(artwork.assets.map(a=>[a.name,a]));
 const panels=[
- {title:'Kujang',art:'logo-kujang',page:10,lead:'Pusaka Pasundan yang melambangkan kekuatan dan jati diri.',detail:'Kujang menegaskan akar budaya Sunda dalam perayaan 68 tahun HIFI.'},
- {title:'Angka 68',art:'philosophy-number',page:52,lead:'Menandai usia 68 tahun Himpunan Mahasiswa Fisika UNPAD.',detail:'Merangkum perjalanan dan kebersamaan tiap angkatan warga himpunan sejak 1958.'},
- {title:'Ornamen Batik',art:'philosophy-batik',page:53,lead:'Sentuhan ragam hias khas Priangan.',detail:'Motif batik melengkapi logo dan mempertegas tema Kasundaan.'},
- {title:'Keseluruhan',art:'philosophy-whole',page:54,lead:'Harmoni tradisi Pasundan dan identitas HIFI.',detail:'Kujang, angka 68, dan motif batik menjadi satu kesatuan identitas perayaan tahun ini.'},
- {title:'Warna',art:'logo-68',page:55,lead:'Empat warna identitas HIFI 68.',detail:'Oranye dan merah mewakili semangat dan daya juang; biru dan toska melambangkan keilmuan fisika serta kebersamaan warga himpunan.'},
+ {title:'Kujang',art:'logo-kujang',page:10,lead:'Pusaka Pasundan simbol kekuatan dan keteguhan.',detail:'Menegaskan akar budaya Sunda dalam perayaan 68 tahun HIFI.'},
+ {title:'Angka 68',art:'philosophy-number',page:52,lead:'68 tahun perjalanan HIFI FMIPA UNPAD sejak 1958.',detail:'Simbol kesinambungan dan kebersamaan lintas angkatan.'},
+ {title:'Ornamen Batik',art:'philosophy-batik',page:53,lead:'Ragam hias khas Priangan.',detail:'Mempertegas identitas visual bertema Kasundaan.'},
+ {title:'Keseluruhan',art:'philosophy-whole',page:54,lead:'Harmoni tradisi Pasundan dan identitas HIFI.',detail:'Kujang, angka 68, dan batik menjadi satu kesatuan logo.'},
+ {title:'Warna',art:'logo-68',page:55,lead:'Empat warna identitas HIFI 68.',detail:'Oranye dan merah untuk daya juang; biru dan toska untuk sains fisika dan kebersamaan.'},
 ];
 export default function LogoPhilosophy({openPoster}) {
  const [active,setActive]=useState(0);
