@@ -12,7 +12,7 @@ The palette retains deep teal **#0C575B**, burgundy **#8C1927**, gold **#C18A31*
 
 ## Source artwork
 
-`public/assets/kasundaan/manifest.json` records dimensions, PDF page, image xref and byte count for 32 web derivatives. This revision adds original Arjuna and Semar images from page 71, original cloud images from page 7, and the original blue gunungan vector from page 8. The vector export removes only the two full-page white background rectangles and crops the view box around the existing artwork. No decorative path is redrawn. Raster exports retain the source alpha masks and natural proportions.
+`public/assets/kasundaan/manifest.json` records dimensions, PDF page, image xref and byte count for 38 web derivatives. Original Arjuna and Semar images come from page 71, clouds from page 7, and the blue gunungan vector from page 8. The five philosophy panels add native number/batik/whole-logo images from pages 52–54 and matching source posters from pages 10, 52–55. The vector export removes only the two full-page white background rectangles and crops the view box around the existing artwork. No decorative path is redrawn. Raster exports retain the source alpha masks and natural proportions.
 
 The existing 68, physics and kujang logos, native wordmark, four floral corners, batik, flourishes, merchandise photos and source posters are preserved. The full 81-page vector archive stays outside the web bundle.
 
@@ -24,7 +24,7 @@ There are no scroll listeners, scroll React state, wheel interception, animation
 
 ## Preserved behavior
 
-All existing navigation, anchor IDs, forms, nickname/password login, cookie sessions, anonymous Harewos, moderation, profanity screening, raffle login requirement and operator presentation controls remain. Poster dialogs still support download, Escape and restored keyboard focus. Theme exploration uses the original logo variants. Merchandise uses the actual product artwork.
+Navigation, anchor IDs, forms, cookie sessions, anonymous Harewos, moderation, profanity screening, raffle login requirement and operator presentation controls remain. Participant authentication now uses NPM/token, while existing operators retain password access. Poster dialogs support download, Escape and restored keyboard focus. Theme exploration has five keyboard-accessible panels with matching source posters. Merchandise uses actual product artwork and a new featured-shirt composition.
 
 The confirmed dates remain **17 October 2026** for online activities and **24 October 2026 at 09:00 WIB** for the main celebration. Older draft posters do not override these dates. The confirmed venue is Auditorium Bale Santika, Universitas Padjadjaran. Dress code: Tradisional Sunda (Kebaya, Pangsi, Batik Sunda). The public anonymous feature is named Harewos; existing API and Sheet identifiers stay compatible. Apps Script, spreadsheet configuration and secrets are unchanged.
 
@@ -41,4 +41,10 @@ The scroll story now continues through every section and reverses when scrolling
 
 Each chapter also responds to its own viewport progress: event rows and date shapes, poster frame, theme emblem, Harewos wall/cards, raffle ticket, merchandise frames/photos, dress code, message form surface, map frame and footer. Native CSS `scroll(root block)` drives the global layer; anonymous `view(block)` timelines drive local geometry. Native image proportions and vector paths stay intact. Text, input fields, checkbox controls and map contents do not transform. The form's value and layout survive a full scroll round trip.
 
-Only the hero keeps its existing 320svh/300svh scroll length. Other sections keep their normal document height and anchor navigation. The background is noninteractive and isolated behind the page. Reduced motion and browsers without scroll timelines receive the complete static layout. Backend, Vercel configuration, confirmed content, source assets and account/operator behavior are preserved.
+Only the hero keeps its existing 320svh/300svh scroll length. Other sections keep their normal document height and anchor navigation. The background is noninteractive and isolated behind the page. Reduced motion and browsers without scroll timelines receive the complete static layout. Apps Script, Vercel configuration and confirmed event content are preserved; public account behavior follows the new NPM/token rules.
+
+## Chapter geometry and copy preservation · 15 October 2026
+
+Each chapter now owns a plain SVG backing surface whose five compatible cubic segments interpolate with a named CSS view timeline. This changes the actual silhouette, complementing the existing hero, global atmosphere, ticket, map and footer motion. Original decorative assets move separately. The shape is a UI surface, not a replacement illustration. Overflow is clipped at chapter boundaries without creating a nested scrolling container. Input geometry and text remain stable.
+
+The original copy in `log.md`, `content/site.json`, `CultureHero.jsx` and `Presentation.jsx` is unchanged. Existing event, dress-code, feedback and location wording is preserved. Only requested Harewos, merchandise, authentication and philosophy additions change content. No machine-generated illustration or stock asset is introduced. All 38 manifest entries are referenced by an actual component or stylesheet.

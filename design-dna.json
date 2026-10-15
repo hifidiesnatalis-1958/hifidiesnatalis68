@@ -7,7 +7,7 @@
       "https://www.figma.com/design/Vz9Hcjcyc0VCs4wGDyCahp/DISNAT--?node-id=350-8"
     ],
     "created_at": "2026-10-11",
-    "updated_at": "2026-10-14"
+    "updated_at": "2026-10-15"
   },
   "design_system": {
     "color": {
@@ -182,7 +182,7 @@
       "navigation_pattern": "Sticky pill header with mobile expandable menu and preserved anchors",
       "modal_style": "Native poster dialog with download, Escape close and explicit restored focus",
       "list_style": "Chronological dates and real event content",
-      "component_notes": "Existing nickname auth, anonymous moderation and operator controls are retained."
+      "component_notes": "Participant NPM/token registration, existing operator passwords, anonymous moderation, one-ticket raffle and private operator token recovery."
     }
   },
   "design_style": {
@@ -279,7 +279,7 @@
     "particle_systems": {
       "enabled": false,
       "type": "none",
-      "description": "Tidak digunakan pada cover cetak statis",
+      "description": "Not used; the page uses native CSS motion and original source artwork.",
       "technology": "none",
       "params": {
         "count": 0,
@@ -297,7 +297,7 @@
     "3d_elements": {
       "enabled": false,
       "type": "none",
-      "description": "Tidak digunakan pada cover cetak statis",
+      "description": "Not used; the page uses native CSS motion and original source artwork.",
       "technology": "none",
       "params": {
         "renderer": "none",
@@ -312,7 +312,7 @@
     "shader_effects": {
       "enabled": false,
       "type": "none",
-      "description": "Tidak digunakan pada cover cetak statis",
+      "description": "Not used; the page uses native CSS motion and original source artwork.",
       "technology": "none",
       "params": {
         "uniforms": [],
@@ -343,7 +343,7 @@
       },
       "scroll_morphing": {
         "enabled": true,
-        "description": "Global background contours/color/position follow document progress. Each chapter morphs frames and original artwork using its own view timeline; readable content and field geometry remain stable.",
+        "description": "Each chapter interpolates a five-segment SVG backing contour with its own CSS view timeline, alongside the global atmosphere and local frames. Inputs and copy stay stable; original artwork is unchanged.",
         "scroll_span": {
           "desktop": "320svh",
           "mobile": "300svh"

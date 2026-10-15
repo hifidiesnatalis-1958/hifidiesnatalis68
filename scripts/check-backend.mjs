@@ -8,7 +8,7 @@ const url=process.env.APPS_SCRIPT_URL;
 const validUrl=Boolean(url && /^https:\/\/script\.google\.com\/macros\/s\/[^/?#]+\/exec$/.test(url));
 console.log(`URL Web app: ${validUrl ? 'siap' : 'belum diisi atau format keliru'}`);
 console.log(`Shared secret: ${process.env.APPS_SCRIPT_SECRET?.length>=32 ? 'terisi' : 'belum diisi (minimal 32 karakter)'}`);
-console.log(`Sesi akun: ${process.env.SESSION_SECRET?.length>=32 ? 'siap; nickname dan password dipilih pengguna' : 'SESSION_SECRET belum diisi (minimal 32 karakter)'}`);
+console.log(`Sesi akun: ${process.env.SESSION_SECRET?.length>=32 ? 'siap; peserta memakai NPM/token, panitia memakai password' : 'SESSION_SECRET belum diisi (minimal 32 karakter)'}`);
 if(!validUrl) {process.exitCode=1;}
 else {
   try {
@@ -16,7 +16,7 @@ else {
     const result=await response.json();
     if(!response.ok || result.ok!==true || result.service!=='HIFI Dies Natalis 68') throw new Error('Respons tidak sesuai backend HIFI.');
     console.log(`Health Apps Script: HTTP ${response.status}, HIFI Dies Natalis 68`);
-    if(result.auth==='nickname-password') console.log('Backend akun: register/login nickname dan password tersedia');
+    if(result.auth==='nickname-password') console.log('Backend Accounts: tersedia dan kompatibel dengan NPM/token website');
     else {console.log('Backend akun: deployment masih versi lama. Salin app.gs terbaru, jalankan setupDiesnat(), lalu Deploy → Manage deployments → Edit → New version → Deploy. URL /exec tetap sama.');process.exitCode=1;}
   } catch {console.log('Health Apps Script: gagal. Periksa deployment Web app, akses Anyone dan koneksi internet.');process.exitCode=1;}
   if(!backendReady()) {console.log('Tes data spreadsheet menunggu APPS_SCRIPT_SECRET yang sama persis dengan SHARED_SECRET di Apps Script.');process.exitCode=1;}

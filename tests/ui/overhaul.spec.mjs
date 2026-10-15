@@ -14,16 +14,16 @@ test('native poster dialog closes with Escape and returns focus to its trigger',
   await expect(page.locator('body')).not.toHaveCSS('overflow', 'hidden');
 });
 
-test('symbol exploration changes the original artwork and its actual meaning', async ({page}) => {
-  await page.goto('/');
-  const theme = page.locator('#tema');
-  await theme.getByRole('button', {name: 'Kujang', exact: true}).click();
-  await expect(theme.locator('.symbol-story')).toContainText('keteguhan');
-  await expect(theme.locator('.theme-emblem')).toHaveAttribute('src', '/assets/kasundaan/logo-kujang.webp');
-  await expect(theme.getByRole('button', {name: 'Kujang', exact: true})).toHaveAttribute('aria-pressed', 'true');
-  await theme.getByRole('button', {name: 'Budaya & fisika', exact: true}).click();
-  await expect(theme.locator('.theme-emblem')).toHaveAttribute('src', '/assets/kasundaan/logo-physics.webp');
-  await expect(theme.locator('.symbol-story')).toContainText('Pasundan');
+test('five philosophy panels use source artwork and keyboard navigation',async({page})=>{
+ await page.goto('/');const theme=page.locator('#tema');await expect(theme.getByRole('tab')).toHaveCount(5);
+ const names=['Kujang','Angka 68','Ornamen Batik','Keseluruhan','Warna'],sources=['poster-kujang','poster-logo','poster-batik','poster-whole','poster-colors'];
+ for(const [i,name] of names.entries()){
+  await theme.getByRole('tab',{name,exact:true}).click();await expect(theme.getByRole('tabpanel')).toBeVisible();await expect(theme.getByRole('tabpanel').getByRole('heading',{name,exact:true})).toBeVisible();
+  await theme.getByRole('button',{name:'Lihat sumber desain'}).click();
+  await expect(page.getByRole('dialog').getByRole('img')).toHaveAttribute('src',`/assets/kasundaan/${sources[i]}.webp`);
+  await page.keyboard.press('Escape');
+ }
+ await theme.getByRole('tab',{name:'Warna',exact:true}).press('Home');await expect(theme.getByRole('tab',{name:'Kujang',exact:true})).toBeFocused();await expect(theme.getByRole('tabpanel').getByRole('heading',{name:'Kujang',exact:true})).toBeVisible();
 });
 
 test('merch catalogue uses actual product assets and opens a readable poster on mobile', async ({page}) => {

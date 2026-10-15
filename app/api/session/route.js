@@ -4,5 +4,5 @@ import {authReady} from '@/lib/accounts.js';
 export async function GET() {
   const user = await currentUser();
   return json({user:user ? {...user,admin:isAdmin(user)} : null,
-    loginReady:authReady(),authMode:'nickname-password'});
+    loginReady:authReady(),authMode:'npm-token'});
 }

@@ -4,7 +4,7 @@ import {signSession} from '../../lib/session.js';
 const testSecret='ui-test-only-session-secret-not-for-deployment';
 function token(nickname) {
   process.env.SESSION_SECRET=testSecret;
-  return signSession({id:nickname==='Panitia pilihan' ? '90000' : '10001',nickname,role:nickname==='Panitia pilihan' ? 'admin' : 'user'});
+  return signSession({id:nickname==='Panitia pilihan' ? '90000' : '10001',nickname:nickname==='Panitia pilihan'?nickname:'140310240054',role:nickname==='Panitia pilihan' ? 'admin' : 'user'});
 }
 async function signIn(context,nickname='Panitia pilihan') {
   await context.addCookies([{name:'hifi68-session',value:token(nickname),url:'http://localhost:3069',httpOnly:true,sameSite:'Lax'}]);
@@ -27,7 +27,7 @@ test('presentation page and API require a committee account',async({page,context
 test('shuffled presentation navigates each message once, hides controls and supports fullscreen',async({page,context})=>{
   await signIn(context);await mockPresentation(page);await page.goto('/presentasi');
   await expect(page.locator('.presentation-count')).toHaveText('1 / 3');
-  await expect(page.locator('.presentation-status')).toContainText('Filter kata aktif');
+  await expect(page.locator('.presentation-status')).toContainText('Penyaringan kata aktif');
   await expect(page.locator('.presentation-card footer')).toContainText('Baraya anonim');
   const seen=new Set();
   for(let i=0;i<3;i++) {

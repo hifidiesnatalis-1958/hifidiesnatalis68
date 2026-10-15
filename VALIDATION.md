@@ -1,45 +1,43 @@
-# Pemeriksaan · 11 Oktober 2026
+# Verifikasi 15 Oktober 2026
 
-Revisi autentikasi menggunakan register/login dengan nickname dan password pilihan pengguna, mengikuti pola web KKN. Nickname tidak ditentukan aplikasi: spasi, Unicode, simbol, dan kapitalisasi didukung. Nickname unik setelah normalisasi; login tidak membedakan huruf besar-kecil. Google OAuth telah dihapus.
+Proyek: `S:\Code\hifidiesnatalis68`.
 
-## Tes otomatis
+## Hasil akhir lokal
 
-- 17 tes Node/backend lulus: hashing scrypt dan salt unik, verifikasi password, sesi dan masa berlaku, penolakan sesi lama/hasil edit, password tidak masuk cookie atau respons publik, register/login custom, duplikasi nickname, password salah, batas percobaan, hak operator, undian, anonimitas, filter kata kasar, formula Sheet, dan setup spreadsheet yang sudah ada.
-- 17 kasus browser Chrome sudah diperiksa. Pada run pertama, 15 lulus dan dua pemeriksaan pesan error gagal karena locator juga memilih announcer internal Next.js. Locator dibatasi ke form; kedua tes tersebut diulang dan lulus. Tidak ada perubahan produk untuk perbaikan locator.
-- Form register/login diuji pada 1440/390/320 px; halaman acara juga pada 1440/768/390/320 px. Tes mencakup nickname custom, password confirmation, password visibility/autocomplete, error inline, pemeriksaan cookie, kembali ke undian setelah login, akses API, logout, dan presentasi operator.
-- `npm.cmd run build` berhasil. Route `/masuk`, POST `/api/auth/register`, POST `/api/auth/login`, logout, sesi, dan fitur acara tersedia. Callback dan dependency Google OAuth dihapus.
+- **26/26 tes Node/backend lulus** melalui `npm.cmd test`.
+- **30/30 tes Chrome lulus** melalui `npm.cmd run test:ui`.
+- **Build produksi berhasil** melalui `npm.cmd run build` (Next.js 16.4.0).
+- **Pemeriksaan backend produksi read-only berhasil**: health HTTP 200, `content.get`, `menfess.list`, `messages.list`, `raffle.status`, `auth.status`.
+- `git diff --check` tidak menemukan whitespace error.
 
-Tes backend memakai kode `app.gs` melalui adapter Sheets dalam memori. Tes browser memakai fixture hanya dalam pengujian dan secret sesi uji pada port 3069; tidak membuat akun, tiket atau menfess di spreadsheet pengguna.
+Preview produksi lokal berjalan di http://localhost:3068. Permintaan daftar kosong dengan Origin lokal yang benar mendapat HTTP 400 validasi NPM, sehingga tidak lagi terhenti di pemeriksaan Origin. Tidak ada NPM peserta, pesan, moderasi, tiket, atau hasil undian yang dibuat oleh verifikasi ini. Status undian nyata saat pemeriksaan: 0 tiket, 0 pemenang.
 
-## Preview dan deployment nyata
+## Aturan akun dan akses
 
-Preview http://localhost:3068/masuk?mode=daftar diperiksa melalui Chrome. Input nickname awal kosong, tidak ada overflow pada 1440/390 px, tidak ada page error, font lokal serta aset asli Figma dimuat. Screenshot disimpan di folder kerja `.work/hifi68/previews`.
+Pengujian membuktikan penolakan angkatan 26, departemen lain, panjang NPM salah, segmen 00 yang salah, dan nomor urut nol. Duplikasi NPM tidak menerbitkan akun/token baru. Token bersifat opaque, berbeda antar-NPM, disimpan sebagai hash scrypt, tidak ikut cookie/respons login, dan bisa digunakan kembali untuk akun yang sama. Pemulihan operator menghasilkan token yang sama tanpa akun/tiket tambahan.
 
-API sesi lokal melaporkan `authMode:nickname-password`, `loginReady:true`, dan tidak ada pengguna login pada browser baru. GET route login mengarah ke `/masuk`; registrasi dengan nickname tidak valid ditolak HTTP 400 dan pengambilan tiket tanpa login ditolak HTTP 401.
+Akun peserta tidak dapat memakai jalur operator. Pengunjung dan peserta biasa ditolak endpoint pemulihan; operator ditolak pendaftaran undian. Origin asing ditolak. Di Vercel, pemeriksaan memakai origin deployment resmi dan cookie tetap Secure meskipun APP_URL belum diperbarui dari localhost. Uji pembatas percobaan, HMAC, nonce, timestamp, sesi kedaluwarsa, formula Sheets, dan larangan menang dua kali lulus.
 
-Setelah pengguna memperbarui Apps Script dan menjalankan setup, pemeriksaan read-only `node scripts/check-backend.mjs` berhasil pada deployment nyata: health HTTP 200 dengan autentikasi `nickname-password`, serta `content.get`, `menfess.list`, `messages.list`, `raffle.status` dan `auth.status` seluruhnya berhasil. Tabel Accounts tersedia. URL deployment dan shared secret yang sudah bekerja dipertahankan.
+Tes autentikasi end-to-end memakai fixture browser dan adapter kode Apps Script asli dalam memori. Pendaftaran NPM nyata tidak dilakukan agar NPM pengguna tidak terpakai oleh tes. Akun operator lama dan secret dipertahankan; deployment Apps Script yang sudah berjalan kompatibel tanpa perubahan kode Google.
 
-Akun operator **admin123** telah dibuat di deployment nyata dengan nickname dan password pilihan pengguna. Password di-hash menggunakan scrypt sebelum disimpan di Accounts; kredensial lokal tersedia di `.env.admin.local` yang diabaikan Git. Nilai password tidak dicetak dalam log pengujian atau dokumentasi.
+## Antarmuka dan gerak
 
-Login nyata melalui form Chrome berhasil HTTP 200 dan membuka panel `/admin`. Cookie sesi tersimpan, peran admin terbaca, `/api/admin` dan `/api/presentation` sama-sama merespons HTTP 200, dan halaman presentasi terbuka tanpa page error. Logout berhasil HTTP 200 dan menghapus sesi browser uji. Pengujian operator tidak mengubah konten, moderasi, status pendaftaran atau hasil undian.
+Layout diperiksa pada 1440, 768, 390, dan 320 px. Scroll diuji maju-mundur di setiap bagian; bentuk berubah dan kembali sesuai posisi scroll, tanpa overflow horizontal. Field Harewos tetap memiliki nilai dan geometri yang sama setelah satu perjalanan penuh. Reduced motion mematikan gerak dan mempertahankan seluruh isi serta navigasi.
 
-Pendaftaran publik selalu membuat akun biasa, termasuk bila nickname yang dipilih menyerupai nama panitia. Apps Script mengambil hak akses dari peran yang tersimpan di Accounts. Script lokal `create-admin.mjs` dapat menerima password operator pilihan pengguna melalui stdin; password acak tetap tersedia bila password tidak ditentukan. Kredensial dipertahankan bila jaringan timeout agar password akun yang mungkin sudah tersimpan tidak hilang.
+Lima panel filosofi menampilkan sumber Kujang, Angka 68, Ornamen Batik, Keseluruhan, dan Warna. Navigasi keyboard, poster sumber yang berbeda untuk tiap panel, Escape, download, dan pemulihan fokus lulus. Katalog memakai empat produk asli serta komposisi promosi T-shirt. Semua **38 entri manifest** direferensikan komponen/stylesheet; rasio dan gambar sumber tidak diganti.
 
-Deployment Vercel belum diaktifkan. Lokasi acara, dress code, dan rincian tambahan masih berstatus menyusul sesuai arahan pengguna.
+Harewos anonim, moderasi, filter kata, likes, tiket setelah logout, serta presentasi operator (acak, otomatis, layar penuh, kontrol keyboard) tetap diuji. Screenshot tersedia di `test-results/previews/`; form produksi terakhir juga disimpan di workspace `hifi68-ready/previews/`.
 
+## Integritas revisi pengguna
 
-# Verifikasi overhaul Kasundaan ? 14 Oktober 2026
+Hash berkas berikut cocok dengan baseline sebelum revisi: `log.md`, `content/site.json`, `next.config.mjs`, `vercel.json`, `CultureHero.jsx`, `Presentation.jsx`, `JourneyAtmosphere.jsx`, dan `Icon.jsx`. Isi bagian rangkaian, dress code, pesan-kesan, dan lokasi dibandingkan langsung dan tetap identik. Penambahan copy terbatas pada ruang revisi Harewos, promosi merchandise, filosofi, dan alur NPM/token.
 
-Proyek: S:\Code\hifidiesnatalis68
-Preview produksi lokal: http://localhost:3068
+## Kamus dan skill Sunda
 
-- Build produksi Next.js 16.4.0 berhasil setelah perubahan terakhir.
-- 17 pengujian backend dan autentikasi lulus: nickname bebas, hash password, session, HMAC, izin operator, moderasi anonim, filter kata dan undian.
-- 21 kasus browser diuji. Sepuluh kasus autentikasi/presentasi lulus; sebelas kasus website/interaksi lulus pada verifikasi akhir setelah fokus dialog diperbaiki.
-- Layout tidak melampaui viewport pada 1440, 768, 390 dan 320 px.
-- Poster dapat dibuka, diunduh, ditutup dengan Escape, dan mengembalikan fokus ke tombol pembuka.
-- Tiga tampilan filosofi logo, empat produk, menfess anonim, wajib login undian dan penghapusan tiket dari UI setelah logout diverifikasi.
-- Screenshot final memeriksa hero, halaman login, mode presentasi dan foto merchandise. Foto merchandise juga diverifikasi pada viewport setelah image.decode(), bukan hanya melalui screenshot halaman panjang.
-- Aset dan font tersedia lokal. Tidak ada dependency baru, perubahan deployment Apps Script atau perubahan secret.
+Tiga PDF resmi (435 + 495 + 259 = **1.189 halaman**) diunduh lengkap, dicatat SHA-256, dan diekstrak seluruh halamannya. Folder `kamus-basa-sunda/` dikecualikan dari Git/Vercel. Petunjuk penggunaan kamus I halaman PDF 8–23 dibaca sampai selesai; bagian undak-usuk dan tata bahasa terkait menjadi rujukan skill. Scan entri bisik dan tabel ragam hormat diperiksa secara visual untuk membedakan cacat OCR.
 
-Berkas preview: test-results/previews/. Source dan file awal dicadangkan di folder hifi68-overhaul/backup pada workspace Machine Learning.
+Skill global `natural-sundanese` lulus `quick_validate.py`. Script lookup diuji untuk pencarian entri bisik (PDF 139), pembacaan halaman tata bahasa (PDF 23), korpus hilang, halaman tidak tersedia, serta pembedaan é terkomposisi/terurai dari e biasa. Pencarian tidak mengubah diakritik atau menebak perbaikan OCR. Ini bukan klaim telah menghafal seluruh kamus.
+
+## Publikasi
+
+Hasil di atas memverifikasi kode lokal. Website Vercel yang sudah online belum otomatis berubah oleh build lokal; pembaruan repository/deployment diperlukan untuk menerapkan revisi ini ke situs publik. APP_URL Production yang sesuai adalah `https://hifidiesnatalis68-kasundaan.vercel.app`.

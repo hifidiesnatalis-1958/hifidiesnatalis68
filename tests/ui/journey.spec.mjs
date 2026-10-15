@@ -7,7 +7,7 @@ async function scroll(page,top){
   await page.evaluate(y=>window.scrollTo({top:y,behavior:'instant'}),top);
   await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
 }
-async function contour(page,selector){return page.locator(selector).first().evaluate(node=>getComputedStyle(node).borderRadius);}
+async function contour(page,selector){return page.locator(selector).first().evaluate(node=>node.classList.contains('morph-chapter') ? getComputedStyle(node.querySelector('.chapter-surface path')).d : getComputedStyle(node).borderRadius);}
 async function atmosphere(page){return page.locator('.journey-shape-a').evaluate(node=>{
   const style=getComputedStyle(node);return {shape:style.borderRadius,transform:style.transform,color:style.backgroundColor};
 });}

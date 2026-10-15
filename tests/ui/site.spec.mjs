@@ -7,7 +7,7 @@ test('public site, nickname login entry, events and original assets work',async(
   await page.getByRole('button',{name:'17 Oktober',exact:true}).click();await expect(page.locator('.event-row')).toHaveCount(2);
   await page.getByRole('button',{name:'Semua',exact:true}).click();
   await page.locator('.login-button').click();await expect(page).toHaveURL(/\/masuk\?/);
-  await expect(page.getByLabel('Nickname',{exact:true})).toHaveValue('');await page.goto('/');
+  await expect(page.getByLabel('NPM',{exact:true})).toHaveValue('');await page.goto('/');
   await expect(page.locator('#dress-code')).toContainText('Tradisional Sunda');
   await expect(page.locator('#dress-code li')).toHaveText(['Kebaya', 'Pangsi', 'Batik Sunda']);
   await expect(page.getByRole('link', {name: 'Harewos', exact: true})).toBeVisible();
@@ -15,7 +15,7 @@ test('public site, nickname login entry, events and original assets work',async(
   await expect(page.locator('#rangkaian')).toContainText('09.00 WIB–selesai');
   await expect(page.locator('#menfess')).toContainText('Selalu anonim');
   await expect(page.locator('#menfess input[type=checkbox]')).toHaveCount(0);
-  await expect(page.locator('#undian')).toContainText('Wajib login.');
+  await expect(page.locator('#undian')).toContainText('Wajib masuk akun.');
   await expect(page.locator('#undian input[type=checkbox]')).toHaveCount(0);
   const ticketRequests=[];
   page.on('request',request=>{if(request.method()==='POST' && request.url().endsWith('/api/raffle')) ticketRequests.push(request);});
@@ -52,7 +52,7 @@ test('private actions reject unauthenticated and cross-origin requests',async({r
   expect((await request.get('/api/admin')).status()).toBe(401);
   const login=await request.get('/api/auth/login',{maxRedirects:0});
   expect(login.status()).toBe(307);expect(login.headers().location).toBe('http://localhost:3069/masuk');
-  const registration=await request.post('/api/auth/register',{headers:{Origin:'https://example.invalid'},data:{nickname:'Nama bebas',password:'sandi panjang 2026'}});
+  const registration=await request.post('/api/auth/register',{headers:{Origin:'https://example.invalid'},data:{npm:'140310240054'}});
   expect(registration.status()).toBe(403);
 });
 test('raffle ticket is hidden immediately after logout even if a stale status response arrives',async({page})=>{

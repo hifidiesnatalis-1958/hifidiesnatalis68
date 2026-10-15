@@ -1,4 +1,4 @@
-# Dies Natalis HIFI ke-68 · Kasundaan
+    # Dies Natalis HIFI ke-68 · Kasundaan
 
 React JSX / Next.js + Vercel, Google Apps Script + Google Sheets. Proyek berada di `S:\Code\hifidiesnatalis68`.
 
@@ -75,20 +75,4 @@ node scripts/check-backend.mjs
 
 Tes otomatis memakai adapter Apps Script/Sheets dan browser dengan fixture khusus pengujian; tidak membuat akun atau pesan di spreadsheet pengguna. Pemeriksaan terakhir membaca deployment nyata tanpa mencetak secret atau menulis data. Hasil terbaru ada di `VALIDATION.md`.
 
-Acara utama berlangsung pada 24 Oktober 2026 pukul 09.00 WIB di Auditorium Bale Santika, Universitas Padjadjaran. Dress code: Tradisional Sunda (Kebaya, Pangsi, Batik Sunda). Rincian rundown tambahan menunggu pengumuman panitia. Kontak Zahra Nova Carolyn dan tautan Discord Dress to Impress sudah disertakan. Desain menggunakan logo, batik, dan ornamen asli Figma DISNAT serta font lokal Libre Baskerville dan Montserrat.
-
-
-## Overhaul Kasundaan ? 14 Oktober 2026
-
-Website memakai identitas Canva terbaru: logo 68 dan atom, wordmark, motif batik, ornamen sudut, poster, dan produk merchandise. Poster bisa diperbesar/diunduh; makna logo memiliki tiga tampilan; katalog cindra mata tersedia. Form, nickname/password, menfess anonim, undian dan presentasi panitia memakai backend yang sama.
-
-Aset dan sumbernya tercatat di ASSETS.md serta public/assets/kasundaan/manifest.json. Desain dan token terbaru ada di DESIGN.md dan design-dna.json. Preview lokal dapat dibuka di http://localhost:3068.
-
-
-## Gangguan koneksi Google
-
-Jika login menampilkan pesan layanan tidak terjangkau, jalankan `node scripts/check-backend.mjs`. Koneksi dapat gagal sebelum mencapai Apps Script meskipun URL, secret dan password benar. Bridge mencoba ulang sekali hanya ketika koneksi belum terbentuk (`UND_ERR_CONNECT_TIMEOUT`), dengan total batas 30 detik per aksi.
-
-Respons [Apps Script ContentService](https://developers.google.com/apps-script/guides/content#redirects) diarahkan ke URL GET di `script.googleusercontent.com`. Bridge menangani tahap ini terpisah: kegagalan koneksi saat mengambil respons tidak mengulang POST yang mungkin sudah menyimpan akun, pesan atau hasil undian. Putusnya socket setelah pengiriman dan penolakan autentikasi tidak dicoba ulang. Semua batas login dan pemeriksaan HMAC tetap aktif. Route login/register menyediakan batas eksekusi 90 detik untuk dua aksi backend dan hashing password.
-
-Perbaikan koneksi ini cukup diterapkan pada website; `apps-script/app.gs` dan deployment Google tetap sama.
+Lokasi acara, dress code, dan rincian tambahan berstatus menyusul sesuai arahan. Kontak Zahra Nova Carolyn dan tautan Discord Dress to Impress sudah disertakan. Desain menggunakan logo, batik, dan ornamen asli Figma DISNAT serta font lokal Libre Baskerville dan Montserrat.

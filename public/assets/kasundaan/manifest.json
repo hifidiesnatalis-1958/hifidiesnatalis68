@@ -288,6 +288,60 @@
       "sourcePage": 8,
       "sourceXref": null,
       "bytes": 253486
+    },
+    {
+      "name": "philosophy-number",
+      "src": "/assets/kasundaan/philosophy-number.webp",
+      "width": 980,
+      "height": 645,
+      "sourcePage": 52,
+      "sourceXref": 1041,
+      "bytes": 386770
+    },
+    {
+      "name": "philosophy-batik",
+      "src": "/assets/kasundaan/philosophy-batik.webp",
+      "width": 978,
+      "height": 645,
+      "sourcePage": 53,
+      "sourceXref": 1051,
+      "bytes": 402950
+    },
+    {
+      "name": "philosophy-whole",
+      "src": "/assets/kasundaan/philosophy-whole.webp",
+      "width": 990,
+      "height": 651,
+      "sourcePage": 54,
+      "sourceXref": 1060,
+      "bytes": 390270
+    },
+    {
+      "name": "poster-kujang",
+      "src": "/assets/kasundaan/poster-kujang.webp",
+      "width": 900,
+      "height": 1200,
+      "sourcePage": 10,
+      "sourceXref": null,
+      "bytes": 123010
+    },
+    {
+      "name": "poster-batik",
+      "src": "/assets/kasundaan/poster-batik.webp",
+      "width": 900,
+      "height": 1200,
+      "sourcePage": 53,
+      "sourceXref": null,
+      "bytes": 116716
+    },
+    {
+      "name": "poster-whole",
+      "src": "/assets/kasundaan/poster-whole.webp",
+      "width": 900,
+      "height": 1200,
+      "sourcePage": 54,
+      "sourceXref": null,
+      "bytes": 129912
     }
   ]
 }
