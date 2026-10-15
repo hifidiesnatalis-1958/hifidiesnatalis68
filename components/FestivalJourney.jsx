@@ -4,6 +4,7 @@ import Icon from './Icon.jsx';
 import WayangTheatre,{moveTheatre,WayangLogo} from './WayangTheatre.jsx';
 
 const labels={beranda:'Beranda',rangkaian:'Rangkaian',tema:'Tema',menfess:'Harewos',undian:'Undian',cinderamata:'Cenderamata','dress-code':'Busana',pesan:'Pesan',lokasi:'Lokasi',panutup:'Penutup'};
+const icons={beranda:'home',rangkaian:'calendar',tema:'sparkles',menfess:'message',undian:'ticket',cinderamata:'bag','dress-code':'shirt',pesan:'send',lokasi:'pin',panutup:'flag'};
 const colors=['#eef0e2','#e9e7d5','#dce7d8','#efdcd1','#f4e8cf','#ebe0c4','#d8e6db','#f1ebdc','#dae6df','#0c575b'];
 // Compatible contours for one plain interface surface; the source artwork is unchanged.
 const shapes=[
@@ -120,6 +121,6 @@ export default function FestivalJourney({children}) {
    {scenes.map((scene,i)=><div key={scene.id} ref={el=>{frames.current[i]=el;}} className={`festival-frame scene-${scene.id}`} data-scene={scene.id} aria-hidden={enabled && active!==i ? true : undefined} inert={enabled && active!==i}><div className="scene-scroll" tabIndex={enabled && active===i ? 0 : undefined} aria-label={labels[scene.id]}>{scene.content}</div></div>)}
   </div>
   <WayangLogo objects={objects}/>
-  {enabled && <nav className="journey-controls" aria-label="Bagian perayaan"><button className="journey-step" aria-label="Bagian sebelumnya" disabled={active===0} onClick={()=>navigate(active-1)}><Icon name="arrow" style={{rotate:'180deg'}} size={17}/></button><div ref={rail} className="journey-rail">{scenes.map((scene,i)=><button key={scene.id} aria-current={i===active?'step':undefined} onClick={()=>navigate(i)}>{labels[scene.id]}</button>)}</div><button className="journey-step" aria-label="Bagian berikutnya" disabled={active===scenes.length-1} onClick={()=>navigate(active+1)}><Icon name="arrow" size={17}/></button></nav>}
+  {enabled && <nav className="journey-controls" aria-label="Bagian perayaan"><button className="journey-step" aria-label="Bagian sebelumnya" disabled={active===0} onClick={()=>navigate(active-1)}><Icon name="arrow" style={{rotate:'180deg'}} size={17}/></button><div ref={rail} className="journey-rail">{scenes.map((scene,i)=><button key={scene.id} aria-current={i===active?'step':undefined} onClick={()=>navigate(i)}><Icon name={icons[scene.id]} size={13}/>{labels[scene.id]}</button>)}</div><button className="journey-step" aria-label="Bagian berikutnya" disabled={active===scenes.length-1} onClick={()=>navigate(active+1)}><Icon name="arrow" size={17}/></button></nav>}
  </main>;
 }

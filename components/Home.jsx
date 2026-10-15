@@ -85,10 +85,10 @@ const colors = [
   {name: 'Toska', className: 'teal', text: 'Mempererat kebersamaan seluruh warga himpunan.'},
 ];
 const products = [
-  {name: 'T-shirt', image: 'merch-shirt', caption: 'Menampilkan desain resmi Dies Natalis HIFI ke-68.'},
-  {name: 'Totebag', image: 'merch-tote', caption: 'Membawa perlengkapan kuliah dengan bahan kanvas kokoh.'},
-  {name: 'Keychain', image: 'merch-keychain', caption: 'Menghiasi kunci dan tas dengan akrilik HIFI 68.'},
-  {name: 'Sticker set', image: 'merch-stickers', caption: 'Menghadirkan ragam hias Kasundaan dalam format stiker.'},
+  {name: 'T-shirt', image: 'merch-shirt', caption: 'Kaos resmi Dies Natalis HIFI ke-68.'},
+  {name: 'Totebag', image: 'merch-tote', caption: 'Tas kanvas untuk perlengkapan kuliah.'},
+  {name: 'Keychain', image: 'merch-keychain', caption: 'Gantungan kunci akrilik HIFI 68.'},
+  {name: 'Sticker set', image: 'merch-stickers', caption: 'Paket stiker ragam hias Kasundaan.'},
 ];
 function PosterDialog({poster, onClose}) {
   const ref = useRef(null);
@@ -198,17 +198,44 @@ export default function Home() {
       </div></MorphSection>
 
       <MorphSection id="undian" className="section wrap raffle-section journey-scene"><div className="raffle-copy"><Art name="flourish-red" className="section-flourish"/><h2>Undian berhadiah<br/><em>Dies Natalis 68.</em></h2><p>Setiap warga himpunan berhak memperoleh satu tiket undian. Diwajibkan untuk memiliki akun terlebih dahulu.</p>{raffle.winners.length > 0 && <div className="winners"><h3>Daftar Pemenang</h3>{raffle.winners.map(w => <p key={w.id}><strong>{w.name}</strong><span>{w.number} · {w.prize}</span></p>)}</div>}</div>
-        <div className="raffle-ticket"><div className="ticket-top"><Art name="logo-68"/><span>Dies Natalis HIFI<br/><strong>Undian Dies Natalis ke-68</strong></span><Icon name="ticket" size={27}/></div><div className="ticket-middle"><span>{raffleTicket ? 'Tiket Anda' : 'Tiket Undian'}</span><strong>{raffleTicket?.number || 'DN68–?????'}</strong><p>{raffleTicket ? 'Sistem telah menyimpan nomor tiket Anda. Pantau pengumuman pemenang di halaman ini.' : site.raffle.prize}</p></div><div className="ticket-bottom">{raffleTicket ? <p className="ticket-registered"><Icon name="check"/>Nomor tiket Anda sudah terdaftar</p> : <><span className="status-pill">{raffleReady && raffle.open ? 'Pendaftaran dibuka' : 'Pendaftaran belum dibuka'}</span>{user ? <label className="check-label"><input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)}/>Saya bersedia menampilkan nomor tiket jika memenangkan undian ini.</label> : <p className="form-help">Silakan masuk menggunakan akun NPM untuk mengambil tiket undian Anda.</p>}<button className="button" onClick={join} disabled={raffleBusy || (Boolean(user) && (!raffleReady || !raffle.open || !consent))}>{raffleBusy ? 'Mendaftarkan tiket…' : user ? 'Ambil tiket saya' : 'Masuk untuk ikut undian'}<Icon name="arrow" size={18}/></button></>}{raffleError && <p className="form-error" role="alert">{raffleError}</p>}<small>{raffleReady ? `Sebanyak ${raffle.total} peserta telah mengambil tiket undian.` : 'Panitia akan membuka pendaftaran saat acara berlangsung.'}</small></div><div className="ticket-serial" aria-hidden="true"><span>HIFI · 1958 / 2026</span><Art name="flower"/></div></div>
+        <div className="raffle-ticket"><div className="ticket-top"><Art name="logo-68"/><span>Dies Natalis HIFI<br/><strong>Undian Dies Natalis ke-68</strong></span><Icon name="ticket" size={27}/></div><div className="ticket-middle"><span>{raffleTicket ? 'Tiket Anda' : 'Tiket Undian'}</span><strong>{raffleTicket?.number || 'DN68–?????'}</strong><p>{raffleTicket ? 'Sistem telah menyimpan nomor tiket Anda. Pantau pengumuman pemenang di halaman ini.' : site.raffle.prize}</p></div><div className="ticket-bottom">{raffleTicket ? <p className="ticket-registered"><Icon name="check"/>Nomor tiket Anda sudah terdaftar</p> : <><span className="status-pill">{raffleReady && raffle.open ? 'Pendaftaran dibuka' : 'Pendaftaran belum dibuka'}</span>{user ? <label className="check-label"><input type="checkbox" checked={consent} onChange={e => setConsent(e.target.checked)}/>Saya bersedia menampilkan nomor tiket jika memenangkan undian ini.</label> : <p className="form-help">Silakan masuk menggunakan akun NPM untuk mengambil tiket undian Anda.</p>}<button className="button" onClick={join} disabled={raffleBusy || (Boolean(user) && (!raffleReady || !raffle.open || !consent))}>{raffleBusy ? 'Mendaftarkan tiket…' : user ? 'Ambil tiket saya' : 'Masuk untuk mengikuti undian'}<Icon name="arrow" size={18}/></button></>}{raffleError && <p className="form-error" role="alert">{raffleError}</p>}<small>{raffleReady ? `Sebanyak ${raffle.total} peserta telah mengambil tiket undian.` : 'Panitia akan membuka pendaftaran saat acara berlangsung.'}</small></div><div className="ticket-serial" aria-hidden="true"><span>HIFI · 1958 / 2026</span><Art name="flower"/></div></div>
       </MorphSection>
 
       <MorphSection id="cinderamata" className="merch-section journey-scene journey-panel"><div className="wrap">
         <div className="section-heading"><div><h2>Cenderamata<br/><em>resmi HIFI 68.</em></h2></div><button className="button secondary" onClick={() => setPoster({name: 'poster-merch', title: 'Katalog cenderamata HIFI 68'})}>Lihat katalog<Icon name="external" size={17}/></button></div>
-        <div className="merch-feature"><div className="merch-feature-art"><Art name="merch-shirt" alt="T-shirt resmi Dies Natalis HIFI ke-68, tampak depan dan belakang"/><Art name="ornament-strip" className="merch-feature-ornament"/></div><div className="merch-feature-copy"><h3>T-shirt HIFI 68</h3><p>Panitia menyediakan kaos, tas jinjing kanvas, gantungan kunci, dan paket stiker bertema Kasundaan.</p><a className="button" href="https://bit.ly/CINDERAMATA_DIES68" target="_blank" rel="noopener noreferrer">Pesan cenderamata<Icon name="external" size={17}/></a></div></div>
+        <div className="merch-feature"><div className="merch-feature-art"><Art name="merch-shirt" alt="T-shirt resmi Dies Natalis HIFI ke-68, tampak depan dan belakang"/><Art name="ornament-strip" className="merch-feature-ornament"/></div><div className="merch-feature-copy"><h3>T-shirt HIFI 68</h3><p>T-shirt, totebag, gantungan kunci, dan stiker resmi Dies Natalis HIFI ke-68.</p><a className="button" href="https://bit.ly/CINDERAMATA_DIES68" target="_blank" rel="noopener noreferrer">Pesan cenderamata<Icon name="external" size={17}/></a></div></div>
         <div className="merch-gallery">{products.map(product => <button key={product.name} className="merch-product" onClick={() => setPoster({name: 'poster-merch', title: 'Katalog cenderamata HIFI 68'})}><div className="product-image"><Art name={product.image} alt={`Cenderamata ${product.name} bertema Kasundaan`}/></div><div className="product-caption"><h3>{product.name}</h3><Icon name="external" size={17}/></div><p>{product.caption}</p></button>)}</div>
         <div className="merch-footer"><a className="text-link" href="https://bit.ly/CINDERAMATA_DIES68" target="_blank" rel="noopener noreferrer">Pesan cenderamata<Icon name="external" size={17}/></a></div>
       </div></MorphSection>
 
-      <MorphSection id="dress-code" className="dress-section journey-scene journey-panel"><div className="wrap dress-layout"><div><Art name="logo-68-illustrated"/><h2>Rayakan dengan<br/><em>busana Sunda.</em></h2></div><div className="dress-info">{!site.dressCode.items.length && <span className="status-pill">Informasi menyusul</span>}<h3>{site.dressCode.title}</h3><p>{site.dressCode.description}</p>{site.dressCode.items.length > 0 && <ul>{site.dressCode.items.map(item => <li key={item}>{item}</li>)}</ul>}<a className="text-link" href={`https://wa.me/${site.contact.phone}`} target="_blank" rel="noopener noreferrer">Hubungi panitia<Icon name="external" size={17}/></a></div></div></MorphSection>
+      <MorphSection id="dress-code" className="dress-section journey-scene journey-panel"><div className="wrap dress-layout">
+        <div className="dress-info-col">
+          <div className="dress-title-wrap"><Art name="logo-68-illustrated"/><h2>Rayakan dengan<br/><em>busana Sunda.</em></h2></div>
+          <div className="dress-info">
+            {!site.dressCode.items.length && <span className="status-pill">Informasi menyusul</span>}
+            <h3>{site.dressCode.title}</h3>
+            <p>{site.dressCode.description}</p>
+            {site.dressCode.items.length > 0 && <ul>{site.dressCode.items.map(item => <li key={item}>{item}</li>)}</ul>}
+            <a className="text-link" href={`https://wa.me/${site.contact.phone}`} target="_blank" rel="noopener noreferrer">Hubungi panitia<Icon name="external" size={17}/></a>
+          </div>
+        </div>
+        <div className="dress-showcase" aria-label="Contoh busana tradisional Sunda">
+          <figure className="dress-card">
+            <div className="dress-card-image"><img src="/assets/kasundaan/busana-pria.webp" alt="Contoh busana tradisional Sunda laki-laki: Beskap atau Pangsi Sunda dengan iket kepala bendo" loading="lazy" decoding="async"/></div>
+            <figcaption>
+              <strong>Busana Laki-laki</strong>
+              <span>Pangsi / Beskap Sunda, iket bendo, dan kain batik samping</span>
+            </figcaption>
+          </figure>
+          <figure className="dress-card">
+            <div className="dress-card-image"><img src="/assets/kasundaan/busana-wanita.webp" alt="Contoh busana tradisional Sunda perempuan: Kebaya Sunda dengan selendang dan kain samping batik" loading="lazy" decoding="async"/></div>
+            <figcaption>
+              <strong>Busana Perempuan</strong>
+              <span>Kebaya Sunda, selendang, dan kain jarik batik Pasundan</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div></MorphSection>
 
       <MorphSection id="pesan" className="section wrap feedback-section journey-scene"><div className="feedback-copy"><Art name="flourish-gold" className="section-flourish"/><h2>Kesan dan harapan<br/><em>untuk HIFI.</em></h2><p>Bagikan cerita, pengalaman, dan doa terbaik Anda untuk perjalanan HIFI ke depan.</p>{messages.length > 0 && <div className="feedback-list">{messages.slice(0, 6).map(m => <blockquote key={m.id}><p>{m.body}</p><cite>{m.author==='Baraya anonim' ? 'Pengirim anonim' : m.author}</cite></blockquote>)}</div>}</div><div className="feedback-form"><MessageForm kind="messages" user={user} onLogin={login} onSuccess={loadMessages}/></div></MorphSection>
 

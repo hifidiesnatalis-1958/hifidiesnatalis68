@@ -22,7 +22,7 @@ test('public site, password login entry, events and original assets work',async(
   const ticketRequests=[];
   page.on('request',request=>{if(request.method()==='POST' && request.url().endsWith('/api/raffle')) ticketRequests.push(request);});
   await visitScene(page,'undian');
-  await page.getByRole('button',{name:'Masuk untuk ikut undian'}).click();
+  await page.getByRole('button',{name:'Masuk untuk mengikuti undian'}).click();
   await expect(page).toHaveURL(/\/masuk\?/);
   expect(ticketRequests).toHaveLength(0);
   await page.goto('/');
@@ -65,6 +65,6 @@ test('raffle ticket is hidden immediately after logout even if a stale status re
   await page.goto('/');await visitScene(page,'undian');await expect(page.locator('#undian')).toContainText('DN68-00001');
   await page.getByRole('button',{name:'Keluar dari akun'}).click();
   await expect(page.locator('#undian')).not.toContainText('DN68-00001');
-  await expect(page.getByRole('button',{name:'Masuk untuk ikut undian'})).toBeVisible();
+  await expect(page.getByRole('button',{name:'Masuk untuk mengikuti undian'})).toBeVisible();
   await expect(page.locator('#undian input[type=checkbox]')).toHaveCount(0);
 });
