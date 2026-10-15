@@ -42,7 +42,7 @@ test('one NPM has one account and login reads the saved name instead of client-s
 });
 test('server eligibility rejects unsupported NPMs and old nickname-only public registration',async(t)=>{
  const runtime=createGasRuntime({seedAccounts:false});bridge(t,runtime);
- for(const input of [registration({npm:'140310260001'}),registration({npm:'140310240154'}),{nickname:'random',password}])await assert.rejects(registerAccount(input,clientKey));
+ for(const input of [registration({npm:'140310260001'}),registration({npm:'140310240154'}),{nickname:'random',password}])await assert.rejects(registerAccount(input,clientKey),error=>{assert.doesNotMatch(error.message,/140310\d{6}/);return true;});
  assert.equal(runtime.tables.get('Accounts').data.length,1);
 });
 test('an old Apps Script deployment cannot silently drop a submitted name',async(t)=>{

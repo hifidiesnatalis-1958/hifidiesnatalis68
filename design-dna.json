@@ -172,8 +172,8 @@
         "normal": 200,
         "macro": 850
       },
-      "animation_density": "One shared surface morphs between full-screen scenes; stable controls and source artwork.",
-      "scroll_behavior": "Passive native scroll with a sticky stage and coalesced SVG interpolation; no wheel/touch interception. Full static document for reduced motion."
+      "animation_density": "Persistent source cutouts move through one shared stage; Arjuna/Semar image children sway subtly in CSS, with no perpetual JavaScript render loop.",
+      "scroll_behavior": "Native document scroll, reversible object poses and SVG contour interpolation; no wheel/touch interception. Complete static document for reduced motion."
     },
     "components": {
       "button_style": "Teal primary or outlined secondary, pill corners, 43?50px height",
@@ -181,7 +181,7 @@
       "card_style": "Rounded paper messages, ticket layout, original product images; 24?44px panel radii explicitly requested by user",
       "navigation_pattern": "Sticky pill header with mobile expandable menu and preserved anchors",
       "modal_style": "Native poster dialog with download, Escape close and explicit restored focus",
-      "list_style": "Chronological dates and real event content",
+      "list_style": "Central date band and alternating event summaries on desktop; left-side date band on mobile",
       "component_notes": "Required name, unique NPM and self-chosen password; existing operator access; one raffle ticket per NPM."
     }
   },
@@ -247,8 +247,8 @@
       "microinteraction_density": "Low"
     },
     "brand_voice_in_ui": {
-      "tone": "Someah, clear, grounded",
-      "formality": "Natural Indonesian with restrained Sundanese phrases",
+      "tone": "Warm, clear, grounded",
+      "formality": "Natural Indonesian throughout; Sundanese limited to Wilujeng sumping and Hatur nuhun. Preserve Harewos, Kasundaan and official event names.",
       "cta_style": "Concrete verbs for viewing, sending and registering",
       "empty_state_approach": "Explain the next step without inventing visitor messages",
       "error_tone": "Plain, actionable, no implementation details for visitors"
@@ -256,14 +256,14 @@
   },
   "visual_effects": {
     "overview": {
-      "effect_intensity": "Full-page morph journey with quiet functional text and forms",
+      "effect_intensity": "Layered wayang stage with persistent object choreography, geometric chapter wipes and protected reading areas",
       "performance_tier": "One coalesced scroll listener; no extra animation dependency.",
-      "fallback_strategy": "Compact static complete hero for reduced motion and browsers without animation-timeline",
-      "primary_technology": "Pinned viewport, passive native scroll, requestAnimationFrame SVG contour interpolation and CSS transitions."
+      "fallback_strategy": "Complete ordinary document with theatre and ambient sway disabled for reduced motion",
+      "primary_technology": "CSS perspective/preserve-3d, translated source cutouts, requestAnimationFrame and SVG contour interpolation"
     },
     "background_effects": {
       "type": "One compatible SVG interface surface",
-      "description": "A shared flat surface changes contour and color between chapters. Original batik and ornaments remain in the source-art composition.",
+      "description": "A teal stage surrounds a morphing cream/sage surface. The original batik kelir feathers radially; theatre outer edges fade softly.",
       "technology": "SVG path-coordinate interpolation and fill transitions",
       "params": {
         "opacity": 1,
@@ -295,18 +295,18 @@
       }
     },
     "3d_elements": {
-      "enabled": false,
-      "type": "none",
-      "description": "Not used; the page uses native CSS motion and original source artwork.",
-      "technology": "none",
+      "enabled": true,
+      "type": "CSS 3D layered wayang cutouts",
+      "description": "Original flat source cutouts retain CSS 3D choreography. Arjuna/Semar stay fully visible in desktop side wings or a reserved lower mobile shelf. The native header logo stays visible; a separate upright opening logo fades with its chapter. Neither logo rotates.",
+      "technology": "CSS perspective, preserve-3d, translate3d, rotateY, rotateZ and scale",
       "params": {
-        "renderer": "none",
-        "lighting": "none",
-        "camera": "none",
-        "materials": "none",
-        "geometry": "none",
+        "renderer": "Browser DOM compositor",
+        "lighting": "Static source-art drop shadows and a subtle stage-floor light",
+        "camera": "1300px CSS perspective",
+        "materials": "Original transparent WebP/SVG assets",
+        "geometry": "Flat image planes",
         "post_processing": [],
-        "interaction_model": "none"
+        "interaction_model": "Reversible native scroll and 1100ms chapter navigation"
       }
     },
     "shader_effects": {
@@ -324,25 +324,25 @@
     },
     "scroll_effects": {
       "parallax": {
-        "enabled": false,
-        "layers": 0,
+        "enabled": true,
+        "layers": 8,
         "depth_range": [
-          0,
-          0
+          -260,
+          180
         ],
-        "speed_curve": "none"
+        "speed_curve": "Smoothstep interpolation with shallow shared spatial arcs"
       },
       "scroll_triggered_animations": {
         "enabled": true,
         "trigger_points": [
           "Every chapter boundary across the single pinned stage"
         ],
-        "animation_type": "In-place contour, color, opacity and gentle frame-scale transitions",
+        "animation_type": "Persistent object paths, independent upright opening logo, always-visible native header logo, gunungan seam, feathered directional clips and compatible SVG surface",
         "scrub_behavior": "Native document scroll; no interception of wheel or touch events"
       },
       "scroll_morphing": {
         "enabled": true,
-        "description": "Every section occupies the same pinned viewport. A shared compatible SVG surface changes contour and color while adjacent scenes dissolve in place. Input state is retained.",
+        "description": "All sections share a pinned viewport; source objects travel between spatial poses, the gunungan crosses a clear seam, and the surface contour/color morph. Form state is retained.",
         "scroll_span": {
           "desktop": "Nine transitions of about one viewport each",
           "mobile": "Same pinned scene sequence with readable internal content"
@@ -376,7 +376,7 @@
     },
     "image_effects": {
       "type": "Scroll-linked original asset composition",
-      "description": "Original images retain their aspect ratios inside stable chapter compositions. Scene transitions do not warp source artwork.",
+      "description": "Original images preserve their aspect ratios. Arjuna/Semar image children sway by plus/minus 0.85 degrees and 1px over 4.8s/5.6s; this never applies to logos and is disabled for reduced motion.",
       "technology": "CSS",
       "params": {
         "filter_pipeline": [],
@@ -410,16 +410,16 @@
       }
     },
     "svg_animations": {
-      "enabled": false,
-      "type": "none",
-      "description": "static original Figma vectors",
+      "enabled": true,
+      "type": "Compatible interface-surface contour morph",
+      "description": "Plain UI surface only; original cultural artwork stays intact.",
       "params": {
-        "animation_method": "none",
-        "path_morphing": false,
+        "animation_method": "requestAnimationFrame path-coordinate interpolation",
+        "path_morphing": true,
         "stroke_animation": "none",
-        "filter_effects": "none"
+        "filter_effects": "Static drop shadow"
       }
     },
-    "composite_notes": "Only original Figma/PDF artwork. Full-page reversible CSS morphing with global and local timelines. No additional animation dependency, generated illustration, layout animation on controls, scroll listener or React scroll state. Reduced-motion and unsupported-browser static fallbacks."
+    "composite_notes": "Original Figma/PDF assets only. Flat cutouts use reversible CSS 3D paths; a passive scroll listener drives poses, content wipes and SVG interpolation. No extra dependency or perpetual JavaScript render loop. Complete puppet silhouettes remain in desktop side wings or a reserved lower mobile shelf; readable content stays above ornaments. Header and opening logos are independent and never rotate. Chapter clips feather for 64px with opacity at least 0.88 during transitions. Outer theatre rims and the batik kelir feather; panel scroll edges fade only while content overflows on that side. Native dialogs pause/resume chapter motion. Reduced motion restores the full document, removes masks and disables puppet sway."
   }
 }

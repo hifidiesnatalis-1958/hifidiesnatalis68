@@ -17,9 +17,10 @@ test('native poster dialog closes with Escape and returns focus to its trigger',
 
 test('five philosophy panels use source artwork and keyboard navigation',async({page})=>{
  await page.goto('/');await visitScene(page,'tema');const theme=page.locator('#tema');await expect(theme.getByRole('tab')).toHaveCount(5);
- const names=['Kujang','Angka 68','Ornamen Batik','Keseluruhan','Warna'],sources=['poster-kujang','poster-logo','poster-batik','poster-whole','poster-colors'];
+ const names=['Kujang','Angka 68','Ornamen Batik','Keseluruhan','Warna'],sources=['poster-kujang','poster-logo','poster-batik','poster-whole','poster-colors'],art=['logo-kujang','philosophy-number','philosophy-batik','philosophy-whole','logo-68'];
  for(const [i,name] of names.entries()){
   await theme.getByRole('tab',{name,exact:true}).click();await expect(theme.getByRole('tabpanel')).toBeVisible();await expect(theme.getByRole('tabpanel').getByRole('heading',{name,exact:true})).toBeVisible();
+  await expect(theme.getByRole('tabpanel').locator('.philosophy-art img')).toHaveAttribute('src',`/assets/kasundaan/${art[i]}.webp`);
   await theme.getByRole('button',{name:'Lihat sumber desain'}).click();
   await expect(page.getByRole('dialog').getByRole('img')).toHaveAttribute('src',`/assets/kasundaan/${sources[i]}.webp`);
   await page.keyboard.press('Escape');
@@ -57,7 +58,7 @@ test('authenticated anonymous menfess still sends to the existing API and shows 
   await page.getByLabel('Untuk siapa?').fill('Baraya HIFI');
   await page.getByLabel('Tulis Harewos kamu').fill('Sampai bertemu di perayaan.');
   await page.getByRole('button', {name: 'Kirim Harewos', exact: true}).click();
-  await expect(page.locator('#menfess [role=status]')).toContainText('menunggu persetujuan');
+  await expect(page.locator('#menfess form').getByRole('status')).toContainText('menunggu persetujuan');
   expect(submitted).toEqual({body: 'Sampai bertemu di perayaan.', to: 'Baraya HIFI', anonymous: true});
   await expect(page.getByLabel('Tulis Harewos kamu')).toHaveValue('');
 });

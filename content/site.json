@@ -5,8 +5,8 @@
   "date": "2026-10-24T09:00:00+07:00",
   "theme": {
     "title": "Kasundaan",
-    "description": "Menghidupkan kembali kehangatan keluarga besar Fisika Unpad dalam rengkuhan tradisi Pasundan. Ruang guyub untuk berkarya, berbagi rasa, dan merajut kembali kisah bersama baraya HIFI.",
-    "logoDescription": "Angka 68 berpadu dinamis dalam sapuan biru ilmu pengetahuan, merah keberanian, dan toska keseimbangan, dipagari keagungan ornamen emas khas Kasundaan. Identitas visual yang menyatukan keluhuran tradisi leluhur dengan resonansi ilmu fisika antargenerasi."
+    "description": "Kasundaan mengajak keluarga besar Fisika Unpad berkumpul, berkarya, dan merayakan Dies Natalis ke-68 bersama dalam budaya Sunda.",
+    "logoDescription": "Kujang, angka 68, dan ornamen batik menyatukan perjalanan HIFI dengan identitas Pasundan. Oranye, merah, biru, dan toska membawa semangat, ilmu pengetahuan, serta kebersamaan yang diteruskan antargenerasi."
   },
   "events": [
     {
@@ -15,7 +15,7 @@
       "time": "19.30 WIB",
       "title": "Dress to Impress",
       "type": "Online · Roblox",
-      "description": "Tunjukkan kreativitas busana terbaikmu di jagat Roblox dan bergabung langsung di server Discord resmi Dies Natalis 68.",
+      "description": "Tampilkan kreasi busanamu di Roblox. Bergabunglah melalui server Discord resmi Dies Natalis 68.",
       "url": "https://discord.gg/5RJrU9crB"
     },
     {
@@ -24,7 +24,7 @@
       "time": "Maksimal 23.59 WIB",
       "title": "Ngedongeng & Poster Digital",
       "type": "Batas pengumpulan",
-      "description": "Tuangkan imajinasi dan kepiawaian bertutur melalui poster digital dan dongeng Sunda. Kirim karya sebelum batas waktu melalui tautan resmi.",
+      "description": "Ikuti lomba dongeng Sunda atau poster digital. Kirim karya melalui tautan resmi sebelum batas pengumpulan.",
       "url": "https://bit.ly/PengumpulanLombaOnlineDies68"
     },
     {
@@ -33,7 +33,7 @@
       "time": "06.15–08.45 WIB",
       "title": "Check sound penampil",
       "type": "Persiapan penampilan",
-      "description": "Persiapan tata suara dan uji panggung penampil tiap angkatan di Auditorium Bale Santika, sesuai panduan booklet penampilan.",
+      "description": "Uji tata suara dan persiapan panggung untuk penampil tiap angkatan di Auditorium Bale Santika. Ikuti ketentuan dalam booklet penampilan.",
       "url": ""
     },
     {
@@ -42,13 +42,13 @@
       "time": "09.00 WIB–selesai",
       "title": "Puncak Dies Natalis ke-68",
       "type": "Acara utama",
-      "description": "Patepung lawung baraya HIFI FMIPA UNPAD lintas angkatan. Perayaan puncak seni, kebersamaan, dan tradisi di Auditorium Bale Santika. Kenakan busana Tradisional Sunda terbaikmu.",
+      "description": "Rayakan acara puncak bersama keluarga HIFI FMIPA UNPAD lintas angkatan di Auditorium Bale Santika dengan busana tradisional Sunda.",
       "url": ""
     }
   ],
   "dressCode": {
     "title": "Tradisional Sunda",
-    "description": "Pilihan busana kehormatan baraya:",
+    "description": "Hadir dengan salah satu pilihan busana tradisional Sunda berikut:",
     "items": [
       "Kebaya",
       "Pangsi",
@@ -72,6 +72,6 @@
   "raffle": {
     "open": false,
     "prize": "Hadiah kejutan akan segera diumumkan panitia",
-    "description": "Satu nomor keberuntungan untuk setiap baraya. Pendaftaran undian akan dibuka langsung oleh panitia."
+    "description": "Satu NPM mendapat satu tiket undian. Pendaftaran dibuka oleh panitia."
   }
 }

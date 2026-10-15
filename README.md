@@ -6,7 +6,7 @@ Next.js/React JSX di Vercel dengan Google Apps Script dan Google Sheets. Proyek:
 
 Daftar dengan **nama lengkap, NPM, password pilihan sendiri, dan konfirmasi password**. Masuk dengan **NPM dan password**. Nama tampil pada akun dan tiket; Harewos tetap anonim. Tidak ada token login yang diterbitkan atau perlu disalin.
 
-NPM: `140310` + dua digit angkatan `00`–`25` + `00` + dua digit nomor `01`–`99`. Contoh: `140310240054`. Angkatan 26 belum dapat mendaftar. **Satu NPM = satu akun = satu tiket undian**; kesamaan nama tidak membatasi orang lain. Pemeriksaan ini memvalidasi format, bukan kepemilikan terhadap daftar mahasiswa universitas.
+NPM: `140310` + dua digit angkatan `00`–`25` + `00` + dua digit nomor `01`–`99`. Angkatan 26 belum dapat mendaftar. **Satu NPM = satu akun = satu tiket undian**; kesamaan nama tidak membatasi orang lain. Pemeriksaan ini memvalidasi format, bukan kepemilikan terhadap daftar mahasiswa universitas.
 
 Nama 2–100 karakter; password baru 10–128 karakter. Password di-hash menggunakan scrypt dengan salt acak sebelum dikirim ke Google; password asli tidak disimpan di Sheets atau cookie. Nama diteruskan dari data akun yang tersimpan, bukan dari input login. Cookie peserta berlaku 30 hari, cookie operator 12 jam; HttpOnly, SameSite=Lax, Secure di Vercel/HTTPS.
 
@@ -52,11 +52,11 @@ Panel `/admin` mengelola informasi acara, moderasi, dan undian. Pendaftaran undi
 
 ## Panggung morphing
 
-Seluruh bagian berada pada **satu panggung layar penuh**. Scroll mengganti isi melalui perubahan bentuk permukaan dan transisi di tempat, dengan navigasi langsung ke tiap bagian. Form tetap terpasang agar isinya tidak hilang. Isi panjang tetap dapat dibaca di area panggung. Reduced motion menampilkan dokumen biasa secara lengkap.
+Seluruh bagian berada pada **satu panggung wayang layar penuh**. Aset asli tetap terpasang dan berpindah dengan perspektif CSS 3D. Logo native pada header selalu terlihat; logo pembuka berdiri terpisah dan memudar bersama bagian pembuka. Kedua logo tidak berputar. Arjuna dan Semar tampil utuh pada sayap samping desktop atau ruang khusus di bawah konten pada ponsel. Posisi keduanya berubah per bagian, dengan ayunan CSS kecil hanya pada gambar wayang. Gunungan menyapu celah pergantian bab. Konten berpindah melalui clip bertepi fade lembut, sedangkan tepi panggung, batik, dan sisi panel yang masih memiliki konten di luar area scroll diberi fade. Objek menetap di luar area baca; hitung mundur memiliki latar opak. Form tetap terpasang agar isinya tidak hilang. Dialog poster menghentikan perpindahan sementara dan melanjutkannya saat ditutup. Reduced motion menampilkan dokumen biasa secara lengkap dan mematikan ayunan wayang.
 
-Semua gambar memakai aset asli Figma/PDF; lima panel filosofi dan poster sumber tetap tersedia. `log.md`, konten acara yang disetujui, serta file Presentation dan CultureHero dipertahankan. Tidak ada ilustrasi AI atau dependency animasi baru.
+Semua gambar memakai aset asli Figma/PDF; lima panel filosofi dan poster sumber tetap tersedia. `log.md`, fakta acara yang disetujui, nama resmi kegiatan, serta tautan dipertahankan. Tidak ada ilustrasi AI atau dependency animasi baru.
 
-Kamus resmi dan tata bahasa (1.189 halaman) ada di `kamus-basa-sunda/`, dikecualikan dari Git/Vercel. Skill global `natural-sundanese` tersedia untuk rujukan bahasa.
+Bahasa antarmuka menggunakan bahasa Indonesia yang alami. Bahasa Sunda dibatasi pada sapaan umum singkat "Wilujeng sumping" dan "Hatur nuhun". Nama Harewos, tema Kasundaan, nama resmi kegiatan, teks pada aset asli, dan kiriman pengguna dipertahankan. Kamus resmi dan tata bahasa (1.189 halaman) ada di `kamus-basa-sunda/`, dikecualikan dari Git/Vercel; skill global `natural-sundanese` tersedia sebagai rujukan, bukan alasan untuk menerjemahkan seluruh antarmuka.
 
 ## Pemeriksaan
 

@@ -1,29 +1,46 @@
 /* One persistent stage. Document scroll changes scenes; wheel/touch remain native. */
-.story-surface,.journey-controls{display:none}
+.story-surface,.journey-controls,.wayang-wings,.wayang-curtain,.wayang-theatre,.wayang-gate,.wayang-logo{display:none}
 .festival-immersive{overflow-anchor:none}
 .festival-page:has(.festival-immersive) .header{position:fixed;inset:0 0 auto;background:transparent;z-index:30}
 .festival-page:has(.festival-immersive)>.journey-atmosphere{display:none}
-.festival-immersive .festival-stage{position:sticky;top:0;height:100svh;isolation:isolate;overflow:hidden}
-.festival-immersive .story-surface{display:block;position:absolute;inset:100px 18px 70px;width:calc(100% - 36px);height:calc(100% - 170px);z-index:-1;overflow:visible;pointer-events:none}
-.festival-immersive .festival-frame{position:absolute;inset:104px 30px 80px;opacity:0;visibility:hidden;pointer-events:none;will-change:opacity,transform;transform-origin:50% 50%}
+.festival-immersive .wayang-logo{display:block;position:fixed;z-index:3}
+.festival-immersive .festival-stage{position:sticky;top:0;height:100svh;isolation:isolate;overflow:hidden;perspective:1300px;background:var(--teal)}
+.festival-immersive .story-surface{display:block;position:absolute;inset:100px 18px 70px;width:calc(100% - 36px);height:calc(100% - 170px);z-index:0;overflow:visible;pointer-events:none;filter:drop-shadow(0 20px 25px #052f3840)}
+.festival-immersive .festival-frame{position:absolute;inset:104px 30px 80px;opacity:0;visibility:hidden;pointer-events:none;transform-origin:50% 50%}
+.festival-immersive .festival-frame:not(.scene-beranda){inset-inline:108px}
 .festival-immersive .festival-frame[aria-hidden=false],.festival-immersive .festival-frame:not([aria-hidden]){opacity:1;visibility:visible;pointer-events:auto}
 .festival-immersive .festival-frame[aria-hidden=true]{pointer-events:none}
-.festival-immersive.scene-jump .festival-frame{visibility:visible!important;transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
-.festival-immersive.scene-jump .story-surface path{transition:d .55s cubic-bezier(.22,1,.36,1),fill .55s cubic-bezier(.22,1,.36,1)}
-.festival-immersive .scene-scroll{width:100%;height:100%;overflow:auto;overscroll-behavior-y:auto;scrollbar-width:thin;scrollbar-color:#8baf9c transparent;border-radius:24px;padding:24px 30px;outline-offset:-3px}
+.festival-immersive .wayang-theatre{display:block;position:absolute;inset:0;z-index:1;pointer-events:none;perspective:1300px;transform-style:preserve-3d}
+.festival-immersive .wayang-wings,.festival-immersive .wayang-curtain{display:block;position:absolute;inset:0;pointer-events:none;mask-image:linear-gradient(to right,transparent,#000 12px,#000 calc(100% - 12px),transparent),linear-gradient(to bottom,transparent,#000 16px,#000 calc(100% - 16px),transparent);mask-composite:intersect}
+.wayang-wings{z-index:1}.wayang-curtain{z-index:5;perspective:1300px}
+.festival-immersive .wayang-gate{display:block}
+.wayang-object,.wayang-gate{position:absolute;top:0;left:0;height:200px;width:max-content;max-width:none;transform-origin:center bottom;backface-visibility:hidden;pointer-events:none}
+.wayang-object img,.wayang-gate img{height:200px;width:auto;max-width:none;filter:drop-shadow(4px 9px 5px #062e3528)}
+.wayang-object{will-change:transform}.wayang-gate{z-index:5;opacity:0;visibility:hidden;will-change:transform}
+.festival-immersive .wayang-object[data-object^=wayang-] img{transform-origin:50% 100%;animation:wayang-sway 4.8s ease-in-out infinite alternate}
+.festival-immersive .wayang-object[data-object=wayang-semar] img{animation-duration:5.6s;animation-delay:-2.2s;animation-direction:alternate-reverse}
+.festival-page:has(dialog[open]) .wayang-object img{animation-play-state:paused}
+@keyframes wayang-sway{from{transform:translateY(-1px) rotate(-.85deg)}to{transform:translateY(1px) rotate(.85deg)}}
+.wayang-gate img{filter:drop-shadow(-18px 8px 12px #032f3855)}
+.wayang-kelir{position:absolute;inset:103px 25px 77px;border-radius:44px;background:url('/assets/kasundaan/batik-floral.webp') center/640px;opacity:.045;transform:translateZ(-260px);pointer-events:none;mask-image:radial-gradient(ellipse,#000 45%,transparent 72%)}
+.wayang-floor{position:absolute;inset:auto -10% 42px;height:100px;border-radius:50%;background:radial-gradient(ellipse,#c18a3155,transparent 66%);transform:rotateX(64deg) translateZ(-70px);pointer-events:none}
+.festival-immersive .hero-collage,.festival-immersive .hero-emblem-motion{display:none!important}
+.festival-immersive .scene-scroll{width:100%;height:100%;overflow:auto;overscroll-behavior-y:auto;scrollbar-width:none;border-radius:24px;padding:24px 30px;outline-offset:-3px}
+.festival-immersive .scene-scroll::-webkit-scrollbar{display:none;width:0;height:0}
 .festival-immersive .scene-scroll:focus:not(:focus-visible){outline:none}
 .festival-immersive .scene-scroll>section,.festival-immersive .scene-scroll>footer{width:min(1190px,100%);margin:0 auto;padding-block:12px;background:none;border:0;border-radius:0;overflow:visible;animation:none;min-height:100%}
 .festival-immersive .scene-scroll>section>.wrap{width:100%}
 .festival-immersive .chapter-surface{display:none!important}
+.festival-immersive .footer .art-corners{display:none}
 .festival-immersive .chapter-ornament{right:0;top:0;z-index:0;width:46px;opacity:.2;animation:none}
 .festival-immersive .chapter-ornament img{height:45px}
 .festival-immersive .journey-scene,.festival-immersive .journey-panel,.festival-immersive .journey-scene *,.festival-immersive .hero-stage *{animation:none!important}
 .festival-immersive .section-heading{gap:30px;margin-bottom:28px;align-items:center}
 .festival-immersive .section-heading h2{font-size:clamp(30px,3.1vw,45px)}
 .festival-immersive .section-heading p{font-size:12px;line-height:1.9;margin-top:15px}
-.festival-immersive .scene-beranda .scene-scroll{padding:0 10px}
+.festival-immersive .scene-beranda .scene-scroll{display:flex;flex-direction:column;padding:0 10px}
 .festival-immersive .culture-hero{height:calc(100% - 110px);width:100%;min-height:440px;padding:0!important;view-timeline-name:none;overflow:visible}
-.festival-immersive .scene-beranda .culture-hero{min-height:0}
+.festival-immersive .scene-beranda .culture-hero{flex:1;min-height:0;height:auto}
 .festival-immersive .hero-stage{position:relative;top:auto;height:100%;min-height:0;max-height:none;background:none;border-radius:0;overflow:clip}
 .festival-immersive .hero-surface{display:none}
 .festival-immersive .culture-hero .hero-main{height:100%;padding:18px 40px 26px;gap:45px}
@@ -35,7 +52,7 @@
 .festival-immersive .hero-emblem-motion{top:21%;left:17%;width:31%}
 .festival-immersive .collage-gunungan{height:91%;top:0}
 .festival-immersive .cloud-one{width:22%;top:1%}.festival-immersive .cloud-two{width:35%;bottom:-3%}
-.festival-immersive .event-strip{width:min(1170px,100%);margin:8px auto 0;background:#ffffff99;border-radius:24px}
+.festival-immersive .event-strip{flex-shrink:0;width:min(1170px,100%);margin:8px auto 0;background:var(--white);border-radius:24px;position:relative;z-index:2}
 .festival-immersive .event-strip-inner{padding:15px 24px;min-height:85px}
 .festival-immersive .schedule-layout{grid-template-columns:235px minmax(0,1fr);gap:38px}
 .festival-immersive .schedule-poster{transform:none;max-width:235px;margin:0 auto}
@@ -76,6 +93,7 @@
 .journey-rail>button[aria-current]{background:var(--teal);color:white}
 .journey-step{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border-radius:50%;border:0;background:none;color:var(--teal)}
 .journey-step:disabled{opacity:.3;cursor:default}
+@media(min-width:701px) and (max-width:1199px){.festival-immersive .festival-frame:not(.scene-beranda){inset-inline:78px}}
 @media(max-width:980px){
  .festival-immersive .festival-frame{inset-inline:16px}.festival-immersive .scene-scroll{padding:22px}
  .festival-immersive .culture-hero .hero-main{gap:25px;padding-inline:20px}.festival-immersive .culture-hero h1{font-size:59px}
@@ -86,6 +104,7 @@
 @media(max-width:700px){
  .festival-immersive .story-surface{inset:83px 8px 70px;width:calc(100% - 16px);height:calc(100% - 153px)}
  .festival-immersive .festival-frame{inset:87px 12px 77px}.festival-immersive .scene-scroll{padding:17px 12px;border-radius:20px}
+ .festival-immersive .festival-frame:not(.scene-beranda){inset-inline:12px;bottom:196px}
  .festival-immersive .scene-scroll>section,.festival-immersive .scene-scroll>footer{padding-block:5px;width:100%}
  .festival-immersive .section-heading{display:block;margin-bottom:24px}.festival-immersive .section-heading h2{font-size:30px}.festival-immersive .section-heading p{font-size:11px;line-height:1.9}
  .festival-immersive .section-heading .filter{margin-top:22px}.festival-immersive .section-heading .button{margin-top:20px}
@@ -112,4 +131,4 @@
  .festival-immersive .map iframe{height:260px}.festival-immersive .footer-inner{display:flex;flex-direction:column;gap:38px;align-items:start}.festival-immersive .footer-inner>div:first-child{max-width:100%;width:100%}.festival-immersive .footer-inner>div:first-child p{font-size:29px}.festival-immersive .footer-inner>div:first-child img{width:65px}.festival-immersive .footer-bottom{margin-top:40px}.festival-immersive .footer-links{font-size:12px}
  .festival-immersive .journey-controls{bottom:11px;padding:6px;max-width:calc(100% - 22px)}.journey-rail{max-width:calc(100vw - 116px)}.journey-rail>button{font-size:10px;padding-inline:13px}
 }
-@media(prefers-reduced-motion:reduce){.festival-frame{transform:none!important}.journey-controls{display:none}}
+@media(prefers-reduced-motion:reduce){.festival-frame{transform:none!important}.journey-controls{display:none}.wayang-object img{animation:none!important}}

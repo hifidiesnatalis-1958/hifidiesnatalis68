@@ -1,0 +1,76 @@
+/* The event dates form one shared ribbon; the summaries stay in reading order. */
+#rangkaian .schedule-ribbon{display:block;width:100%}
+#rangkaian .timeline{--date-band:76px;display:block;position:relative;width:100%;margin:0;padding:0;isolation:isolate}
+#rangkaian .timeline::before{content:'';position:absolute;inset:0 auto 0 50%;width:var(--date-band);translate:-50% 0;background:var(--teal);border-radius:12px;z-index:-1}
+#rangkaian .event-row,#rangkaian .event-row:first-child,#rangkaian .event-row:last-of-type{display:grid;grid-template-columns:minmax(0,1fr) var(--date-band) minmax(0,1fr);align-items:stretch;gap:0;padding:0;margin:0;border:0;border-radius:0;background:none;transform:none;animation:none!important}
+#rangkaian .timeline-date{grid-column:2;grid-row:1;display:flex;flex-direction:column;justify-content:center;align-items:center;width:auto;padding:20px 4px;border:0;border-radius:0;background:none;color:var(--white);animation:none!important}
+#rangkaian .timeline-date strong{font:400 34px/1.1 var(--display);font-variant-numeric:tabular-nums}
+#rangkaian .timeline-date span{font-size:10px;line-height:1.5;margin-top:4px}
+#rangkaian .event-summary{grid-row:1;position:relative;padding:16px 28px 20px;min-width:0}
+#rangkaian .event-row:nth-child(odd) .event-summary{grid-column:1;text-align:right}
+#rangkaian .event-row:nth-child(even) .event-summary{grid-column:3;text-align:left}
+#rangkaian .event-summary::before{content:'';position:absolute;top:31px;width:20px;height:1px;background:#72968a}
+#rangkaian .event-row:nth-child(odd) .event-summary::before{right:0}
+#rangkaian .event-row:nth-child(even) .event-summary::before{left:0}
+#rangkaian .event-meta{font-size:10px;line-height:1.5;gap:4px 12px;margin-bottom:8px}
+#rangkaian .event-row:nth-child(odd) .event-meta{justify-content:flex-end}
+#rangkaian .event-summary h3{font:400 clamp(20px,1.8vw,25px)/1.3 var(--display);color:var(--teal);margin:0 0 8px;text-wrap:balance}
+#rangkaian .event-summary p{font-size:11px;line-height:1.8;max-width:49ch;margin:0;color:#3b594b}
+#rangkaian .event-row:nth-child(odd) .event-summary p{margin-left:auto}
+#rangkaian .event-link{min-height:32px;gap:8px;margin-top:4px;font-size:10px;line-height:1.5}
+#rangkaian .event-row:last-of-type .event-summary h3{color:var(--burgundy)}
+#rangkaian .schedule-poster{display:flex;align-items:center;justify-content:center;gap:20px;max-width:none;width:100%;padding:16px 0 0;margin:16px 0 0;border-top:1px solid #9cae9a;border-radius:0;background:none;transform:none}
+#rangkaian .schedule-poster .poster-preview{flex:0 0 84px;width:84px;border-radius:10px;animation:none!important}
+#rangkaian .poster-preview img{height:84px;width:84px;object-fit:cover;object-position:top}
+#rangkaian .poster-preview>span{inset:auto 4px 4px;font-size:8px;line-height:1.4;padding:5px 6px;gap:3px}
+#rangkaian .poster-preview>span svg{width:10px;height:10px;flex-shrink:0}
+#rangkaian .schedule-resources{text-align:left;max-width:44ch}
+#rangkaian .schedule-resources>p{font-size:11px;color:#3b594b;margin:0 0 4px}
+#rangkaian .schedule-resources .juknis{min-height:36px;line-height:1.5;margin:0;font-size:11px}
+#rangkaian .poster-links{margin-top:20px;padding-top:16px;gap:8px 16px}
+#rangkaian .poster-links>span{margin-right:auto;font-size:10px}
+#rangkaian .poster-links button{background:none;padding:8px 0;min-height:40px;border-radius:0;font-size:10px}
+.festival-immersive #rangkaian .section-heading{gap:32px;margin-bottom:20px}
+.festival-immersive #rangkaian .section-heading>div:first-child{flex:1}
+.festival-immersive #rangkaian .section-heading h2{font-size:34px;line-height:1.2}
+.festival-immersive #rangkaian .section-heading p{font-size:11px;line-height:1.8;margin:0}
+.festival-immersive #rangkaian .filter{flex-shrink:0}
+@media(max-width:1100px){
+ .festival-immersive #rangkaian .section-heading{align-items:flex-start;gap:20px}
+ .festival-immersive #rangkaian .section-heading>div:first-child{display:block}
+ .festival-immersive #rangkaian .section-heading p{margin-top:12px;max-width:55ch}
+ #rangkaian .event-summary{padding-inline:24px}
+ #rangkaian .event-summary h3{font-size:21px}
+}
+@media(max-width:700px){
+ #rangkaian .timeline{--date-band:56px}
+ #rangkaian .timeline::before{left:0;translate:0;border-radius:10px}
+ #rangkaian .event-row,#rangkaian .event-row:first-child,#rangkaian .event-row:last-of-type{grid-template-columns:var(--date-band) minmax(0,1fr);gap:0}
+ #rangkaian .timeline-date{grid-column:1;padding:20px 4px}
+ #rangkaian .timeline-date strong{font-size:27px}
+ #rangkaian .timeline-date span{font-size:9px}
+ #rangkaian .event-row:nth-child(n) .event-summary{grid-column:2;text-align:left;padding:16px 0 20px 20px}
+ #rangkaian .event-row:nth-child(n) .event-summary::before{left:0;right:auto;width:12px;top:27px}
+ #rangkaian .event-row:nth-child(n) .event-meta{justify-content:flex-start;font-size:9px;gap:4px 8px}
+ #rangkaian .event-summary h3{font-size:20px;line-height:1.4}
+ #rangkaian .event-row:nth-child(n) .event-summary p{margin:0;font-size:11px;line-height:1.85}
+ #rangkaian .event-link{font-size:10px;min-height:36px}
+ #rangkaian .schedule-poster{display:flex;justify-content:flex-start;gap:16px;margin-top:16px;padding-top:16px}
+ #rangkaian .schedule-poster .poster-preview,#rangkaian .poster-preview img{flex-basis:76px;width:76px;height:76px}
+ #rangkaian .schedule-resources{min-width:0;flex:1}
+ #rangkaian .schedule-resources>p,#rangkaian .schedule-resources .juknis{font-size:10px}
+ #rangkaian .poster-links{margin-top:16px;padding-top:12px;gap:4px 16px}
+ #rangkaian .poster-links>span{width:100%;font-size:10px}
+ #rangkaian .poster-links button{font-size:10px;gap:8px;min-height:40px}
+ .festival-immersive #rangkaian .section-heading{display:block;margin-bottom:24px}
+ .festival-immersive #rangkaian .section-heading h2{font-size:30px}
+ .festival-immersive #rangkaian .section-heading p{margin-top:14px}
+ .festival-immersive #rangkaian .filter{margin-top:20px}
+}
+@media(max-width:360px){
+ #rangkaian .timeline{--date-band:48px}
+ #rangkaian .timeline-date strong{font-size:25px}
+ #rangkaian .event-row:nth-child(n) .event-summary{padding-left:16px}
+ #rangkaian .event-summary h3{font-size:18px}
+ #rangkaian .event-summary::before{width:8px!important}
+}

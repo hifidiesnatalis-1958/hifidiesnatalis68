@@ -1,1 +1,1 @@
-export default function NotFound() {return <main className="wrap error-page"><p>Dies Natalis HIFI ke-68</p><h1>Halaman belum tersedia, baraya.</h1><a className="button" href="/">Kembali ke beranda</a></main>;}
+export default function NotFound() {return <main className="wrap error-page"><p>Dies Natalis HIFI ke-68</p><h1>Halaman belum tersedia.</h1><a className="button" href="/">Kembali ke beranda</a></main>;}

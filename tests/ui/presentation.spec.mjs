@@ -28,13 +28,13 @@ test('shuffled presentation navigates each message once, hides controls and supp
   await signIn(context);await mockPresentation(page);await page.goto('/presentasi');
   await expect(page.locator('.presentation-count')).toHaveText('1 / 3');
   await expect(page.locator('.presentation-status')).toContainText('Penyaringan kata aktif');
-  await expect(page.locator('.presentation-card footer')).toContainText('Baraya anonim');
+  await expect(page.locator('.presentation-card footer')).toContainText('Pengirim anonim');
   const seen=new Set();
   for(let i=0;i<3;i++) {
     seen.add(await page.locator('.presentation-body').textContent());
     if(i<2) await page.getByRole('button',{name:'Berikutnya'}).click();
   }
-  expect(seen.size).toBe(3);await expect(page.getByRole('button',{name:'Berikutnya'})).toBeDisabled();
+  expect(seen.size).toBe(3);expect([...seen].sort()).toEqual(fixture.map(post=>post.body).sort());await expect(page.getByRole('button',{name:'Berikutnya'})).toBeDisabled();
   await page.keyboard.press('ArrowLeft');await expect(page.locator('.presentation-count')).toHaveText('2 / 3');
   await page.getByRole('button',{name:'Acak ulang'}).click();await expect(page.locator('.presentation-count')).toHaveText('1 / 3');
   await page.getByRole('button',{name:'Sembunyikan kontrol'}).click();await expect(page.locator('.presentation-controls')).toHaveCount(0);
