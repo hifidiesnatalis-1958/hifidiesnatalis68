@@ -30,7 +30,7 @@ export default function Auth() {
   return <>
     <header className="auth-header wrap"><a href="/" className="brand"><img src="/assets/kasundaan/logo-68.webp" alt=""/><span>Dies Natalis <b>HIFI 68</b></span></a><a href="/" className="text-link">Kembali ke acara<Icon name="arrow" size={16}/></a></header>
     <main className="auth-page wrap">
-      <div className="auth-story"><p className="small-label">HIFI FMIPA UNPAD · 2026</p><h2>Akun warhim<br/><em>Dies Natalis HIFI.</em></h2><p>Gunakan satu akun NPM untuk mengirim Harewos, menulis pesan dan kesan, serta mengambil tiket undian.</p><div className="auth-emblem"><img src="/assets/kasundaan/logo-68.webp" alt="Logo Dies Natalis HIFI ke-68"/></div><img className="auth-flourish" src="/assets/kasundaan/flourish-gold.webp" alt=""/></div>
+      <div className="auth-story"><p className="small-label">HIFI FMIPA UNPAD · 2026</p><h2>Akun Warga Himpunan<br/><em>Dies Natalis HIFI.</em></h2><p>Gunakan satu akun NPM untuk mengirim Harewos, menulis pesan dan kesan, serta mengambil tiket undian.</p><div className="auth-emblem"><img src="/assets/kasundaan/logo-68.webp" alt="Logo Dies Natalis HIFI ke-68"/></div><img className="auth-flourish" src="/assets/kasundaan/flourish-gold.webp" alt=""/></div>
       <div className="auth-panel">
         <div className="auth-switch" role="group" aria-label="Pilih masuk atau daftar">
           <button aria-pressed={mode==='login'} disabled={busy} onClick={()=>switchMode('login')}>Masuk</button>
@@ -38,7 +38,7 @@ export default function Auth() {
           <button aria-pressed={operator} disabled={busy} onClick={()=>switchMode('operator')}>Panitia</button>
         </div>
         <h1>{register ? 'Satu NPM, satu akun.' : operator ? 'Masuk sebagai panitia.' : 'Selamat datang kembali.'}</h1>
-        <p className="auth-description">{register ? 'Isi nama, NPM, dan kata sandi pilihanmu. Terbuka untuk warhim Fisika Unpad sampai angkatan 25.' : operator ? 'Gunakan akun panitia yang sudah terdaftar.' : 'Masuk dengan NPM dan kata sandi pilihanmu.'}</p>
+        <p className="auth-description">{register ? 'Isi nama, NPM, dan kata sandi pilihanmu. Terbuka untuk warga himpunan Fisika Unpad sampai angkatan 25.' : operator ? 'Gunakan akun panitia yang sudah terdaftar.' : 'Masuk dengan NPM dan kata sandi pilihanmu.'}</p>
         <form className="auth-form" onSubmit={submit}>
           {register && <><label htmlFor="auth-name">Nama lengkap</label><input id="auth-name" name="name" autoComplete="name" required minLength={2} maxLength={100} value={name} disabled={busy} onChange={e=>setName(e.target.value)} placeholder="Nama kamu"/></>}
           <label htmlFor="auth-identity">{operator ? 'Nama pengguna' : 'NPM'}</label>
