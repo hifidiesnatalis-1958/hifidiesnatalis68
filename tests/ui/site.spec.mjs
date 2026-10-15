@@ -15,7 +15,7 @@ test('public site, password login entry, events and original assets work',async(
   await expect(page.getByRole('link', {name: 'Harewos', exact: true})).toBeVisible();
   await expect(page.locator('#menfess h2')).toContainText('Harewos');
   await expect(page.locator('#rangkaian')).toContainText('09.00 WIB–selesai');
-  await expect(page.locator('#menfess')).toContainText('Selalu anonim');
+  await expect(page.locator('#menfess')).toContainText('Pesan ini bersifat anonim');
   await expect(page.locator('#menfess input[type=checkbox]')).toHaveCount(0);
   await expect(page.locator('#undian')).toContainText('Wajib masuk akun.');
   await expect(page.locator('#undian input[type=checkbox]')).toHaveCount(0);

@@ -82,7 +82,24 @@ Selain itu, pembaruan ini menuntaskan perbaikan ketajaman aset visual **Gunungan
   - `components/CultureHero.jsx`: Deskripsi hero langsung ke inti tema, tombol aksi menggunakan ajakan aktif (*"Lihat rangkaian acara"*, *"Kirim Harewos"*).
   - `components/LogoPhilosophy.jsx`: Merapikan panel filosofi agar tidak terjadi pengulangan antara kalimat utama dan rincian.
   - `content/site.json`: Memadatkan deskripsi tema, lomba online (Roblox, ngedongeng, poster), check sound, dan acara puncak.
-  - `app/layout.jsx`: Menyingkat meta description menjadi padat dan lugas.
+### Standardisasi Kalimat Berpredikat Aktif & EYD Bahasa Indonesia
+- **Tujuan:** Menghindari singkatan buntung bergaya telegram (seperti *"selalu anonim"* atau potongan frasa tanpa predikat) serta menggantinya dengan susunan kalimat ber-EYD yang utuh, wajar, dan mengutamakan **kata kerja aktif** (*active verbs*), tanpa kehilangan nuansa lugas.
+- **Perubahan Spesifik:**
+  - `components/Home.jsx`:
+    - Bagian Harewos: label status menggunakan kalimat lengkap dan wajar: **"Pesan ini bersifat anonim."** (menggantikan singkatan buntung). Bantuan form: *"Panitia akan meninjau pesan ini sebelum menayangkannya ke publik."*. Placeholder input menggunakan verba aktif: *"Tulis nama teman, angkatan, atau warga himpunan"*. Empty state: *"Kirimkan pesan Harewos pertama untuk menyapa warga himpunan."*.
+    - Bagian Undian: *"Setiap warga himpunan berhak memperoleh satu tiket undian. Wajib masuk akun."*, status: *"Sistem telah menyimpan nomor tiket Anda."*, persetujuan: *"Saya bersedia menampilkan nomor tiket jika memenangkan undian ini."*.
+    - Bagian Cenderamata & Pesan: menggunakan kalimat berpredikat aktif (*"Panitia menyediakan..."*, *"Bagikan cerita, pengalaman, dan doa terbaik Anda..."*).
+    - Makna warna: menggunakan verba aktif (*Membangkitkan*, *Menunjukkan*, *Melambangkan*, *Mempererat*).
+    - Keterangan poster: menggunakan verba aktif (*Memuat*, *Menyediakan*, *Menampilkan*).
+  - `components/Auth.jsx`:
+    - Kalimat dibuat utuh ber-EYD: *"Gunakan akun NPM Anda untuk mengirimkan Harewos, membagikan kesan, dan mengklaim tiket undian."*.
+    - Penjelasan registrasi: *"Pendaftaran ini terbuka bagi seluruh warga himpunan Fisika Unpad hingga angkatan 25."*.
+    - Penjelasan masuk: *"Masukkan NPM dan kata sandi yang telah Anda daftarkan."*.
+    - Petunjuk form: *"Gunakan 12 digit NPM resmi yang diawali dengan kode 140310."*, *"Gunakan kata sandi pribadi dengan panjang minimal 10 karakter."*.
+    - Pernyataan privasi: *"Sistem menjamin seluruh pesan Harewos tetap bersifat anonim."*.
+  - `components/CultureHero.jsx`: Deskripsi hero menggunakan verba aktif: *"Merayakan 68 tahun kebersamaan HIFI FMIPA UNPAD dalam balutan budaya Sunda."*.
+  - `components/LogoPhilosophy.jsx`: Setiap panel filosofi ditulis dengan struktur SPOK berpredikat aktif (*melambangkan*, *menyimpan*, *menandai*, *merangkum*, *mengangkat*, *memadukan*, *berpadu membentuk*).
+  - `content/site.json`: Seluruh deskripsi agenda lomba, check sound, acara puncak, dan busana disusun dengan kata kerja aktif (*merayakan*, *memadukan*, *menampilkan*, *mengunggah*, *menguji*, *menghadiri*, *mengenakan*).
 
 ---
 
@@ -90,6 +107,7 @@ Selain itu, pembaruan ini menuntaskan perbaikan ketajaman aset visual **Gunungan
 
 - `npm test`: **28 / 28 lulus**
 - `npm run build`: **Turbopack Next.js 16.4.0 sukses tanpa peringatan**
-- `npx playwright test tests/ui/site.spec.mjs`: **Lulus**
+- `npx playwright test tests/ui/site.spec.mjs`: **7 / 7 lulus**
 - Status Git: Bersih, tersinkronisasi, dan siap di-deploy secara otomatis ke Vercel melalui branch `main`.
+
 

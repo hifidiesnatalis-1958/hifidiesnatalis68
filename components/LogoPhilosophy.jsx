@@ -4,11 +4,11 @@ import artwork from '@/public/assets/kasundaan/manifest.json';
 import Icon from './Icon.jsx';
 const assets=Object.fromEntries(artwork.assets.map(a=>[a.name,a]));
 const panels=[
- {title:'Kujang',art:'logo-kujang',page:10,lead:'Pusaka Pasundan simbol kekuatan dan keteguhan.',detail:'Menegaskan akar budaya Sunda dalam perayaan 68 tahun HIFI.'},
- {title:'Angka 68',art:'philosophy-number',page:52,lead:'68 tahun perjalanan HIFI FMIPA UNPAD sejak 1958.',detail:'Simbol kesinambungan dan kebersamaan lintas angkatan.'},
- {title:'Ornamen Batik',art:'philosophy-batik',page:53,lead:'Ragam hias khas Priangan.',detail:'Mempertegas identitas visual bertema Kasundaan.'},
- {title:'Keseluruhan',art:'philosophy-whole',page:54,lead:'Harmoni tradisi Pasundan dan identitas HIFI.',detail:'Kujang, angka 68, dan batik menjadi satu kesatuan logo.'},
- {title:'Warna',art:'logo-68',page:55,lead:'Empat warna identitas HIFI 68.',detail:'Oranye dan merah untuk daya juang; biru dan toska untuk sains fisika dan kebersamaan.'},
+ {title:'Kujang',art:'logo-kujang',page:10,lead:'Kujang melambangkan pusaka Pasundan yang menyimpan kekuatan dan keteguhan.',detail:'Pusaka ini menegaskan akar budaya Sunda dalam perayaan 68 tahun HIFI.'},
+ {title:'Angka 68',art:'philosophy-number',page:52,lead:'Angka ini menandai 68 tahun perjalanan HIFI FMIPA UNPAD sejak tahun 1958.',detail:'Bentuknya merangkum kebersamaan serta kesinambungan antargenerasi warga himpunan.'},
+ {title:'Ornamen Batik',art:'philosophy-batik',page:53,lead:'Ornamen batik mengangkat ragam hias khas Priangan yang anggun.',detail:'Sentuhan motif ini mempertegas identitas visual bertema Kasundaan.'},
+ {title:'Keseluruhan',art:'philosophy-whole',page:54,lead:'Logo ini memadukan tradisi Pasundan dengan semangat keilmuan HIFI.',detail:'Kujang, angka 68, dan motif batik berpadu membentuk satu kesatuan visual yang utuh.'},
+ {title:'Warna',art:'logo-68',page:55,lead:'Empat warna utama membawa makna identitas perayaan tahun ini.',detail:'Warna oranye dan merah melambangkan daya juang, sedangkan biru dan toska melambangkan keilmuan fisika serta kebersamaan.'},
 ];
 export default function LogoPhilosophy({openPoster}) {
  const [active,setActive]=useState(0);

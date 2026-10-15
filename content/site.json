@@ -5,8 +5,8 @@
   "date": "2026-10-24T09:00:00+07:00",
   "theme": {
     "title": "Kasundaan",
-    "description": "Peringatan 68 tahun HIFI FMIPA UNPAD bernuansa tradisi Pasundan.",
-    "logoDescription": "Kujang, angka 68, dan motif batik menyatukan tradisi Pasundan dengan perjalanan HIFI."
+    "description": "Warga Himpunan merayakan 68 tahun perjalanan HIFI FMIPA UNPAD dalam balutan tradisi Pasundan.",
+    "logoDescription": "Logo ini memadukan kujang, angka 68, dan motif batik untuk menggambarkan identitas Pasundan serta perjalanan panjang HIFI."
   },
   "events": [
     {
@@ -15,7 +15,7 @@
       "time": "19.30 WIB",
       "title": "Dress to Impress",
       "type": "Online · Roblox",
-      "description": "Kompetisi busana tema Sunda di Roblox via Discord resmi Dies Natalis.",
+      "description": "Peserta menampilkan busana bertema Sunda di Roblox melalui server Discord resmi Dies Natalis 68.",
       "url": "https://discord.gg/5RJrU9crB"
     },
     {
@@ -24,7 +24,7 @@
       "time": "Maksimal 23.59 WIB",
       "title": "Ngedongeng & Poster Digital",
       "type": "Batas pengumpulan",
-      "description": "Lomba ngedongeng Sunda dan poster digital. Unggah karya via tautan pengumpulan.",
+      "description": "Peserta mengunggah karya lomba ngedongeng Sunda dan poster digital melalui tautan resmi.",
       "url": "https://bit.ly/PengumpulanLombaOnlineDies68"
     },
     {
@@ -33,7 +33,7 @@
       "time": "06.15–08.45 WIB",
       "title": "Check sound penampil",
       "type": "Persiapan penampilan",
-      "description": "Uji tata suara dan panggung untuk penampil angkatan di Bale Santika.",
+      "description": "Panitia dan penampil tiap angkatan menguji tata suara serta kelayakan panggung di Bale Santika.",
       "url": ""
     },
     {
@@ -42,13 +42,13 @@
       "time": "09.00 WIB–selesai",
       "title": "Puncak Dies Natalis ke-68",
       "type": "Acara utama",
-      "description": "Puncak Dies Natalis ke-68 di Bale Santika. Dress code: tradisional Sunda.",
+      "description": "Warga Himpunan menghadiri puncak perayaan Dies Natalis ke-68 di Bale Santika dengan mengenakan busana tradisional Sunda.",
       "url": ""
     }
   ],
   "dressCode": {
     "title": "Tradisional Sunda",
-    "description": "Pilihan busana resmi acara puncak:",
+    "description": "Warga Himpunan dapat memilih salah satu busana tradisional Sunda berikut:",
     "items": [
       "Kebaya",
       "Pangsi",
@@ -71,7 +71,7 @@
   },
   "raffle": {
     "open": false,
-    "prize": "Hadiah diumumkan saat acara",
-    "description": "Satu tiket untuk satu NPM terdaftar."
+    "prize": "Panitia akan mengumumkan hadiah utama saat acara berlangsung.",
+    "description": "Setiap warga himpunan berhak memperoleh satu tiket undian."
   }
 }
