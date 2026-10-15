@@ -2,138 +2,63 @@
 **Proyek:** Dies Natalis HIFI FMIPA UNPAD ke-68 (Tema: Kasundaan)  
 **Dokumen:** `log.md`  
 **Waktu Pelaksanaan:** 15 Oktober 2026  
-**Standar Panduan:** `/natural-indonesian` (Register Baku-Natural & Anti-Slop) & `/synesis-knowledge`
+**Standar Panduan:** `/natural-indonesian` (Register Baku-Natural & Anti-Slop, Gaya Nyata Himpunan Mahasiswa Fisika UNPAD / HIFI 67)
 
 ---
 
 ## 1. Ringkasan Eksekutif
 
-Peningkatan ini berfokus secara eksklusif pada **diksi, gaya bahasa, kehangatan rasa, dan keluhuran budaya Kasundaan** pada seluruh teks yang tampil ke hadapan pengunjung dan warga HIFI (*user-facing copy*).
+Pembaruan ini berfokus pada **penyederhanaan salinan teks (*copywriting*) agar lugas, bersahabat, wajar, tidak hiperbolik, dan tidak memuat keterangan berlebihan (*anti-slop*)**, sejalan dengan tradisi dan gaya komunikasi situs perayaan HIFI tahun-tahun sebelumnya (Dies Natalis ke-67).
 
-### Batasan Ketat yang Terjaga 100%:
-1. **Desain & Tata Letak Tidak Disentuh**: Seluruh kelas CSS (`className`), struktur grid/flex, hierarki DOM, elemen SVG, manifest aset seni, dan token visual tidak diubah sama sekali.
-2. **Kesesuaian Pengujian (Test Integrity)**: Seluruh atribut pengujian Playwright dan unit test (`id`, `aria-label`, data test hooks, serta label form utama seperti `Nickname`, `Password`, `Ulangi password`, `Buat akun`, `Masuk`, `Lomba online`, `Kujang`, `Budaya & fisika`, `Lihat katalog`) dipertahankan secara akurat.
-3. **Hasil Verifikasi**:
-   - `npm test`: **23/23 lulus** (100% lolos tanpa regresi).
-   - `npm run build`: Kompilasi Turbopack Next.js 16.4.0 **berhasil sempurna** tanpa peringatan maupun galat.
+Selain itu, pembaruan ini menuntaskan perbaikan ketajaman aset visual **Gunungan Kelir (SVG Wayang Gate)** yang sebelumnya sempat terputus pada sesi Codex.
 
----
-
-## 2. Rincian Perubahan Salinan (Sebelum vs Sesudah)
-
-### A. `content/site.json`
-
-| Komponen / Kunci | Sebelum (Teks Asli) | Sesudah (Peningkatan Baku-Natural) | Alasan Perubahan |
-|---|---|---|---|
-| `theme.description` | *Merayakan kebersamaan keluarga Fisika dalam suasana Kasundaan. Ada ruang untuk berkarya, berbagi cerita, dan kembali ngariung bersama baraya HIFI.* | *Menghidupkan kembali kehangatan keluarga besar Fisika Unpad dalam rengkuhan tradisi Pasundan. Ruang guyub untuk berkarya, berbagi rasa, dan merajut kembali kisah bersama baraya HIFI.* | Lebih mendalam secara emosional dan mengangkat nilai *rengkuhan tradisi* serta semangat *guyub* khas keluarga Fisika Unpad. |
-| `theme.logoDescription` | *Angka 68 hadir dalam lengkung biru, merah, dan toska, dikelilingi ornamen berwarna emas. Identitas Dies Natalis tahun ini mempertemukan warna yang meriah dengan ragam hias tradisional.* | *Angka 68 berpadu dinamis dalam sapuan biru ilmu pengetahuan, merah keberanian, dan toska keseimbangan, dipagari keagungan ornamen emas khas Kasundaan. Identitas visual yang menyatukan keluhuran tradisi leluhur dengan resonansi ilmu fisika antargenerasi.* | Mengaitkan filosofi warna secara eksplisit dengan nalar fisika dan martabat tradisi Pasundan. |
-| Event: `Dress to Impress` | *Ikuti lomba Dress to Impress dan bergabung ke server Discord Dies Natalis 68.* | *Tunjukkan kreativitas busana terbaikmu di jagat Roblox dan bergabung langsung di server Discord resmi Dies Natalis 68.* | Kalimat lebih mengajak (*engaging*) dan memperjelas wadah perlombaan (Roblox). |
-| Event: `Ngedongeng & Poster` | *Siapkan karya dan kirim melalui tautan pengumpulan. Ketentuan lomba tersedia pada juknis.* | *Tuangkan imajinasi dan kepiawaian bertutur melalui poster digital dan dongeng Sunda. Kirim karya sebelum batas waktu melalui tautan resmi.* | Mempertegas nilai seni bertutur Sunda (*ngadongeng*) dan penggunaan bahasa baku (*batas waktu* vs *tenggat*). |
-| Event: `Check sound` | *Jadwal check sound sesuai booklet ketentuan penampilan angkatan, di Auditorium Bale Santika, Universitas Padjadjaran.* | *Persiapan tata suara dan uji panggung penampil tiap angkatan di Auditorium Bale Santika, sesuai panduan booklet penampilan.* | Memperjelas istilah teknis panggung (*tata suara dan uji panggung*). |
-| Event: `Puncak Dies Natalis` | *Ngariung bersama keluarga HIFI FMIPA UNPAD di Auditorium Bale Santika, Universitas Padjadjaran. Dress code: Tradisional Sunda (Kebaya, Pangsi, Batik Sunda).* | *Patepung lawung baraya HIFI FMIPA UNPAD lintas angkatan. Perayaan puncak seni, kebersamaan, dan tradisi di Auditorium Bale Santika. Kenakan busana Tradisional Sunda terbaikmu.* | Menggunakan idiom Sunda luhur *Patepung lawung* (bertemu muka/berkumpul kembali dalam keakraban). |
-| `dressCode.description` | *Pilihan busana:* | *Pilihan busana kehormatan baraya:* | Memberikan nuansa apresiasi terhadap busana adat yang dikenakan para hadirin. |
-| `location.address` | *Universitas Padjadjaran.* | *Universitas Padjadjaran, Jatinangor.* | Penegasan letak geografis kampus. |
-| `raffle.description` | *Satu akun, satu tiket. Pendaftaran undian dibuka oleh panitia.* | *Satu nomor keberuntungan untuk setiap baraya. Pendaftaran undian akan dibuka langsung oleh panitia.* | Lebih bersahabat dan santun, tidak kaku seperti pesan sistem. |
+### Prinsip Utama:
+1. **Diksi Otentik Warga Himpunan**: Menggunakan istilah resmi internal himpunan, yaitu **warhim** (warga himpunan) dan keluarga besar HIFI FMIPA UNPAD.
+2. **Anti-Hiperbolik & Tanpa Keterangan Berlebihan**: Menghilangkan metafora teatrikal berlebihan (seperti *"pintu sua"*, *"gemuruh rasa tanpa nama"*, *"resonansi antargenerasi"*, *"patepung lawung"*, *"harmoni nalar alam semesta"*).
+3. **Penyelesaian Pekerjaan Codex (Gunungan Tajam)**: Memperbaiki rendering `.wayang-gate` SVG agar dirender pada ketinggian penuh panggung (`height: 100%`) sebelum dianimasikan dan diskalakan secara normalisasi (`scale(${(.08 + .86 * cover).toFixed(5)})`). Hal ini mencegah degradasi piksel / blur (*burik*) pada gunungan depan.
+4. **Pembersihan Catatan AI**: Menghapus seluruh komentar instruksional agen di file CSS dan JSX.
+5. **Integritas Pengujian 100%**: Struktur layout, grid/flex CSS, hierarki komponen, props, dan seluruh selector uji fungsional Playwright serta unit test tetap utuh dan lulus sempurna.
 
 ---
 
-### B. `components/CultureHero.jsx`
+## 2. Rincian Penyelarasan Kalimat (Sebelum vs Sesudah)
 
-| Bagian | Sebelum | Sesudah | Alasan |
-|---|---|---|---|
-| Deskripsi Hero Utama | *Merawat budaya, merayakan kebersamaan.<br/>Urang ngariung deui, baraya HIFI.* | *Merawat keluhuran tradisi, merayakan 68 tahun kebersamaan.<br/>Saatnya kembali ngariung, baraya HIFI.* | Menyebutkan capaian usia 68 tahun dan memperkuat ajakan temu kangen. |
-| Penutup Narasi (*Story End*) | *Kasundaan dalam cerita kita.<br/>Tradisi dirawat. Kebersamaan dirayakan.* | *Kasundaan dalam perjumpaan kita.<br/>Tradisi dijaga dengan khidmat. Persaudaraan dirayakan dengan hangat.* | Paralelisme yang puitis dan berwibawa: *khidmat* (untuk tradisi leluhur) dan *hangat* (untuk persaudaraan). |
-
----
-
-### C. `components/Home.jsx`
-
-| Bagian | Sebelum | Sesudah |
+| File / Komponen | Teks Sebelumnya (Hiperbolik / AI) | Teks Sekarang (Lugas, Natural & Warhim) |
 |---|---|---|
-| **Poster online** | *Dress to Impress, ngadongeng, dan poster digital.* | *Ajang kreasi Dress to Impress, ngadongeng Sunda, dan poster digital.* |
-| **Poster links** | *Juknis dan pengumpulan karya dalam satu poster.* | *Pedoman petunjuk teknis dan tautan pengumpulan karya baraya.* |
-| **Poster performance** | *Panggung untuk penampilan baraya HIFI.* | *Panggung apresiasi seni dan kreasi baraya HIFI lintas angkatan.* |
-| **Makna: Angka 68** | *Merepresentasikan Dies Natalis HIFI ke-68 serta perjalanan dan semangat yang terus diwariskan antargenerasi.* | *Menandai 68 tahun perjalanan HIFI FMIPA UNPAD; jejak dedikasi, keilmuan, dan ikatan kekeluargaan yang terus diwariskan lintas generasi.* |
-| **Makna: Kujang** | *Melambangkan identitas, keteguhan, dan nilai budaya Sunda.* | *Pusaka kebanggaan Pasundan yang melambangkan ketajaman nalar, keteguhan prinsip, serta keluhuran budi pekerti warga Fisika.* |
-| **Makna: Budaya & Fisika** | *Menggambarkan semangat HIFI yang terus beresonansi dari generasi ke generasi, dengan tetap berakar pada budaya Pasundan.* | *Harmoni antara nalar ilmu alam semesta dan kearifan lokal Sunda; bergerak maju menembus zaman tanpa kehilangan akar jati diri.* |
-| **Filosofi Warna** | Frasa singkat tanpa penjelasan mendalam. | Diperkaya: Oranye (daya cipta & eksplorasi), Merah (gelora juang), Biru (kedalaman nalar fisika), Toska (ketenangan jiwa & guyub persaudaraan). |
-| **Cenderamata (Merchandise)** | Teks deskripsi fungsional biasa. | T-shirt: *Jejak kebanggaan HIFI 68 yang nyaman dikenakan sehari-hari.*<br/>Totebag: *Tas kanvas serbaguna, kawan setia beraktivitas ke mana pun melangkah.*<br/>Keychain: *Tanda mata mungil pengingat hangatnya momen Dies Natalis ke-68.*<br/>Sticker set: *Sentuhan ragam hias Kasundaan untuk melengkapi laptop dan gawai kesayangan.* |
-| **Form Pesan / Harewos** | *Ada yang ingin kamu sampaikan?* | *Tuliskan bisikan hatimu dengan santun dan tulus…* |
-| **Bantuan Form Harewos** | *Harewos selalu anonim, termasuk di panel panitia...* | *Harewos dijamin sepenuhnya anonim, termasuk di panel panitia. Kata kasar disaring otomatis demi kenyamanan bersama; pesan tayang setelah disetujui.* |
-| **Judul Bagian Rangkaian** | *Satu perayaan. Banyak cerita.* | *Satu perayaan. Limpahan cerita.* |
-| **Judul Bagian Tema** | *Berakar di Pasundan, bertumbuh bersama.* | *Berakar kukuh di bumi Pasundan, bertumbuh bersama menembus zaman.* |
-| **Judul Bagian Harewos** | *Harewos. Sejuta rasa.* | *Harewos. Gemuruh rasa tanpa nama.* |
-| **Subjudul Harewos** | *Untuk teman, untuk baraya...* | *Sampaikan apresiasi, sapaan hangat, atau cerita terpendam. Titipkan suaramu di dinding Harewos, sampai ke hati tanpa prasangka.* |
-| **Cap Anonim Harewos** | *Tetap anonim. Cerita disampaikan.* | *Identitas terjaga rapi. Pesan tersampaikan tulus.* |
-| **Dinding Kosong Harewos** | *Ada cerita yang belum kamu sampaikan?* | *Ada cerita yang belum sempat terucap?* (Penjelasan: *Belum ada warkat yang terbit. Jadilah yang pertama menitipkan bisikan hangatmu.*) |
-| **Judul Undian** | *Bawa pulang keberuntungan.* | *Raih berkah dan keberuntungan.* |
-| **Status Tiket Undian** | *Kamu sudah terdaftar* | *Nomor tiketmu sudah terdaftar* |
-| **Judul Cenderamata** | *Perayaannya sehari. Kenangannya dibawa pulang.* | *Momennya terpatri, kenangannya lestari.* |
-| **Judul Dress Code** | *Hadir membawa warna ceritamu.* | *Hadir anggun dalam pesona budaya.* |
-| **Judul Pesan & Kesan** | *Apa yang akan kamu ingat?* | *Jejak rasa yang abadi.* |
-| **Judul Lokasi** | *Urang tepang di sini.* | *Patepung lawung di Bale Santika.* |
-| **Teks Penutup Footer** | *Ngariung deui, baraya HIFI.* | *Sampai bertemu di perjumpaan, baraya HIFI salawasna.* |
-| **Motto Bawah Footer** | *Tradisi dirawat. Kebersamaan dirayakan.* | *Tradisi dijaga dengan khidmat. Persaudaraan dirayakan dengan hangat.* |
+| `content/site.json` (`theme.description`) | *Kasundaan mengajak keluarga besar Fisika Unpad berkumpul, berkarya, dan merayakan Dies Natalis ke-68 bersama dalam budaya Sunda.* | **Perayaan 68 tahun HIFI FMIPA UNPAD bertema Kasundaan, mempertemukan seluruh warhim dan alumni Fisika Unpad.** |
+| `content/site.json` (`theme.logoDescription`) | *Kujang, angka 68, dan ornamen batik menyatukan perjalanan HIFI dengan identitas Pasundan. Oranye, merah, biru, dan toska membawa semangat, ilmu pengetahuan, serta kebersamaan yang diteruskan antargenerasi.* | **Kujang, angka 68, dan motif batik menyatukan identitas Pasundan dengan perjalanan HIFI. Warna oranye, merah, biru, dan toska mewakili kebersamaan, daya juang, dan keilmuan fisika.** |
+| `content/site.json` (Event Puncak) | *Rayakan acara puncak bersama keluarga HIFI FMIPA UNPAD lintas angkatan di Auditorium Bale Santika dengan busana tradisional Sunda.* | **Acara puncak Dies Natalis ke-68 di Auditorium Bale Santika bersama warhim Fisika Unpad lintas angkatan. Dress code: tradisional Sunda.** |
+| `components/CultureHero.jsx` (Hero Lead) | *Mari berkumpul, keluarga HIFI.<br/>Rayakan 68 tahun kebersamaan dalam budaya Sunda.* | **Perayaan 68 tahun HIFI FMIPA UNPAD.<br/>Kumpul bareng warhim dalam nuansa Kasundaan.** |
+| `components/CultureHero.jsx` (Hero End) | *Kasundaan di tengah keluarga HIFI.* | **Kasundaan bersama warhim HIFI.** |
+| `components/LogoPhilosophy.jsx` (Kujang) | *Melambangkan identitas, keteguhan, dan nilai budaya Sunda.* | **Pusaka Pasundan yang melambangkan kekuatan dan jati diri.** (Detail: *Kujang menegaskan akar budaya Sunda dalam perayaan 68 tahun HIFI.*) |
+| `components/LogoPhilosophy.jsx` (Angka 68) | *Menandai Dies Natalis HIFI ke-68 serta perjalanan dan semangat yang diwariskan antargenerasi.* | **Menandai usia 68 tahun Himpunan Mahasiswa Fisika UNPAD.** (Detail: *Merangkum perjalanan dan kebersamaan tiap angkatan warhim sejak 1958.*) |
+| `components/LogoPhilosophy.jsx` (Batik) | *Mencerminkan kekayaan budaya dan identitas Pasundan.* | **Sentuhan ragam hias khas Priangan.** (Detail: *Motif batik melengkapi logo dan mempertegas tema Kasundaan.*) |
+| `components/LogoPhilosophy.jsx` (Keseluruhan) | *Menggambarkan semangat HIFI yang terus beresonansi antargenerasi dan tetap berakar pada budaya Pasundan.* | **Harmoni tradisi Pasundan dan identitas HIFI.** (Detail: *Kujang, angka 68, dan motif batik menjadi satu kesatuan identitas perayaan tahun ini.*) |
+| `components/LogoPhilosophy.jsx` (Warna) | *Empat warna membawa makna semangat, ilmu pengetahuan, dan kebersamaan.* | **Empat warna identitas HIFI 68.** (Detail: *Oranye dan merah mewakili semangat dan daya juang; biru dan toska melambangkan keilmuan fisika serta kebersamaan warhim.*) |
+| `components/Home.jsx` (Form Menfess) | *Untuk teman, angkatan tertentu, atau seluruh keluarga HIFI* | **Untuk teman, angkatan tertentu, atau seluruh warhim** |
+| `components/Home.jsx` (Harewos Empty State) | *Ada cerita yang belum sempat terucap?* | **Belum ada pesan yang ditampilkan.** (Subteks: *Belum ada Harewos yang tayang. Kirim pesan atau sapaan pertamamu untuk warhim HIFI.*) |
+| `components/Home.jsx` (Makna Warna) | Oranye: *Semangat, kreativitas, dan keberanian...*<br/>Merah: *Energi perjuangan antargenerasi.* | Oranye: **Semangat dan daya cipta warhim.**<br/>Merah: **Keberanian berekspresi dan energi berhimpun.**<br/>Biru: **Keilmuan dan nalar fisika.**<br/>Toska: **Kebersamaan dan keakraban lintas angkatan.** |
+| `components/Home.jsx` (Cenderamata) | *Teman membawa perlengkapan kuliah dan kegiatan sehari-hari.* | **Tas kanvas untuk perlengkapan kuliah.** (Keychain: *Gantungan kunci akrilik HIFI 68.*) |
+| `components/Home.jsx` (Footer) | *Hatur nuhun. Sampai bertemu kembali.* | **Hatur nuhun. Sampai jumpa di Bale Santika!** |
+| `components/Auth.jsx` (Kisah Masuk) | *Pintu sua keluarga HIFI...* | **Akun warhim Dies Natalis HIFI.** (Keterangan: *Gunakan satu akun NPM untuk mengirim Harewos, menulis pesan dan kesan, serta mengambil tiket undian.*) |
+| `components/Presentation.jsx` (Subtitel) | *Harewos · Pesan anonim* | **Harewos · Pesan anonim warhim** |
+| `app/layout.jsx` (Meta Deskripsi) | *Rayakan Dies Natalis HIFI FMIPA UNPAD ke-68...* | **Perayaan Dies Natalis HIFI FMIPA UNPAD ke-68. Temukan jadwal acara, Harewos anonim warhim, undian, dan cenderamata Kasundaan. 24 Oktober 2026 di Bale Santika.** |
 
 ---
 
-### D. `components/Auth.jsx`
+## 3. Penyelesaian Pekerjaan Codex: Ketajaman Gunungan Kelir (SVG Wayang Gate)
 
-| Bagian | Sebelum | Sesudah |
-|---|---|---|
-| Narasi Pintu Masuk | *Mari kembali ngariung. Satu akun untuk menitipkan cerita dan ikut undian baraya.* | *Pintu sua keluarga HIFI. Cukup satu akun sederhana untuk menitipkan bisikan Harewos, berbagi doa, dan menjemput tiket undian baraya.* |
-| Catatan Kaki Autentikasi | *Kasundaan · 68 tahun cerita bersama* | *Dies Natalis 68 · Merawat Guyub Kasundaan* |
-| Judul Halaman Daftar | *Jadi bagian dari cerita.* | *Mulai langkah ceritamu.* |
-| Judul Halaman Masuk | *Wilujeng sumping.* | *Wilujeng sumping kembali.* |
-| Bantuan Nickname | *Bebas pilih nickname, 2–40 karakter...* | *Bebas memilih nama panggilan (2–40 karakter). Mendukung spasi, simbol, huruf besar maupun kecil.* |
-| Bantuan Password | *Minimal 10 karakter. Gunakan kalimat yang mudah kamu ingat.* | *Minimal 10 karakter. Disarankan memakai frasa atau kalimat yang mudah kamu ingat.* |
-| Keterangan Privasi | *Harewos selalu anonim...* | *Privasi terjamin: Dinding Harewos beroperasi sepenuhnya anonim tanpa pernah menampilkan nama panggilanmu.* |
+- **Akar Masalah:** Elemen `.wayang-gate` sebelumnya dibatasi `height: 200px` di CSS, lalu diperbesar lebih dari 4 kali lipat menggunakan `transform: scale(...)`. Hal ini menyebabkan browser merasterisasi SVG pada resolusi rendah (200px) sebelum memperbesarnya, sehingga garis vektor tampak pecah dan burik (*pixelated*).
+- **Solusi yang Diterapkan:**
+  - `app/immersive.css`: Mengubah `.wayang-gate` dan `.wayang-gate img` menjadi `height: 100%`.
+  - `components/WayangTheatre.jsx`: Mengubah kalkulasi transformasi pada fungsi `moveTheatre` menjadi skala normalisasi `scale(${(.08 + .86 * cover).toFixed(5)})`.
+  - Hasil: Gunungan dirender pada resolusi penuh panggung pementasan dan tampil jernih, tajam, serta tidak lagi burik.
 
 ---
 
-### E. `components/Presentation.jsx`
+## 4. Status Verifikasi
 
-| Bagian | Sebelum | Sesudah |
-|---|---|---|
-| Subtitel Presentasi | *Harewos · Cerita baraya* | *Harewos · Suara rasa baraya* |
-| Footer Kartu Presentasi | *Sepucuk pesan dari Baraya anonim* | *Sepucuk warkat tulus dari Baraya anonim* |
-| Kondisi Belum Ada Pesan | *Belum ada cerita untuk ditampilkan.* | *Belum ada warkat yang siap ditayangkan.* |
-| Status Kontrol Bar | *Filter kata aktif · Hanya pesan disetujui* | *Penyaringan kata aktif · Hanya warkat disetujui* |
-
----
-
-### F. File Sistem & Rute Lainnya
-
-- **`app/layout.jsx`**: Metadata deskripsi diperkaya menjadi:  
-  `Patepung lawung keluarga besar HIFI FMIPA UNPAD. Rangkaian perayaan seni, dinding Harewos, undian baraya, dan cenderamata Kasundaan 24 Oktober 2026.`
-- **`app/not-found.jsx`**: Pesan 404 disempurnakan menjadi:  
-  `Halaman belum tersedia, baraya.` (Baku, sopan, dan hangat).
-- **`app/error.jsx`**: Pesan galat disempurnakan menjadi:  
-  `Halaman belum dapat dimuat. Terjadi kendala saat mengambil data. Silakan coba kembali untuk melanjutkan.`
-
----
-
-## 3. Catatan Khusus untuk GPT Sol (Handoff Notes)
-
-Bagi pengembang / asisten kecerdasan buatan selanjutnya (**GPT Sol**):
-
-1. **State Arsitektur Terkini**:
-   - Web berjalan di atas **Next.js 16 (Turbopack)** dengan React 19.
-   - Database terhubung via bridge serverless ke **Google Apps Script** dan **Google Sheets** (8 lembar kerja: Accounts, Users, Menfess, Likes, Messages, Tickets, Draws, Settings).
-   - Autentikasi menggunakan hashing **scrypt** (kombinasi unik salt dan derivasi kunci di level server Node.js), tanpa menggunakan Google OAuth.
-
-2. **Pengaturan Iframe & Vercel**:
-   - Header pembatas `X-Frame-Options: DENY` pada `next.config.mjs` telah dihapus secara aman agar halaman dapat disematkan (*embedded*) melalui iframe di portal WordPress/Elementor Himafisika UNPAD (`https://hifi.fmipa.unpad.ac.id/`).
-   - Kode iframe di Elementor menggunakan:
-     ```html
-     <iframe src="https://hifidiesnatalis68-kasundaan.vercel.app/" class="hifi68-frame" title="Dies Natalis HIFI FMIPA UNPAD ke-68" allow="clipboard-write; fullscreen" allowfullscreen></iframe>
-     ```
-
-3. **Integritas Pengujian**:
-   - Setiap kali melakukan penyesuaian kode berikutnya, pastikan selalu menjalankan:
-     ```powershell
-     npm test
-     npm run build
-     ```
-   - Semua nama tombol dan selector pada file `tests/ui/*.spec.mjs` telah disinkronkan dan terbukti lulus seluruhnya.
-
+- `npm test`: **28 / 28 lulus**
+- `npm run build`: **Turbopack Next.js 16.4.0 sukses tanpa peringatan**
+- `npm run test:ui`: **33 / 33 tes Playwright lulus**
+- Status Git: Bersih, tersinkronisasi, dan siap di-deploy secara otomatis ke Vercel melalui branch `main`.

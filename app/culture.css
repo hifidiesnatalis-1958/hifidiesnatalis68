@@ -1,4 +1,3 @@
-/* User-directed soft cultural composition. Original Figma/PDF artwork only. */
 :root{--radius-control:16px;--radius-panel:32px;--radius-scene:44px;--canvas:#f4f1e8;--surface:#fffcf6}
 body{background:var(--canvas)}
 .festival-ribbon{display:none}

@@ -47,7 +47,7 @@ export default function Presentation() {
   const post=posts[index];
   function reshuffle() {setAuto(false);setPosts(old=>shuffled(old));setIndex(0);}
   return <main ref={root} className={`presentation ${controls ? '' : 'presentation-clean'}`}>
-    <div className="presentation-brand"><img src="/assets/kasundaan/logo-68.webp" alt="Dies Natalis ke-68"/><div><p>HIFI FMIPA UNPAD</p><span>Harewos · Pesan anonim</span></div><span className="presentation-count">{posts.length ? index+1 : 0} / {posts.length}</span></div>
+    <div className="presentation-brand"><img src="/assets/kasundaan/logo-68.webp" alt="Dies Natalis ke-68"/><div><p>HIFI FMIPA UNPAD</p><span>Harewos · Pesan anonim warhim</span></div><span className="presentation-count">{posts.length ? index+1 : 0} / {posts.length}</span></div>
     <section className="presentation-stage" aria-label="Harewos yang dipresentasikan" aria-live="polite">
       {loading ? <p role="status">Memuat pesan yang sudah disetujui…</p> : post ? <article className="presentation-card" key={post.id}>{post.to && <p className="presentation-to">Untuk {post.to}</p>}<p className={`presentation-body ${post.body.length>450 ? 'long' : ''}`}>{post.body}</p><footer><strong>Pengirim anonim</strong></footer></article> : <div className="presentation-empty"><img src="/assets/kasundaan/flourish-gold.webp" alt=""/><h1>Belum ada pesan<br/>yang siap ditayangkan.</h1><p>{error || 'Tinjau dan setujui kiriman Harewos di panel panitia terlebih dahulu.'}</p></div>}
     </section>

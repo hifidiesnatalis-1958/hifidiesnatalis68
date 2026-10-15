@@ -1,4 +1,3 @@
-/* Kasundaan source art, generous rounded forms and reversible SVG contours. */
 .morph-chapter{position:relative;isolation:isolate;overflow:clip;--chapter-fill:var(--surface)}
 .chapter-surface{display:none;position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .chapter-surface path{fill:var(--chapter-fill)}

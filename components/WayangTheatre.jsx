@@ -93,7 +93,8 @@ export function moveTheatre(objects,gate,from,to,t,width,height,hero){
  });
  // The existing gunungan sweeps the seam between outgoing/incoming chapters.
  const cover=from===to ? 0 : Math.sin(Math.PI*t);
- gate.style.transform=`translate3d(${((1-t)*width).toFixed(2)}px,${(height*(1.06-.08*cover)).toFixed(2)}px,${(90*cover).toFixed(2)}px) translate(-50%,-100%) rotateY(${(-80+160*t).toFixed(2)}deg) rotateZ(${(-9+18*t).toFixed(2)}deg) scale(${((.08+.86*cover)*height/200).toFixed(5)})`;
+ // Render the SVG at stage size; normalized scaling keeps its vector lines crisp.
+ gate.style.transform=`translate3d(${((1-t)*width).toFixed(2)}px,${(height*(1.06-.08*cover)).toFixed(2)}px,${(90*cover).toFixed(2)}px) translate(-50%,-100%) rotateY(${(-80+160*t).toFixed(2)}deg) rotateZ(${(-9+18*t).toFixed(2)}deg) scale(${(.08+.86*cover).toFixed(5)})`;
  gate.style.opacity=String(Math.min(1,cover*3));
  gate.style.visibility=cover>.002 ? 'visible' : 'hidden';
 }

@@ -5,8 +5,8 @@
   "date": "2026-10-24T09:00:00+07:00",
   "theme": {
     "title": "Kasundaan",
-    "description": "Kasundaan mengajak keluarga besar Fisika Unpad berkumpul, berkarya, dan merayakan Dies Natalis ke-68 bersama dalam budaya Sunda.",
-    "logoDescription": "Kujang, angka 68, dan ornamen batik menyatukan perjalanan HIFI dengan identitas Pasundan. Oranye, merah, biru, dan toska membawa semangat, ilmu pengetahuan, serta kebersamaan yang diteruskan antargenerasi."
+    "description": "Perayaan 68 tahun HIFI FMIPA UNPAD bertema Kasundaan, mempertemukan seluruh warhim dan alumni Fisika Unpad.",
+    "logoDescription": "Kujang, angka 68, dan motif batik menyatukan identitas Pasundan dengan perjalanan HIFI. Warna oranye, merah, biru, dan toska mewakili kebersamaan, daya juang, dan keilmuan fisika."
   },
   "events": [
     {
@@ -42,7 +42,7 @@
       "time": "09.00 WIB–selesai",
       "title": "Puncak Dies Natalis ke-68",
       "type": "Acara utama",
-      "description": "Rayakan acara puncak bersama keluarga HIFI FMIPA UNPAD lintas angkatan di Auditorium Bale Santika dengan busana tradisional Sunda.",
+      "description": "Acara puncak Dies Natalis ke-68 di Auditorium Bale Santika bersama warhim Fisika Unpad lintas angkatan. Dress code: tradisional Sunda.",
       "url": ""
     }
   ],

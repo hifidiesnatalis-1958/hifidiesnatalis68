@@ -1,4 +1,3 @@
-/* One persistent stage. Document scroll changes scenes; wheel/touch remain native. */
 .story-surface,.journey-controls,.wayang-wings,.wayang-curtain,.wayang-theatre,.wayang-gate,.wayang-logo{display:none}
 .festival-immersive{overflow-anchor:none}
 .festival-page:has(.festival-immersive) .header{position:fixed;inset:0 0 auto;background:transparent;z-index:30}
@@ -16,12 +15,12 @@
 .festival-immersive .wayang-gate{display:block}
 .wayang-object,.wayang-gate{position:absolute;top:0;left:0;height:200px;width:max-content;max-width:none;transform-origin:center bottom;backface-visibility:hidden;pointer-events:none}
 .wayang-object img,.wayang-gate img{height:200px;width:auto;max-width:none;filter:drop-shadow(4px 9px 5px #062e3528)}
-.wayang-object{will-change:transform}.wayang-gate{z-index:5;opacity:0;visibility:hidden;will-change:transform}
+.wayang-object{will-change:transform}.wayang-gate{height:100%;z-index:5;opacity:0;visibility:hidden;will-change:transform}
 .festival-immersive .wayang-object[data-object^=wayang-] img{transform-origin:50% 100%;animation:wayang-sway 4.8s ease-in-out infinite alternate}
 .festival-immersive .wayang-object[data-object=wayang-semar] img{animation-duration:5.6s;animation-delay:-2.2s;animation-direction:alternate-reverse}
 .festival-page:has(dialog[open]) .wayang-object img{animation-play-state:paused}
 @keyframes wayang-sway{from{transform:translateY(-1px) rotate(-.85deg)}to{transform:translateY(1px) rotate(.85deg)}}
-.wayang-gate img{filter:drop-shadow(-18px 8px 12px #032f3855)}
+.wayang-gate img{height:100%;filter:drop-shadow(-18px 8px 12px #032f3855)}
 .wayang-kelir{position:absolute;inset:103px 25px 77px;border-radius:44px;background:url('/assets/kasundaan/batik-floral.webp') center/640px;opacity:.045;transform:translateZ(-260px);pointer-events:none;mask-image:radial-gradient(ellipse,#000 45%,transparent 72%)}
 .wayang-floor{position:absolute;inset:auto -10% 42px;height:100px;border-radius:50%;background:radial-gradient(ellipse,#c18a3155,transparent 66%);transform:rotateX(64deg) translateZ(-70px);pointer-events:none}
 .festival-immersive .hero-collage,.festival-immersive .hero-emblem-motion{display:none!important}

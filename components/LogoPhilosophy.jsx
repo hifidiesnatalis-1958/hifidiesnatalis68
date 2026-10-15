@@ -4,11 +4,11 @@ import artwork from '@/public/assets/kasundaan/manifest.json';
 import Icon from './Icon.jsx';
 const assets=Object.fromEntries(artwork.assets.map(a=>[a.name,a]));
 const panels=[
- {title:'Kujang',art:'logo-kujang',page:10,lead:'Melambangkan identitas, keteguhan, dan nilai budaya Sunda.',detail:'Kujang menjadi penanda budaya Sunda dalam logo. Bentuknya menghubungkan identitas Pasundan dengan perayaan Dies Natalis HIFI.'},
- {title:'Angka 68',art:'philosophy-number',page:52,lead:'Menandai Dies Natalis HIFI ke-68 serta perjalanan dan semangat yang diwariskan antargenerasi.',detail:'Angka 68 menjadi pusat identitas perayaan. Setiap angkatan adalah bagian dari perjalanan HIFI yang diteruskan oleh generasi berikutnya.'},
- {title:'Ornamen Batik',art:'philosophy-batik',page:53,lead:'Mencerminkan kekayaan budaya dan identitas Pasundan.',detail:'Ragam hias batik melengkapi angka dan kujang dalam satu komposisi. Unsur ini membawa identitas Pasundan ke dalam perayaan HIFI.'},
- {title:'Keseluruhan',art:'philosophy-whole',page:54,lead:'Menggambarkan semangat HIFI yang terus beresonansi antargenerasi dan tetap berakar pada budaya Pasundan.',detail:'Kujang, angka 68, dan ragam hias membentuk satu identitas. Ketiganya mempertemukan perjalanan HIFI dengan budaya Sunda yang menjadi tema perayaan.'},
- {title:'Warna',art:'logo-68',page:55,lead:'Empat warna membawa makna semangat, ilmu pengetahuan, dan kebersamaan.',detail:'Oranye melambangkan semangat, kreativitas, dan keberanian. Merah membawa energi perjuangan antargenerasi. Biru mewakili ilmu pengetahuan, ketenangan, dan perkembangan; toska melambangkan harmoni, kebersamaan, dan keseimbangan.'},
+ {title:'Kujang',art:'logo-kujang',page:10,lead:'Pusaka Pasundan yang melambangkan kekuatan dan jati diri.',detail:'Kujang menegaskan akar budaya Sunda dalam perayaan 68 tahun HIFI.'},
+ {title:'Angka 68',art:'philosophy-number',page:52,lead:'Menandai usia 68 tahun Himpunan Mahasiswa Fisika UNPAD.',detail:'Merangkum perjalanan dan kebersamaan tiap angkatan warhim sejak 1958.'},
+ {title:'Ornamen Batik',art:'philosophy-batik',page:53,lead:'Sentuhan ragam hias khas Priangan.',detail:'Motif batik melengkapi logo dan mempertegas tema Kasundaan.'},
+ {title:'Keseluruhan',art:'philosophy-whole',page:54,lead:'Harmoni tradisi Pasundan dan identitas HIFI.',detail:'Kujang, angka 68, dan motif batik menjadi satu kesatuan identitas perayaan tahun ini.'},
+ {title:'Warna',art:'logo-68',page:55,lead:'Empat warna identitas HIFI 68.',detail:'Oranye dan merah mewakili semangat dan daya juang; biru dan toska melambangkan keilmuan fisika serta kebersamaan warhim.'},
 ];
 export default function LogoPhilosophy({openPoster}) {
  const [active,setActive]=useState(0);

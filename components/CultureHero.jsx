@@ -11,8 +11,6 @@ function SourceArt({name, alt = '', className = '', ...props}) {
     className={className} decoding="async" {...props}/>;
 }
 
-// Scroll progress belongs to the browser's CSS view timeline. React never
-// rerenders the page for scroll position, and there is no wheel/scroll hijack.
 function CultureHero({theme}) {
   return <section id="beranda" className="hero culture-hero" aria-labelledby="festival-title">
     <div className="hero-stage" data-morph-stage>
@@ -34,12 +32,12 @@ function CultureHero({theme}) {
         <div className="hero-copy">
           <SourceArt name="wordmark-dies-hifi" className="hero-wordmark"/>
           <h1 id="festival-title"><span className="sr-only">Dies Natalis HIFI ke-68. </span>Wilujeng<br/><span>sumping.</span></h1>
-          <p className="hero-description">Mari berkumpul, keluarga HIFI.<br/>Rayakan 68 tahun kebersamaan dalam budaya Sunda.</p>
+          <p className="hero-description">Perayaan 68 tahun HIFI FMIPA UNPAD.<br/>Kumpul bareng warhim dalam nuansa Kasundaan.</p>
           <div className="hero-actions"><a className="button" href="#rangkaian">Jelajahi perayaan<Icon name="arrow" size={18}/></a><a className="text-link" href="#menfess">Titip Harewos<Icon name="send" size={17}/></a></div>
         </div>
         <div className="hero-story-end" aria-hidden="true">
           <p className="hero-end-label">Dies Natalis HIFI FMIPA UNPAD ke-68</p>
-          <h2>{theme.title}<br/><span>di tengah keluarga HIFI.</span></h2>
+          <h2>{theme.title}<br/><span>bersama warhim HIFI.</span></h2>
           <SourceArt name="flourish-gold"/>
         </div>
       </div>

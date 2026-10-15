@@ -6,7 +6,7 @@ import './immersive.css';
 import './timeline.css';
 export const metadata = {
   title:'Dies Natalis HIFI ke-68 · Kasundaan',
-  description:'Rayakan Dies Natalis HIFI FMIPA UNPAD ke-68. Temukan jadwal acara, Harewos anonim, undian, dan cenderamata Kasundaan. 24 Oktober 2026 di Bale Santika.',
+  description:'Perayaan Dies Natalis HIFI FMIPA UNPAD ke-68. Temukan jadwal acara, Harewos anonim warhim, undian, dan cenderamata Kasundaan. 24 Oktober 2026 di Bale Santika.',
   icons:{icon:'/assets/kasundaan/favicon.png'},
 };
 export const viewport = {width:'device-width',initialScale:1,themeColor:'#0c575b'};
