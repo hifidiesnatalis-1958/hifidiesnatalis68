@@ -8,7 +8,7 @@ Daftar dengan **nama lengkap, NPM, password pilihan sendiri, dan konfirmasi pass
 
 NPM: `140310` + dua digit angkatan `00`–`25` + `00` + dua digit nomor `01`–`99`. Angkatan 26 belum dapat mendaftar. **Satu NPM = satu akun = satu tiket undian**; kesamaan nama tidak membatasi orang lain. Pemeriksaan ini memvalidasi format, bukan kepemilikan terhadap daftar mahasiswa universitas.
 
-Nama 2–100 karakter; password baru 10–128 karakter. Password di-hash menggunakan scrypt dengan salt acak sebelum dikirim ke Google; password asli tidak disimpan di Sheets atau cookie. Nama diteruskan dari data akun yang tersimpan, bukan dari input login. Cookie peserta berlaku 30 hari, cookie operator 12 jam; HttpOnly, SameSite=Lax, Secure di Vercel/HTTPS.
+Nama 2–100 karakter; password baru 10–128 karakter. Password di-hash menggunakan scrypt dengan salt acak sebelum dikirim ke Google; password asli tidak disimpan di Sheets atau cookie. Nama diteruskan dari data akun yang tersimpan, bukan dari input login. Cookie peserta berlaku 30 hari, cookie operator 12 jam; HttpOnly; di Vercel/HTTPS memakai Secure, SameSite=None, dan Partitioned agar tetap tersimpan saat situs dibuka lewat iframe di hifi.fmipa.unpad.ac.id. Lokal (HTTP) memakai SameSite=Lax.
 
 ## Wajib memperbarui Apps Script untuk kolom nama
 
@@ -40,7 +40,7 @@ Buka http://localhost:3068. `/masuk` menyediakan masuk peserta, daftar, dan jalu
 
 Vercel: Next.js, Node 22+, install `npm ci`, build `npm run build`. Redeploy setelah kode/environment berubah. Origin diverifikasi terhadap APP_URL dan domain deployment Vercel resmi; Host atau forwarded header sembarang tidak dipercaya. Localhost dan 127.0.0.1 diterima pada port proyek 3068/3069.
 
-Embedding iframe tetap tersedia sesuai konfigurasi pengguna. Bila cookie pihak ketiga diblokir browser, buka situs langsung di tab baru untuk masuk.
+Situs dipasang sebagai iframe di `https://hifi.fmipa.unpad.ac.id/dies-natalis-68/`. Cookie sesi Partitioned (CHIPS) membuat login tetap tersimpan di dalam iframe, termasuk saat cookie pihak ketiga diblokir. Permintaan POST tetap dijaga pemeriksaan Origin dan wajib `application/json`, sehingga SameSite=None tidak membuka celah CSRF. Bila browser lama belum mendukung Partitioned, buka situs langsung di tab baru untuk masuk.
 
 ## Panitia, Harewos, dan undian
 

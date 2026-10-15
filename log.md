@@ -57,6 +57,15 @@ Selain itu, pembaruan ini menuntaskan perbaikan ketajaman aset visual **Gunungan
   - `components/WayangTheatre.jsx`: Mengubah kalkulasi transformasi pada fungsi `moveTheatre` menjadi skala normalisasi `scale(${(.08 + .86 * cover).toFixed(5)})`.
   - Hasil: Gunungan dirender pada resolusi penuh panggung pementasan dan tampil jernih, tajam, serta tidak lagi burik.
 
+### Perbaikan Login di Iframe hifi.fmipa.unpad.ac.id
+- **Gejala:** Daftar/masuk berhasil di server (entri muncul di spreadsheet), tetapi halaman menampilkan *"Sesi belum tersimpan. Buka situs langsung di tab baru..."*.
+- **Penyebab:** Situs dibuka sebagai iframe di `hifi.fmipa.unpad.ac.id` (lintas situs). Cookie sesi memakai `SameSite=Lax`, sehingga browser menolak menyimpannya di dalam iframe.
+- **Solusi:**
+  - `lib/session.js`: Di Vercel/HTTPS cookie memakai `Secure; SameSite=None; Partitioned` (CHIPS). Lokal tetap `Lax`.
+  - `app/api/auth/logout/route.js`: Logout juga menghapus cookie `Lax` lama.
+  - `tests/origin.test.mjs`: Menambah uji atribut cookie.
+  - CSRF tetap tertahan: semua POST memeriksa header Origin dan mewajibkan `application/json`.
+
 ---
 
 ## 4. Status Verifikasi

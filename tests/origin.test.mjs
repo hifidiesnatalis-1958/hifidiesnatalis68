@@ -19,5 +19,8 @@ test('Vercel accepts deployment-owned origins and ignores arbitrary Host headers
  assert.equal(allowedOrigin(request('http://127.0.0.1:3068/api/auth/register','http://127.0.0.1:3068')),false);
  assert.equal(allowedOrigin(request('https://internal.invalid/api/auth/register','http://localhost:3068')),false);
  assert.equal(cookieOptions().secure,true);
+ // Iframe di hifi.fmipa.unpad.ac.id: cookie harus None + Partitioned agar tersimpan lintas situs.
+ assert.equal(cookieOptions().sameSite,'none');assert.equal(cookieOptions().partitioned,true);
  delete process.env.VERCEL;delete process.env.VERCEL_URL;delete process.env.VERCEL_PROJECT_PRODUCTION_URL;
+ assert.equal(cookieOptions().sameSite,'lax');assert.equal(cookieOptions().partitioned,undefined);
 });
