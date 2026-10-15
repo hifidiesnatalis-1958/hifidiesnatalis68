@@ -1,0 +1,115 @@
+/* One persistent stage. Document scroll changes scenes; wheel/touch remain native. */
+.story-surface,.journey-controls{display:none}
+.festival-immersive{overflow-anchor:none}
+.festival-page:has(.festival-immersive) .header{position:fixed;inset:0 0 auto;background:transparent;z-index:30}
+.festival-page:has(.festival-immersive)>.journey-atmosphere{display:none}
+.festival-immersive .festival-stage{position:sticky;top:0;height:100svh;isolation:isolate;overflow:hidden}
+.festival-immersive .story-surface{display:block;position:absolute;inset:100px 18px 70px;width:calc(100% - 36px);height:calc(100% - 170px);z-index:-1;overflow:visible;pointer-events:none}
+.festival-immersive .festival-frame{position:absolute;inset:104px 30px 80px;opacity:0;visibility:hidden;pointer-events:none;will-change:opacity,transform;transform-origin:50% 50%}
+.festival-immersive .festival-frame[aria-hidden=false],.festival-immersive .festival-frame:not([aria-hidden]){opacity:1;visibility:visible;pointer-events:auto}
+.festival-immersive .festival-frame[aria-hidden=true]{pointer-events:none}
+.festival-immersive.scene-jump .festival-frame{visibility:visible!important;transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)}
+.festival-immersive.scene-jump .story-surface path{transition:d .55s cubic-bezier(.22,1,.36,1),fill .55s cubic-bezier(.22,1,.36,1)}
+.festival-immersive .scene-scroll{width:100%;height:100%;overflow:auto;overscroll-behavior-y:auto;scrollbar-width:thin;scrollbar-color:#8baf9c transparent;border-radius:24px;padding:24px 30px;outline-offset:-3px}
+.festival-immersive .scene-scroll:focus:not(:focus-visible){outline:none}
+.festival-immersive .scene-scroll>section,.festival-immersive .scene-scroll>footer{width:min(1190px,100%);margin:0 auto;padding-block:12px;background:none;border:0;border-radius:0;overflow:visible;animation:none;min-height:100%}
+.festival-immersive .scene-scroll>section>.wrap{width:100%}
+.festival-immersive .chapter-surface{display:none!important}
+.festival-immersive .chapter-ornament{right:0;top:0;z-index:0;width:46px;opacity:.2;animation:none}
+.festival-immersive .chapter-ornament img{height:45px}
+.festival-immersive .journey-scene,.festival-immersive .journey-panel,.festival-immersive .journey-scene *,.festival-immersive .hero-stage *{animation:none!important}
+.festival-immersive .section-heading{gap:30px;margin-bottom:28px;align-items:center}
+.festival-immersive .section-heading h2{font-size:clamp(30px,3.1vw,45px)}
+.festival-immersive .section-heading p{font-size:12px;line-height:1.9;margin-top:15px}
+.festival-immersive .scene-beranda .scene-scroll{padding:0 10px}
+.festival-immersive .culture-hero{height:calc(100% - 110px);width:100%;min-height:440px;padding:0!important;view-timeline-name:none;overflow:visible}
+.festival-immersive .scene-beranda .culture-hero{min-height:0}
+.festival-immersive .hero-stage{position:relative;top:auto;height:100%;min-height:0;max-height:none;background:none;border-radius:0;overflow:clip}
+.festival-immersive .hero-surface{display:none}
+.festival-immersive .culture-hero .hero-main{height:100%;padding:18px 40px 26px;gap:45px}
+.festival-immersive .culture-hero h1{font-size:clamp(50px,6.4vw,83px)}
+.festival-immersive .hero-main,.festival-immersive .hero-copy,.festival-immersive .hero-collage,.festival-immersive .hero-emblem-motion{opacity:1!important;visibility:visible!important;transform:none!important;clip-path:none!important}
+.festival-immersive .hero-story-end{display:none!important}
+.festival-immersive .hero-source-note{display:none}
+.festival-immersive .collage-wayang.arjuna{height:70%;left:5%}.festival-immersive .collage-wayang.semar{height:49%;right:0}
+.festival-immersive .hero-emblem-motion{top:21%;left:17%;width:31%}
+.festival-immersive .collage-gunungan{height:91%;top:0}
+.festival-immersive .cloud-one{width:22%;top:1%}.festival-immersive .cloud-two{width:35%;bottom:-3%}
+.festival-immersive .event-strip{width:min(1170px,100%);margin:8px auto 0;background:#ffffff99;border-radius:24px}
+.festival-immersive .event-strip-inner{padding:15px 24px;min-height:85px}
+.festival-immersive .schedule-layout{grid-template-columns:235px minmax(0,1fr);gap:38px}
+.festival-immersive .schedule-poster{transform:none;max-width:235px;margin:0 auto}
+.festival-immersive .timeline{gap:10px}.festival-immersive .event-row{padding:16px 20px;gap:20px;transform:none}
+.festival-immersive .event-row h3{font-size:16px}.festival-immersive .event-summary p{font-size:11px;line-height:1.8}
+.festival-immersive .poster-links{margin-top:23px}
+.festival-immersive .theme-heading{padding-bottom:16px}.festival-immersive .theme-heading p{font-size:12px}
+.festival-immersive .theme-introduction{margin:18px auto 20px;max-width:900px}
+.festival-immersive .theme-introduction h2{font-size:31px}.festival-immersive .theme-introduction h2 em{display:inline;margin-left:10px;font-size:.7em}
+.festival-immersive .theme-introduction .theme-description{font-size:12px;line-height:1.8;margin-top:12px;max-width:80ch}
+.festival-immersive .philosophy{margin:20px 0}.festival-immersive .philosophy-nav{margin-bottom:20px}
+.festival-immersive .philosophy-panel{min-height:290px;gap:55px;grid-template-columns:1fr 1fr}
+.festival-immersive .philosophy-art{padding:15px 10px}.festival-immersive .philosophy-art .theme-emblem{height:240px;margin-bottom:12px}
+.festival-immersive .philosophy-copy h3{font-size:32px;margin:10px 0}.festival-immersive .philosophy-copy>p:not(.small-label){font-size:12px;line-height:1.8}
+.festival-immersive .philosophy-controls{margin-top:14px}.festival-immersive .philosophy-copy>.text-link{margin-top:13px}
+.festival-immersive .brand-colors{padding-top:20px;gap:24px}.festival-immersive .brand-colors p{font-size:10px}.festival-immersive .color-dot{width:20px;height:20px}
+.festival-immersive .logo-details{font-size:11px}
+.festival-immersive .menfess-layout{gap:35px;grid-template-columns:minmax(0,430px) minmax(0,1fr)}
+.festival-immersive .compose-panel{padding:24px}.festival-immersive .letter-heading{margin-bottom:20px;padding-bottom:17px}
+.festival-immersive .wall-empty{min-height:440px}.festival-immersive .wall-empty>img{max-width:190px}
+.festival-immersive .raffle-section{display:grid;align-content:center;grid-template-columns:1fr 1fr;gap:70px}
+.festival-immersive .merch-feature{gap:40px;padding:25px;margin:0 0 28px;grid-template-columns:1fr 1fr}
+.festival-immersive .merch-feature-art{min-height:190px}.festival-immersive .merch-feature-art>img:first-child{max-height:210px}
+.festival-immersive .merch-feature-copy h3{font-size:32px;margin:15px 0}.festival-immersive .merch-feature-copy>.button{margin-top:14px}
+.festival-immersive .merch-gallery{gap:24px}.festival-immersive .product-image{height:165px;padding:14px}.festival-immersive .product-image img{max-height:140px}
+.festival-immersive .product-caption{margin-top:14px}.festival-immersive .product-caption h3{font-size:18px}.festival-immersive .merch-product>p{font-size:10px;line-height:1.8}
+.festival-immersive .merch-footer{margin-top:25px}
+.festival-immersive .dress-section,.festival-immersive .location-section{display:grid;align-content:center}
+.festival-immersive .dress-layout{gap:75px;align-items:center}.festival-immersive .dress-layout h2{font-size:clamp(36px,3.6vw,50px)}
+.festival-immersive .feedback-section{display:grid;align-items:center;grid-template-columns:1fr 1fr;gap:70px}
+.festival-immersive .location-layout{gap:70px}.festival-immersive .map iframe{height:330px}
+.festival-immersive .footer{display:flex;flex-direction:column;justify-content:center}.festival-immersive .footer>.wrap{width:100%}
+.festival-immersive .footer-inner{gap:45px;align-items:center}.festival-immersive .footer-inner>div:first-child{max-width:52%}.festival-immersive .footer-inner>div:first-child p{font-size:clamp(27px,3.4vw,44px)}
+.festival-immersive .footer-bottom{margin-top:60px}.festival-immersive .footer .corner{opacity:.55}
+.festival-immersive .journey-controls{display:flex;position:fixed;z-index:25;left:50%;bottom:14px;translate:-50% 0;max-width:calc(100% - 30px);width:max-content;align-items:center;gap:4px;padding:7px;background:#fffcf6;border:1px solid #dedfce;border-radius:999px}
+.journey-rail{display:flex;align-items:center;overflow:auto;scrollbar-width:none;max-width:min(840px,calc(100vw - 120px));position:relative}
+.journey-rail::-webkit-scrollbar{display:none}.journey-rail>button{border:0;border-radius:999px;background:none;color:var(--teal);font-size:10px;padding:11px 13px;min-height:40px;white-space:nowrap}
+.journey-rail>button[aria-current]{background:var(--teal);color:white}
+.journey-step{display:grid;place-items:center;flex-shrink:0;width:36px;height:36px;border-radius:50%;border:0;background:none;color:var(--teal)}
+.journey-step:disabled{opacity:.3;cursor:default}
+@media(max-width:980px){
+ .festival-immersive .festival-frame{inset-inline:16px}.festival-immersive .scene-scroll{padding:22px}
+ .festival-immersive .culture-hero .hero-main{gap:25px;padding-inline:20px}.festival-immersive .culture-hero h1{font-size:59px}
+ .festival-immersive .menfess-layout{gap:24px;grid-template-columns:1fr 1fr}.festival-immersive .schedule-layout{grid-template-columns:190px 1fr;gap:25px}
+ .festival-immersive .event-strip-inner{gap:15px;padding-inline:20px}.festival-immersive .countdown-caption{display:none}
+ .festival-immersive .philosophy-panel{gap:30px}.festival-immersive .philosophy-nav button{padding-inline:13px}
+}
+@media(max-width:700px){
+ .festival-immersive .story-surface{inset:83px 8px 70px;width:calc(100% - 16px);height:calc(100% - 153px)}
+ .festival-immersive .festival-frame{inset:87px 12px 77px}.festival-immersive .scene-scroll{padding:17px 12px;border-radius:20px}
+ .festival-immersive .scene-scroll>section,.festival-immersive .scene-scroll>footer{padding-block:5px;width:100%}
+ .festival-immersive .section-heading{display:block;margin-bottom:24px}.festival-immersive .section-heading h2{font-size:30px}.festival-immersive .section-heading p{font-size:11px;line-height:1.9}
+ .festival-immersive .section-heading .filter{margin-top:22px}.festival-immersive .section-heading .button{margin-top:20px}
+ .festival-immersive .scene-beranda .scene-scroll{padding:0 6px}.festival-immersive .culture-hero{height:calc(100% - 85px);min-height:480px}
+ .festival-immersive .culture-hero .hero-main{display:block;padding:20px 14px;height:100%;width:100%;position:relative}
+ .festival-immersive .culture-hero .hero-copy{max-width:100%;position:relative;z-index:3}
+ .festival-immersive .culture-hero .hero-wordmark{width:115px;max-height:49px;margin-bottom:18px}
+ .festival-immersive .culture-hero h1{font-size:44px;line-height:1.05;max-width:90%}
+ .festival-immersive .culture-hero .hero-description{font-size:11px;line-height:1.8;margin-top:15px;max-width:31ch}
+ .festival-immersive .culture-hero .hero-actions{margin-top:18px;gap:17px}.festival-immersive .hero-actions .button{font-size:10px;min-height:42px;padding-inline:16px;gap:13px}.festival-immersive .hero-actions .text-link{font-size:10px;gap:8px}
+ .festival-immersive .hero-collage{inset:49% 0 0;opacity:.8!important}.festival-immersive .collage-gunungan{height:100%;left:29%;width:40%;opacity:.2}
+ .festival-immersive .collage-wayang.arjuna{height:85%;left:0;bottom:0}.festival-immersive .collage-wayang.semar{height:62%;right:0;bottom:0}
+ .festival-immersive .hero-emblem-motion{top:auto;bottom:3%;left:33%;width:39%}.festival-immersive .cloud-one{display:none}.festival-immersive .cloud-two{width:32%;right:0;bottom:-5%}.festival-immersive .collage-flower{display:none}
+ .festival-immersive .event-strip{margin-top:0}.festival-immersive .event-strip-inner{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:space-between;min-height:70px;padding:12px 15px;gap:12px;text-align:left}.festival-immersive .event-date{width:auto;min-width:0;flex:1}.festival-immersive .event-date strong{font-size:12px}.festival-immersive .event-date span{font-size:8px;max-width:165px}.festival-immersive .event-date svg{display:none}.festival-immersive .countdown{gap:6px;flex:0 0 auto}.festival-immersive .countdown>div{min-width:23px}.festival-immersive .countdown strong{font-size:17px}.festival-immersive .countdown span{font-size:7px}
+ .festival-immersive .schedule-layout{display:flex;flex-direction:column;gap:25px}.festival-immersive .schedule-poster{width:160px}.festival-immersive .schedule-poster>p{font-size:9px}.festival-immersive .timeline{width:100%}
+ .festival-immersive .event-row{padding:15px;gap:13px}.festival-immersive .event-row h3{font-size:15px}.festival-immersive .event-summary p{font-size:11px}.festival-immersive .poster-links{margin-top:25px}
+ .festival-immersive .theme-heading p{font-size:10px}.festival-immersive .theme-introduction{text-align:left;margin:20px 0}.festival-immersive .theme-introduction h2{font-size:29px}.festival-immersive .theme-introduction h2 em{display:block;margin:7px 0 0}.festival-immersive .theme-introduction .theme-description{font-size:11px}
+ .festival-immersive .philosophy-panel{grid-template-columns:1fr;gap:23px}.festival-immersive .philosophy-art .theme-emblem{height:190px}.festival-immersive .philosophy-copy h3{font-size:29px}.festival-immersive .philosophy-nav{gap:6px;justify-content:start}.festival-immersive .philosophy-nav button{font-size:10px;padding:9px 11px}
+ .festival-immersive .brand-colors{grid-template-columns:1fr 1fr;gap:22px 15px}.festival-immersive .brand-colors p{font-size:10px}
+ .festival-immersive .menfess-layout,.festival-immersive .raffle-section,.festival-immersive .feedback-section{display:grid;grid-template-columns:1fr;gap:28px;align-content:start}
+ .festival-immersive .compose-panel,.festival-immersive .feedback-form{padding:20px}.festival-immersive .wall-empty{min-height:300px}.festival-immersive .wall-empty h3{font-size:25px}
+ .festival-immersive .merch-feature{grid-template-columns:1fr;gap:20px;padding:20px}.festival-immersive .merch-feature-art>img:first-child{max-height:180px}.festival-immersive .merch-feature-copy h3{font-size:29px}.festival-immersive .merch-gallery{grid-template-columns:1fr 1fr;gap:25px 15px}.festival-immersive .product-image{height:138px;padding:10px}.festival-immersive .product-image img{max-height:120px}.festival-immersive .product-caption h3{font-size:16px}
+ .festival-immersive .dress-layout,.festival-immersive .location-layout{grid-template-columns:1fr;gap:30px}.festival-immersive .dress-layout h2{font-size:30px}.festival-immersive .dress-layout>div:first-child{padding-left:75px}.festival-immersive .dress-layout>div:first-child>img{width:65px}
+ .festival-immersive .map iframe{height:260px}.festival-immersive .footer-inner{display:flex;flex-direction:column;gap:38px;align-items:start}.festival-immersive .footer-inner>div:first-child{max-width:100%;width:100%}.festival-immersive .footer-inner>div:first-child p{font-size:29px}.festival-immersive .footer-inner>div:first-child img{width:65px}.festival-immersive .footer-bottom{margin-top:40px}.festival-immersive .footer-links{font-size:12px}
+ .festival-immersive .journey-controls{bottom:11px;padding:6px;max-width:calc(100% - 22px)}.journey-rail{max-width:calc(100vw - 116px)}.journey-rail>button{font-size:10px;padding-inline:13px}
+}
+@media(prefers-reduced-motion:reduce){.festival-frame{transform:none!important}.journey-controls{display:none}}

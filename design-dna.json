@@ -1,7 +1,7 @@
 {
   "meta": {
     "name": "Dies Natalis HIFI 68 · Kasundaan Web",
-    "description": "Rounded Kasundaan festival website using only original Figma/PDF artwork, with native scroll-driven morphing and Harewos anonymous messaging and authenticated member interactions.",
+    "description": "Original Kasundaan identity in one pinned full-screen stage; name/NPM/chosen-password registration and anonymous Harewos.",
     "source_references": [
       "https://www.canva.com/design/DAHSvGQu70w/94wi7gCJy0CH8NBvGlQ4yQ/edit",
       "https://www.figma.com/design/Vz9Hcjcyc0VCs4wGDyCahp/DISNAT--?node-id=350-8"
@@ -172,8 +172,8 @@
         "normal": 200,
         "macro": 850
       },
-      "animation_density": "Continuous document-wide landscape plus distinct local surface and original-asset morphing in every chapter",
-      "scroll_behavior": "Reversible native CSS scroll(root block) and view(block); no scroll interception, event listeners or React scroll updates. Compact static layout for reduced motion."
+      "animation_density": "One shared surface morphs between full-screen scenes; stable controls and source artwork.",
+      "scroll_behavior": "Passive native scroll with a sticky stage and coalesced SVG interpolation; no wheel/touch interception. Full static document for reduced motion."
     },
     "components": {
       "button_style": "Teal primary or outlined secondary, pill corners, 43?50px height",
@@ -182,7 +182,7 @@
       "navigation_pattern": "Sticky pill header with mobile expandable menu and preserved anchors",
       "modal_style": "Native poster dialog with download, Escape close and explicit restored focus",
       "list_style": "Chronological dates and real event content",
-      "component_notes": "Participant NPM/token registration, existing operator passwords, anonymous moderation, one-ticket raffle and private operator token recovery."
+      "component_notes": "Required name, unique NPM and self-chosen password; existing operator access; one raffle ticket per NPM."
     }
   },
   "design_style": {
@@ -257,14 +257,14 @@
   "visual_effects": {
     "overview": {
       "effect_intensity": "Full-page morph journey with quiet functional text and forms",
-      "performance_tier": "CSS-native without extra dependencies",
+      "performance_tier": "One coalesced scroll listener; no extra animation dependency.",
       "fallback_strategy": "Compact static complete hero for reduced motion and browsers without animation-timeline",
-      "primary_technology": "Native CSS scroll/view timelines, original local source artwork and rounded surface interpolation"
+      "primary_technology": "Pinned viewport, passive native scroll, requestAnimationFrame SVG contour interpolation and CSS transitions."
     },
     "background_effects": {
-      "type": "Source megamendung and floral imagery",
-      "description": "Two plain colored surfaces morph along the full document with the existing original floral batik texture at low opacity",
-      "technology": "CSS border-radius, transform, background-color and native scroll(root block)",
+      "type": "One compatible SVG interface surface",
+      "description": "A shared flat surface changes contour and color between chapters. Original batik and ornaments remain in the source-art composition.",
+      "technology": "SVG path-coordinate interpolation and fill transitions",
       "params": {
         "opacity": 1,
         "speed": 0,
@@ -335,18 +335,17 @@
       "scroll_triggered_animations": {
         "enabled": true,
         "trigger_points": [
-          "hero contain 0%",
-          "hero contain 100%"
+          "Every chapter boundary across the single pinned stage"
         ],
-        "animation_type": "Reversible artwork translation and fade; text handoff",
-        "scrub_behavior": "Native CSS view timeline, no custom scrolling"
+        "animation_type": "In-place contour, color, opacity and gentle frame-scale transitions",
+        "scrub_behavior": "Native document scroll; no interception of wheel or touch events"
       },
       "scroll_morphing": {
         "enabled": true,
-        "description": "Each chapter interpolates a five-segment SVG backing contour with its own CSS view timeline, alongside the global atmosphere and local frames. Inputs and copy stay stable; original artwork is unchanged.",
+        "description": "Every section occupies the same pinned viewport. A shared compatible SVG surface changes contour and color while adjacent scenes dissolve in place. Input state is retained.",
         "scroll_span": {
-          "desktop": "320svh",
-          "mobile": "300svh"
+          "desktop": "Nine transitions of about one viewport each",
+          "mobile": "Same pinned scene sequence with readable internal content"
         },
         "scope": "Entire page from hero through events, theme, Harewos, raffle, merchandise, dress code, feedback, map and footer",
         "direction": "Continuous in both scroll directions"
@@ -377,7 +376,7 @@
     },
     "image_effects": {
       "type": "Scroll-linked original asset composition",
-      "description": "Original emblem, poster, merchandise, decorative source logos and footer ornaments follow local view progress without modifying artwork paths or aspect ratios",
+      "description": "Original images retain their aspect ratios inside stable chapter compositions. Scene transitions do not warp source artwork.",
       "technology": "CSS",
       "params": {
         "filter_pipeline": [],

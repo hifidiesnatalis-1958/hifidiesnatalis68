@@ -1,50 +1,23 @@
-# Kasundaan · Dies Natalis HIFI ke-68
+# Kasundaan: one full-screen festival stage
 
-The website uses only original artwork from the user's Figma file and the 81-page `Dies NUT!.pdf`. No generated illustrations, stock artwork, replacement logo or invented cultural motif is installed.
+The identity comes exclusively from the user's Figma/PDF artwork: original 68 emblem, wayang, gunungan, native wordmark, batik, clouds, flourishes, source posters and merchandise. No generated illustration, stock art, cultural drawing or animation dependency is introduced. The existing palette and fonts remain: teal #0C575B, burgundy #8C1927, gold #C18A31, sage/cream surfaces, Libre Baskerville and Montserrat.
 
-The user supplied three cultural website references and explicitly requested more rounded corners and morphing while scrolling. Their examples inform the spacious editorial layout, asymmetric composition and soft panels. The cultural identity comes entirely from the existing Sundanese assets.
+## Layout correction
 
-## Redesign decisions
+FestivalJourney.jsx replaces the long sequence of independent moving sections with one sticky viewport stage. Every chapter occupies the same screen area beneath the existing header. Native document scroll supplies progress; adjacent scenes dissolve and gently scale in place while one compatible SVG surface interpolates its contour and color. Wheel and touch events are not intercepted. Keyboard-accessible chapter navigation and original header links also move to a scene; deep links, browser history and login return paths remain supported.
 
-The previous version used a dense patterned opening, small-radius controls and full-width dark sections. The new opening pairs original wayang and the 68 emblem with a large, left-aligned welcome. Light sage, terracotta and cream panels create breathing room. Controls use 16px corners, cards use 24–32px, and scene panels use 30–44px. Navigation and buttons use pill shapes. These larger radii follow the user's explicit preference. Design variance: 8; motion: 8 across the page; density: 4.
+The previous hero's separate sticky stage and per-section animation are disabled inside the immersive experience. Controls, fields and source images keep their normal geometry. Only the active scene accepts pointer and keyboard input; inactive scenes are inert and removed from the accessibility tree. Scenes remain mounted, so text entered in Harewos survives navigation.
 
-The palette retains deep teal **#0C575B**, burgundy **#8C1927**, gold **#C18A31** and the untouched multicolor source art. The canvas is **#F4F1E8** with **#FFFCF6** surfaces. Local Libre Baskerville carries headings and Montserrat carries controls and body text. The native multicolor Dies Natalis wordmark remains an image; a semantic H1 identifies the celebration.
+Long content is readable inside the viewport panel. The surface does not clip form controls or source artwork. Mobile date/countdown controls share one compact row. The header and chapter rail remain fixed. Document scroll anchoring is disabled for the story because changes to filters, authentication and dialogs must not reset the selected scene. Native source dialogs freeze scene progress and restore the original scroll position and trigger focus when closed.
 
-## Source artwork
+## Motion and fallback
 
-`public/assets/kasundaan/manifest.json` records dimensions, PDF page, image xref and byte count for 38 web derivatives. Original Arjuna and Semar images come from page 71, clouds from page 7, and the blue gunungan vector from page 8. The five philosophy panels add native number/batik/whole-logo images from pages 52–54 and matching source posters from pages 10, 52–55. The vector export removes only the two full-page white background rectangles and crops the view box around the existing artwork. No decorative path is redrawn. Raster exports retain the source alpha masks and natural proportions.
+One passive scroll listener coalesces work through requestAnimationFrame. Pixel progress updates SVG/DOM styles; React state changes only when the selected scene changes. The compatible path coordinates describe a plain interface surface, not new cultural imagery. Source art is never distorted. Reduced motion receives the full normal document, without the pinned sequence; switching that preference at runtime clears the temporary styles.
 
-The existing 68, physics and kujang logos, native wordmark, four floral corners, batik, flourishes, merchandise photos and source posters are preserved. The full 81-page vector archive stays outside the web bundle.
+## Preserved content and assets
 
-## Scroll scene
+log.md, content/site.json, CultureHero.jsx, Presentation.jsx, next.config.mjs and vercel.json remain byte-identical to the start of this correction. Confirmed dates, venue, dress code, contacts and approved wording are kept. The five philosophy panels retain their native artwork and source-poster dialogs. The catalogue retains actual product imagery and ordering links.
 
-`CultureHero.jsx` is an isolated, memoized client leaf. `app/culture.css` uses a named CSS view timeline on the hero and a sticky stage. Native scroll progress changes a plain backing shape's contours and color, scales/translates the original emblem, fades the original wayang and hands off the welcome to the theme. Scrolling upward reverses the scene. Original image pixels and vector paths are unchanged.
+## Corrected registration
 
-There are no scroll listeners, scroll React state, wheel interception, animation libraries or new dependencies. Source images reserve dimensions. A complete compact static hero appears when `prefers-reduced-motion: reduce` is active or CSS scroll timelines are unsupported. Controls and anchors remain available without the effect.
-
-## Preserved behavior
-
-Navigation, anchor IDs, forms, cookie sessions, anonymous Harewos, moderation, profanity screening, raffle login requirement and operator presentation controls remain. Participant authentication now uses NPM/token, while existing operators retain password access. Poster dialogs support download, Escape and restored keyboard focus. Theme exploration has five keyboard-accessible panels with matching source posters. Merchandise uses actual product artwork and a new featured-shirt composition.
-
-The confirmed dates remain **17 October 2026** for online activities and **24 October 2026 at 09:00 WIB** for the main celebration. Older draft posters do not override these dates. The confirmed venue is Auditorium Bale Santika, Universitas Padjadjaran. Dress code: Tradisional Sunda (Kebaya, Pangsi, Batik Sunda). The public anonymous feature is named Harewos; existing API and Sheet identifiers stay compatible. Apps Script, spreadsheet configuration and secrets are unchanged.
-
-## Verification
-
-Browser checks cover responsive widths 1440, 768, 390 and 320px, source image loading, reversible desktop/mobile morphing, reduced motion, anchor navigation, native poster dialogs, theme exploration, anonymous submission, login, raffle privacy and operator controls. The production build is verified separately.
-
-The morph sequence spans 320svh on desktop and 300svh on mobile, about 2.5 times the previous scroll journey. Reduced motion remains a compact static scene.
-
-
-## Full-page morph journey
-
-The scroll story now continues through every section and reverses when scrolling back upward. A fixed decorative landscape changes flat contours, color and position across the entire document. Its only texture is the original PDF floral batik; there are no new illustrations, synthetic cultural motifs, canvas effects or third-party dependencies.
-
-Each chapter also responds to its own viewport progress: event rows and date shapes, poster frame, theme emblem, Harewos wall/cards, raffle ticket, merchandise frames/photos, dress code, message form surface, map frame and footer. Native CSS `scroll(root block)` drives the global layer; anonymous `view(block)` timelines drive local geometry. Native image proportions and vector paths stay intact. Text, input fields, checkbox controls and map contents do not transform. The form's value and layout survive a full scroll round trip.
-
-Only the hero keeps its existing 320svh/300svh scroll length. Other sections keep their normal document height and anchor navigation. The background is noninteractive and isolated behind the page. Reduced motion and browsers without scroll timelines receive the complete static layout. Apps Script, Vercel configuration and confirmed event content are preserved; public account behavior follows the new NPM/token rules.
-
-## Chapter geometry and copy preservation · 15 October 2026
-
-Each chapter now owns a plain SVG backing surface whose five compatible cubic segments interpolate with a named CSS view timeline. This changes the actual silhouette, complementing the existing hero, global atmosphere, ticket, map and footer motion. Original decorative assets move separately. The shape is a UI surface, not a replacement illustration. Overflow is clipped at chapter boundaries without creating a nested scrolling container. Input geometry and text remain stable.
-
-The original copy in `log.md`, `content/site.json`, `CultureHero.jsx` and `Presentation.jsx` is unchanged. Existing event, dress-code, feedback and location wording is preserved. Only requested Harewos, merchandise, authentication and philosophy additions change content. No machine-generated illustration or stock asset is introduced. All 38 manifest entries are referenced by an actual component or stylesheet.
+Participants enter their name, NPM and chosen password plus confirmation. Login uses NPM/password. One eligible NPM has one account and one raffle ticket. Names are stored separately in the added Accounts.name column and appear in the account and ticket. Harewos remains anonymous. The old token receipt and recovery endpoint are removed. Operators retain their existing password login. Apps Script v3 and setupDiesnat() are required to enable saved names; the migration appends a header without deleting existing account values.

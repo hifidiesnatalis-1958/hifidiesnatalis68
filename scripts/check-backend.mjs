@@ -8,7 +8,7 @@ const url=process.env.APPS_SCRIPT_URL;
 const validUrl=Boolean(url && /^https:\/\/script\.google\.com\/macros\/s\/[^/?#]+\/exec$/.test(url));
 console.log(`URL Web app: ${validUrl ? 'siap' : 'belum diisi atau format keliru'}`);
 console.log(`Shared secret: ${process.env.APPS_SCRIPT_SECRET?.length>=32 ? 'terisi' : 'belum diisi (minimal 32 karakter)'}`);
-console.log(`Sesi akun: ${process.env.SESSION_SECRET?.length>=32 ? 'siap; peserta memakai NPM/token, panitia memakai password' : 'SESSION_SECRET belum diisi (minimal 32 karakter)'}`);
+console.log(`Sesi akun: ${process.env.SESSION_SECRET?.length>=32 ? 'siap; peserta memakai NPM/password dan nama tersimpan' : 'SESSION_SECRET belum diisi (minimal 32 karakter)'}`);
 if(!validUrl) {process.exitCode=1;}
 else {
   try {
@@ -16,14 +16,14 @@ else {
     const result=await response.json();
     if(!response.ok || result.ok!==true || result.service!=='HIFI Dies Natalis 68') throw new Error('Respons tidak sesuai backend HIFI.');
     console.log(`Health Apps Script: HTTP ${response.status}, HIFI Dies Natalis 68`);
-    if(result.auth==='nickname-password') console.log('Backend Accounts: tersedia dan kompatibel dengan NPM/token website');
+    if(result.auth==='npm-password' && result.version>=3) console.log('Backend akun nama/NPM/password: versi 3 tersedia');
     else {console.log('Backend akun: deployment masih versi lama. Salin app.gs terbaru, jalankan setupDiesnat(), lalu Deploy → Manage deployments → Edit → New version → Deploy. URL /exec tetap sama.');process.exitCode=1;}
   } catch {console.log('Health Apps Script: gagal. Periksa deployment Web app, akses Anyone dan koneksi internet.');process.exitCode=1;}
   if(!backendReady()) {console.log('Tes data spreadsheet menunggu APPS_SCRIPT_SECRET yang sama persis dengan SHARED_SECRET di Apps Script.');process.exitCode=1;}
   else {
     // Read-only checks use the actual server bridge and HMAC; no demo account or data writes.
     for(const action of ['content.get','menfess.list','messages.list','raffle.status','auth.status']) {
-      try {await backend(action);console.log(`${action}: berhasil`);}
+      try {const data=await backend(action);if(action==='auth.status' && data.accountNames!==true){console.log('auth.status: kolom nama belum siap. Jalankan setupDiesnat() dan deploy app.gs versi terbaru.');process.exitCode=1;}else console.log(`${action}: berhasil`);}
       catch(error) {console.log(`${action}: ${error.code || 'ERROR'} — ${error.message}`);process.exitCode=1;break;}
     }
   }

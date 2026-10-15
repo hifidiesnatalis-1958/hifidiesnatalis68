@@ -1,9 +1,11 @@
 import {test,expect} from '@playwright/test';
 import {mkdir} from 'node:fs/promises';
-test('public site, nickname login entry, events and original assets work',async({page})=>{
+import {visitScene} from './navigation.mjs';
+test('public site, password login entry, events and original assets work',async({page})=>{
   await page.goto('/');await expect(page.locator('h1')).toContainText('Dies Natalis');
   await page.evaluate(()=>document.fonts.ready);
   await expect(page.locator('#rangkaian .event-row')).toHaveCount(4);
+  await visitScene(page,'rangkaian');
   await page.getByRole('button',{name:'17 Oktober',exact:true}).click();await expect(page.locator('.event-row')).toHaveCount(2);
   await page.getByRole('button',{name:'Semua',exact:true}).click();
   await page.locator('.login-button').click();await expect(page).toHaveURL(/\/masuk\?/);
@@ -19,13 +21,14 @@ test('public site, nickname login entry, events and original assets work',async(
   await expect(page.locator('#undian input[type=checkbox]')).toHaveCount(0);
   const ticketRequests=[];
   page.on('request',request=>{if(request.method()==='POST' && request.url().endsWith('/api/raffle')) ticketRequests.push(request);});
+  await visitScene(page,'undian');
   await page.getByRole('button',{name:'Masuk untuk ikut undian'}).click();
   await expect(page).toHaveURL(/\/masuk\?/);
   expect(ticketRequests).toHaveLength(0);
   await page.goto('/');
   await expect(page.locator('#lokasi')).toContainText('Auditorium Bale Santika');
   await expect(page.locator('#lokasi iframe')).toHaveAttribute('src', /Auditorium%20Bale%20Santika/);
-  await page.locator('#tema summary').click();await expect(page.locator('#tema details')).toHaveAttribute('open','');
+  await visitScene(page,'tema');await page.locator('#tema summary').click();await expect(page.locator('#tema details')).toHaveAttribute('open','');
   await page.locator('img').evaluateAll(images=>Promise.all(images.map(image=>{if(image.complete && image.naturalWidth>0)return;image.loading='eager';return new Promise((resolve,reject)=>{image.addEventListener('load',resolve,{once:true});image.addEventListener('error',reject,{once:true});});})));
   const images=await page.locator('img').evaluateAll(images=>images.map(image=>({src:image.getAttribute('src'),ok:image.complete && image.naturalWidth>0})));
   expect(images.every(image=>image.ok)).toBe(true);
@@ -59,7 +62,7 @@ test('raffle ticket is hidden immediately after logout even if a stale status re
   await page.route('**/api/session',route=>route.fulfill({json:{user:{id:'10001',nickname:'Baraya bebas',name:'Baraya bebas',role:'user',admin:false},loginReady:true}}));
   await page.route('**/api/raffle',route=>route.fulfill({json:{open:true,total:1,ticket:{number:'DN68-00001'},winners:[]}}));
   await page.route('**/api/auth/logout',route=>route.fulfill({json:{ok:true}}));
-  await page.goto('/');await expect(page.locator('#undian')).toContainText('DN68-00001');
+  await page.goto('/');await visitScene(page,'undian');await expect(page.locator('#undian')).toContainText('DN68-00001');
   await page.getByRole('button',{name:'Keluar dari akun'}).click();
   await expect(page.locator('#undian')).not.toContainText('DN68-00001');
   await expect(page.getByRole('button',{name:'Masuk untuk ikut undian'})).toBeVisible();

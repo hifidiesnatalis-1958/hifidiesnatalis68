@@ -1,10 +1,29 @@
-    # Dies Natalis HIFI ke-68 · Kasundaan
+# Dies Natalis HIFI ke-68 · Kasundaan
 
-React JSX / Next.js + Vercel, Google Apps Script + Google Sheets. Proyek berada di `S:\Code\hifidiesnatalis68`.
+Next.js/React JSX di Vercel dengan Google Apps Script dan Google Sheets. Proyek: `S:\Code\hifidiesnatalis68`.
 
-Pengguna membuat **nickname sendiri dan password** untuk register dan login, mengikuti pola web KKN. Nickname mendukung spasi, simbol, Unicode, dan kapitalisasi pilihan pengguna; pencarian akun tidak membedakan huruf besar-kecil. Tidak membutuhkan email atau Google OAuth.
+## Akun peserta
 
-## Menjalankan
+Daftar dengan **nama lengkap, NPM, password pilihan sendiri, dan konfirmasi password**. Masuk dengan **NPM dan password**. Nama tampil pada akun dan tiket; Harewos tetap anonim. Tidak ada token login yang diterbitkan atau perlu disalin.
+
+NPM: `140310` + dua digit angkatan `00`–`25` + `00` + dua digit nomor `01`–`99`. Contoh: `140310240054`. Angkatan 26 belum dapat mendaftar. **Satu NPM = satu akun = satu tiket undian**; kesamaan nama tidak membatasi orang lain. Pemeriksaan ini memvalidasi format, bukan kepemilikan terhadap daftar mahasiswa universitas.
+
+Nama 2–100 karakter; password baru 10–128 karakter. Password di-hash menggunakan scrypt dengan salt acak sebelum dikirim ke Google; password asli tidak disimpan di Sheets atau cookie. Nama diteruskan dari data akun yang tersimpan, bukan dari input login. Cookie peserta berlaku 30 hari, cookie operator 12 jam; HttpOnly, SameSite=Lax, Secure di Vercel/HTTPS.
+
+## Wajib memperbarui Apps Script untuk kolom nama
+
+Revisi ini memerlukan `apps-script/app.gs` **versi 3** agar nama tersimpan terpisah dari NPM.
+
+1. Salin seluruh `apps-script/app.gs` ke editor Apps Script yang terhubung dengan spreadsheet acara, lalu simpan.
+2. Jalankan `setupDiesnat()`. Migrasi menambahkan header `name` pada kolom G tab Accounts; enam kolom lama, data, dan akun operator dipertahankan. Jangan mengubah header secara manual.
+3. Deploy → Manage deployments → Edit → New version → Deploy. Pertahankan **Execute as Me**, **Who has access: Anyone**, URL `/exec`, dan nilai secret yang sama.
+4. Jalankan `node scripts/check-backend.mjs`. Health harus melaporkan `npm-password`, versi 3, dan `auth.status` harus menyatakan kolom nama siap.
+
+Pendaftaran ditahan bila deployment Google belum mendukung nama, supaya akun tidak tersimpan tanpa nama. Kolom `nickname` tetap menyimpan NPM sebagai identitas unik, sedangkan kolom `name` menyimpan nama. Kedua kolom memakai string JSON agar teks tetap literal di Sheets. Akun lama tidak dihapus atau diubah password-nya oleh migrasi.
+
+Script Properties: `SHARED_SECRET` minimal 32 karakter dan `SPREADSHEET_ID`. Secret sama dengan `APPS_SCRIPT_SECRET` di Vercel. Tab Accounts, Users, Menfess, Likes, Messages, Tickets, Draws, Settings tetap dipakai. Instalasi baru juga menggunakan `apps-script/appsscript.json`.
+
+## Lokal dan Vercel
 
 ```powershell
 npm.cmd install
@@ -12,57 +31,32 @@ if (-not (Test-Path -LiteralPath .env.local)) { Copy-Item .env.example .env.loca
 npm.cmd run dev
 ```
 
-Buka http://localhost:3068; register dan login ada di `/masuk`. URL Apps Script, shared secret dan secret sesi lokal sudah terpasang. Pertahankan nilai tersebut.
+Buka http://localhost:3068. `/masuk` menyediakan masuk peserta, daftar, dan jalur Panitia. Environment yang sudah bekerja tetap dipakai:
 
-## Mengaktifkan revisi akun pada Apps Script
+- `APP_URL`: origin situs. Production: `https://hifidiesnatalis68-kasundaan.vercel.app`.
+- `SESSION_SECRET`: secret sesi minimal 32 karakter.
+- `APPS_SCRIPT_URL`: URL Web app Google `/exec`.
+- `APPS_SCRIPT_SECRET`: sama persis dengan SHARED_SECRET.
 
-1. Salin seluruh isi `apps-script/app.gs` terbaru ke editor Apps Script pada [spreadsheet Dies Natalis 68](https://docs.google.com/spreadsheets/d/1p4-ieKHatSnqblBdOP219ohSOD5jWhK-Xg3z1mWhoMA/edit). Simpan.
-2. Jalankan `setupDiesnat()` sekali untuk menambahkan tab **Accounts**. Tab serta data lama dipertahankan.
-3. **Deploy → Manage deployments → Edit** (ikon pensil) → pilih **New version → Deploy**. Pertahankan deployment Web app yang sama: **Execute as: Me**, **Who has access: Anyone**. URL `/exec` tetap sama.
-4. Jalankan `node scripts/check-backend.mjs`. Pemeriksaan read-only harus menampilkan backend nickname/password dan keberhasilan `auth.status` selain data acara, menfess, pesan-kesan, dan undian.
+Vercel: Next.js, Node 22+, install `npm ci`, build `npm run build`. Redeploy setelah kode/environment berubah. Origin diverifikasi terhadap APP_URL dan domain deployment Vercel resmi; Host atau forwarded header sembarang tidak dipercaya. Localhost dan 127.0.0.1 diterima pada port proyek 3068/3069.
 
-Script Properties yang dibutuhkan tetap `SHARED_SECRET` dan `SPREADSHEET_ID`. `ADMIN_EMAILS` lama tidak dipakai; tidak perlu mengubah secret. Deployment lama belum menyediakan register/login meskipun data acara masih bisa dibaca.
+Embedding iframe tetap tersedia sesuai konfigurasi pengguna. Bila cookie pihak ketiga diblokir browser, buka situs langsung di tab baru untuk masuk.
 
-Tab aplikasi: **Accounts**, Users (data autentikasi lama dipertahankan), Menfess, Likes, Messages, Tickets, Draws, Settings. Jangan mengubah header. Accounts menyimpan hash password, bukan password asli. Kolom nickname disimpan sebagai string JSON agar simbol dan teks menyerupai rumus tetap literal.
+## Panitia, Harewos, dan undian
 
-Untuk instalasi baru, pasang `apps-script/appsscript.json` melalui editor manifest. Spreadsheet default adalah `1p4-ieKHatSnqblBdOP219ohSOD5jWhK-Xg3z1mWhoMA`; Script Property dapat mengarahkannya ke spreadsheet lain milik panitia.
+Masuk lewat `/masuk?mode=panitia`. Kredensial operator lama tersedia di `.env.admin.local`, yang diabaikan Git. Hak operator tidak diberikan oleh pendaftaran publik. Operator tambahan dibuat melalui `node scripts/create-admin.mjs "Nickname operator"`; opsi `--stdin-password` menerima password melalui stdin. Nilai password tidak perlu dikirim lewat chat atau argumen command line.
 
-## Akun operator / panitia
+Panel `/admin` mengelola informasi acara, moderasi, dan undian. Pendaftaran undian dibuka/ditutup panitia. Setiap akun mendapat satu tiket dan hanya dapat menang sekali. Raffle ticket memakai nama akun, bukan NPM lengkap.
 
-Pendaftaran publik selalu membuat akun biasa. Nama apa pun yang dipilih tidak memberikan hak panitia. Buat akun operator dari komputer pemilik proyek dengan nickname pilihan sendiri:
+`/presentasi` menampilkan Harewos yang disetujui dan lolos filter dalam urutan acak, dengan autoplay dan layar penuh. Pintasan: panah kiri/kanan, spasi, F, H. Hanya operator yang dapat mengaksesnya. Harewos memakai pseudonim HMAC dan tidak menampilkan nama/NPM pengirim, termasuk dalam moderasi. Filter kata kasar melengkapi pemeriksaan panitia. Tambahan kata: MENFESS_BLOCKED_WORDS di Script Properties.
 
-```powershell
-node scripts/create-admin.mjs "Nickname operator pilihan Anda"
-```
+## Panggung morphing
 
-Jalankan setelah Apps Script diperbarui. Script membuat password acak dan menyimpan nickname serta password di **`.env.admin.local`**, yang diabaikan Git. Buka file tersebut untuk memperoleh kredensial, lalu masuk lewat `/masuk`. Tidak ada endpoint publik untuk mengangkat akun menjadi admin. Nickname yang sudah digunakan tidak diambil alih; pilih nickname operator lain. File kredensial lama tidak ditimpa.
+Seluruh bagian berada pada **satu panggung layar penuh**. Scroll mengganti isi melalui perubahan bentuk permukaan dan transisi di tempat, dengan navigasi langsung ke tiap bagian. Form tetap terpasang agar isinya tidak hilang. Isi panjang tetap dapat dibaca di area panggung. Reduced motion menampilkan dokumen biasa secara lengkap.
 
-Untuk password operator pilihan sendiri, gunakan opsi `--stdin-password` dan berikan password lewat stdin (8–128 karakter). Password tidak perlu dijadikan argumen command line. Akun operator proyek ini sudah dibuat sesuai pilihan pengguna; hasil login nyata tercatat di `VALIDATION.md`.
+Semua gambar memakai aset asli Figma/PDF; lima panel filosofi dan poster sumber tetap tersedia. `log.md`, konten acara yang disetujui, serta file Presentation dan CultureHero dipertahankan. Tidak ada ilustrasi AI atau dependency animasi baru.
 
-Panel `/admin` mengelola persetujuan pesan, rangkaian acara, tema/logo, dress code, lokasi/peta, kontak, pendaftaran undian, dan pengundian. Tutup pendaftaran sebelum mengundi. Setiap akun mendapat satu tiket dan hanya dapat menang sekali. Hasil tersimpan di Sheets.
-
-## Presentasi menfess
-
-Operator dapat membuka `/presentasi` dari panel. Hanya pesan yang sudah disetujui dan lolos filter yang ditampilkan, selalu sebagai **Baraya anonim**. Pesan diacak, tampil sekali per putaran, dapat dinavigasi manual atau otomatis, dan mendukung layar penuh. Tombol pintas: panah kiri/kanan, spasi, F, dan H. Durasi otomatis 8/12/20/30 detik, berhenti pada pesan terakhir.
-
-Menfess selalu anonim, termasuk panel panitia; tabelnya memakai pseudonim HMAC akun. Pesan-kesan dapat menampilkan nickname bila pengguna memilihnya. Filter kata kasar, variasi penulisan, dan sebagian ancaman dijalankan di server saat pengiriman, persetujuan, dan penayangan. Tambahan filter dapat diisi sebagai `MENFESS_BLOCKED_WORDS` di Script Properties, dipisahkan koma. Moderasi manual tetap tersedia.
-
-## Vercel
-
-Import folder proyek atau repository sebagai **Next.js**, Node **22+**, install `npm ci`, build `npm run build`. Pasang variabel dari `.env.example`:
-
-- `APP_URL`: origin HTTPS domain Vercel yang dipakai.
-- `SESSION_SECRET`: nilai acak minimal 32 karakter untuk cookie sesi.
-- `APPS_SCRIPT_URL`: URL deployment Web app `/exec`.
-- `APPS_SCRIPT_SECRET`: sama persis dengan `SHARED_SECRET` Apps Script.
-
-Redeploy Vercel setelah mengubah konfigurasi. Google Client ID, Client Secret, OAuth consent screen, dan redirect URI tidak diperlukan.
-
-## Penyimpanan dan akses
-
-Password di-hash di server Node dengan scrypt, salt acak per akun, parameter N=32768, r=8, p=3, dan perbandingan waktu tetap; mengikuti [rekomendasi scrypt OWASP](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#scrypt). Password asli tidak dikirim ke Apps Script atau disimpan di Sheets. Hash hanya dibaca melalui bridge server yang ditandatangani, tidak dikembalikan ke browser.
-
-Cookie sesi HttpOnly, SameSite=Lax, Secure pada HTTPS, berlaku 12 jam. Sesi login Google versi lama tidak diterima. Mutasi memeriksa Origin. Apps Script memeriksa HMAC, timestamp dan nonce serta memakai LockService untuk mencegah duplikasi nickname/tiket. Percobaan login dibatasi per nickname dan IP memakai CacheService; batas per nickname dihapus setelah login berhasil.
+Kamus resmi dan tata bahasa (1.189 halaman) ada di `kamus-basa-sunda/`, dikecualikan dari Git/Vercel. Skill global `natural-sundanese` tersedia untuk rujukan bahasa.
 
 ## Pemeriksaan
 
@@ -73,6 +67,6 @@ npm.cmd run build
 node scripts/check-backend.mjs
 ```
 
-Tes otomatis memakai adapter Apps Script/Sheets dan browser dengan fixture khusus pengujian; tidak membuat akun atau pesan di spreadsheet pengguna. Pemeriksaan terakhir membaca deployment nyata tanpa mencetak secret atau menulis data. Hasil terbaru ada di `VALIDATION.md`.
+Tes memakai Apps Script dalam memori dan fixture browser; tidak membuat NPM, pesan, atau tiket produksi. Bridge mempertahankan HMAC, timestamp, nonce, lock dan pembatas percobaan. Koneksi yang gagal sebelum POST terkirim dapat dicoba ulang; POST yang mungkin sudah tersimpan tidak dikirim ulang ketika responsnya gagal diambil.
 
-Lokasi acara, dress code, dan rincian tambahan berstatus menyusul sesuai arahan. Kontak Zahra Nova Carolyn dan tautan Discord Dress to Impress sudah disertakan. Desain menggunakan logo, batik, dan ornamen asli Figma DISNAT serta font lokal Libre Baskerville dan Montserrat.
+Acara utama: 24 Oktober 2026, 09.00 WIB, Auditorium Bale Santika, Universitas Padjadjaran, Jatinangor. Busana: Tradisional Sunda (Kebaya, Pangsi, Batik Sunda). Kegiatan online 17 Oktober. Isi resmi tetap mengikuti data panitia.

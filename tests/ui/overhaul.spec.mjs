@@ -1,7 +1,8 @@
 import {test, expect} from '@playwright/test';
+import {visitScene} from './navigation.mjs';
 
 test('native poster dialog closes with Escape and returns focus to its trigger', async ({page}) => {
-  await page.goto('/');
+  await page.goto('/');await visitScene(page,'rangkaian');
   const trigger = page.locator('#rangkaian .poster-links').getByRole('button', {name: 'Lomba online', exact: true});
   await trigger.click();
   const dialog = page.getByRole('dialog');
@@ -15,7 +16,7 @@ test('native poster dialog closes with Escape and returns focus to its trigger',
 });
 
 test('five philosophy panels use source artwork and keyboard navigation',async({page})=>{
- await page.goto('/');const theme=page.locator('#tema');await expect(theme.getByRole('tab')).toHaveCount(5);
+ await page.goto('/');await visitScene(page,'tema');const theme=page.locator('#tema');await expect(theme.getByRole('tab')).toHaveCount(5);
  const names=['Kujang','Angka 68','Ornamen Batik','Keseluruhan','Warna'],sources=['poster-kujang','poster-logo','poster-batik','poster-whole','poster-colors'];
  for(const [i,name] of names.entries()){
   await theme.getByRole('tab',{name,exact:true}).click();await expect(theme.getByRole('tabpanel')).toBeVisible();await expect(theme.getByRole('tabpanel').getByRole('heading',{name,exact:true})).toBeVisible();
@@ -29,6 +30,7 @@ test('five philosophy panels use source artwork and keyboard navigation',async({
 test('merch catalogue uses actual product assets and opens a readable poster on mobile', async ({page}) => {
   await page.setViewportSize({width: 390, height: 844});
   await page.goto('/');
+  await visitScene(page,'cinderamata');
   await expect(page.locator('.merch-product')).toHaveCount(4);
   await page.getByRole('button', {name: 'Lihat katalog', exact: true}).click();
   const dialog = page.getByRole('dialog');
@@ -51,6 +53,7 @@ test('authenticated anonymous menfess still sends to the existing API and shows 
   });
   await page.goto('/');
   await expect(page.locator('.user-name')).toHaveText('Nama bebas');
+  await visitScene(page,'menfess');
   await page.getByLabel('Untuk siapa?').fill('Baraya HIFI');
   await page.getByLabel('Tulis Harewos kamu').fill('Sampai bertemu di perayaan.');
   await page.getByRole('button', {name: 'Kirim Harewos', exact: true}).click();
