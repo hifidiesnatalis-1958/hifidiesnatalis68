@@ -38,7 +38,7 @@ export default function Auth() {
           <button aria-pressed={operator} disabled={busy} onClick={()=>switchMode('operator')}>Panitia</button>
         </div>
         <h1>{register ? 'Pendaftaran Akun' : operator ? 'Masuk Panitia' : 'Masuk ke Akun'}</h1>
-        <p className="auth-description">{register ? 'Pendaftaran ini terbuka bagi seluruh warga himpunan Fisika Unpad hingga angkatan 25.' : operator ? 'Gunakan akun panitia yang telah terdaftar di sistem.' : 'Masukkan NPM dan kata sandi yang telah Anda daftarkan.'}</p>
+        <p className="auth-description">{register ? 'Warga himpunan Fisika Unpad hingga angkatan 25 dapat mendaftarkan akun di sini.' : operator ? 'Gunakan akun panitia yang telah terdaftar di sistem.' : 'Masukkan NPM dan kata sandi yang telah Anda daftarkan.'}</p>
         <form className="auth-form" onSubmit={submit}>
           {register && <><label htmlFor="auth-name">Nama lengkap</label><input id="auth-name" name="name" autoComplete="name" required minLength={2} maxLength={100} value={name} disabled={busy} onChange={e=>setName(e.target.value)} placeholder="Tuliskan nama lengkap Anda"/></>}
           <label htmlFor="auth-identity">{operator ? 'Nama pengguna' : 'NPM'}</label>

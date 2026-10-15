@@ -17,7 +17,7 @@ test('public site, password login entry, events and original assets work',async(
   await expect(page.locator('#rangkaian')).toContainText('09.00 WIB–selesai');
   await expect(page.locator('#menfess')).toContainText('Pesan ini bersifat anonim');
   await expect(page.locator('#menfess input[type=checkbox]')).toHaveCount(0);
-  await expect(page.locator('#undian')).toContainText('Wajib masuk akun.');
+  await expect(page.locator('#undian')).toContainText('Diwajibkan untuk memiliki akun terlebih dahulu');
   await expect(page.locator('#undian input[type=checkbox]')).toHaveCount(0);
   const ticketRequests=[];
   page.on('request',request=>{if(request.method()==='POST' && request.url().endsWith('/api/raffle')) ticketRequests.push(request);});

@@ -101,13 +101,30 @@ Selain itu, pembaruan ini menuntaskan perbaikan ketajaman aset visual **Gunungan
   - `components/LogoPhilosophy.jsx`: Setiap panel filosofi ditulis dengan struktur SPOK berpredikat aktif (*melambangkan*, *menyimpan*, *menandai*, *merangkum*, *mengangkat*, *memadukan*, *berpadu membentuk*).
   - `content/site.json`: Seluruh deskripsi agenda lomba, check sound, acara puncak, dan busana disusun dengan kata kerja aktif (*merayakan*, *memadukan*, *menampilkan*, *mengunggah*, *menguji*, *menghadiri*, *mengenakan*).
 
+### Standardisasi Verba Predikatif & Perataan Kata Kerja Aktif Antarseksi
+- **Tujuan:** Menuntaskan perataan kata kerja aktif di setiap seksi situs, menghapus kalimat telegram/buntung yang tersisa (khususnya *"Wajib masuk akun"*), dan memperkuat predikat aktif di seluruh komponen.
+- **Perubahan Rinci:**
+  - `components/Home.jsx`:
+    - Bagian Undian: Mengganti potongan kalimat bunting menjadi kalimat berpredikat utuh: **"Diwajibkan untuk memiliki akun terlebih dahulu."**.
+    - Bagian Rangkaian: Mengubah tombol panduan menjadi verba aktif: *"Buka petunjuk teknis lomba"*.
+    - Bagian Tema: Memperjelas trigger accordion dengan kata kerja aktif: *"Mengenal cerita di balik identitas visual"*.
+    - Bagian Harewos: Status moderasi kiriman pribadi dipertegas dengan subjek & verba aktif: *"Panitia sedang meninjau pesan ini"*, dan tombol muat menggunakan verba aktif: *"Muat pesan berikutnya"*.
+    - Bagian Cenderamata: Setiap caption produk diperkaya dengan verba aktif (*Menampilkan desain resmi...*, *Membawa perlengkapan kuliah...*, *Menghiasi kunci dan tas...*, *Menghadirkan ragam hias...*).
+    - Bagian Busana: Link narahubung diselaraskan dengan verba aktif: *"Hubungi panitia"*.
+    - Bagian Lokasi: Label kontak dilengkapi verba aktif: *"Hubungi narahubung"*.
+  - `components/Auth.jsx`: Deskripsi pendaftaran menggunakan verba aktif: *"Warga himpunan Fisika Unpad hingga angkatan 25 dapat mendaftarkan akun di sini."*.
+  - `components/Presentation.jsx`: Keterangan brand layar presentasi menggunakan verba aktif: *"Menampilkan pesan anonim warga himpunan"*, serta tombol tautan *"Buka panel panitia"*.
+  - `content/site.json`: Sinkronisasi deskripsi undian dengan predikat utuh *"Diwajibkan untuk memiliki akun terlebih dahulu."*.
+  - `tests/ui/site.spec.mjs`: Penyesuaian assertion pengujian undian terhadap teks baru.
+
 ---
 
 ## 4. Status Verifikasi
 
 - `npm test`: **28 / 28 lulus**
-- `npm run build`: **Turbopack Next.js 16.4.0 sukses tanpa peringatan**
 - `npx playwright test tests/ui/site.spec.mjs`: **7 / 7 lulus**
+- `npx playwright test tests/ui/overhaul.spec.mjs`: **4 / 4 lulus**
+- `npm run build`: **Turbopack Next.js 16.4.0 sukses tanpa peringatan**
 - Status Git: Bersih, tersinkronisasi, dan siap di-deploy secara otomatis ke Vercel melalui branch `main`.
 
 

@@ -72,6 +72,6 @@
   "raffle": {
     "open": false,
     "prize": "Panitia akan mengumumkan hadiah utama saat acara berlangsung.",
-    "description": "Setiap warga himpunan berhak memperoleh satu tiket undian."
+    "description": "Setiap warga himpunan berhak memperoleh satu tiket undian. Diwajibkan untuk memiliki akun terlebih dahulu."
   }
 }
