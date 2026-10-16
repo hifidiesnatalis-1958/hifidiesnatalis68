@@ -130,7 +130,7 @@ test('opening a poster during navigation pauses and resumes the object transitio
  await page.setViewportSize({width:1440,height:900});await page.goto('/');await visitScene(page,'rangkaian');const journey=page.locator('.festival-immersive');
  // Activate both handlers in one browser task: normal Playwright clicks can
  // wait for the navigation animation before returning control to the test.
- const motion=await page.evaluate(()=>{const home=[...document.querySelectorAll('.journey-rail button')].find(n=>n.textContent==='Beranda');home.click();const motion=document.querySelector('.festival-immersive').dataset.motion;document.querySelector('#rangkaian .poster-preview').click();return motion;});expect(motion).toBe('transitioning');await expect(page.getByRole('dialog')).toBeVisible();
+ const motion=await page.evaluate(()=>{const home=[...document.querySelectorAll('.journey-rail button')].find(n=>n.getAttribute('aria-label')==='Beranda');home.click();const motion=document.querySelector('.festival-immersive').dataset.motion;document.querySelector('#rangkaian .poster-preview').click();return motion;});expect(motion).toBe('transitioning');await expect(page.getByRole('dialog')).toBeVisible();
  await page.waitForTimeout(80);const logo=page.locator('.wayang-object[data-object="logo-68"]'),paused=await logo.evaluate(n=>getComputedStyle(n).transform);
  await page.waitForTimeout(1250);expect(await logo.evaluate(n=>getComputedStyle(n).transform)).toBe(paused);
  await page.keyboard.press('Escape');await expect(page.getByRole('dialog')).toHaveCount(0);await expect(journey).toHaveAttribute('data-motion','transitioning');
@@ -158,4 +158,24 @@ test('header anchors and deep links open the right scene; reduced motion keeps t
  await expect(page.locator('.wayang-theatre')).toBeHidden();await expect(page.locator('.wayang-logo')).toBeHidden();await expect(page.locator('.header .brand img')).toBeVisible();
  for(const name of ['wayang-arjuna','wayang-semar'])await expect(page.locator(`.wayang-object[data-object="${name}"] img`)).toHaveCSS('animation-name','none');
  for(const id of ids)await expect(page.locator('#'+id)).toBeVisible();await page.locator('.footer a[href="#beranda"]').click();await expect(page.locator('#festival-title')).toBeInViewport();
+});
+
+test('deep links keep the stage fixed and dress cards readable without horizontal scrolling',async({page})=>{
+ test.setTimeout(60000);
+ for(const [width,height] of [[1440,900],[1280,800],[1024,768],[768,900],[390,844],[320,667]]){
+  await page.setViewportSize({width,height});await page.goto('/#dress-code');
+  await expect(page.locator('.festival-immersive')).toHaveAttribute('data-current-scene','dress-code');await page.evaluate(()=>document.fonts.ready);
+  const layout=await page.locator('.scene-dress-code').evaluate(frame=>{
+   const scroller=frame.querySelector('.scene-scroll'),box=scroller.getBoundingClientRect();
+   return {stageScroll:document.querySelector('.festival-stage').scrollTop,top:box.top,headerBottom:document.querySelector('.header').getBoundingClientRect().bottom,overflow:scroller.scrollWidth-scroller.clientWidth,
+    cards:[...frame.querySelectorAll('.dress-card')].map(n=>{const r=n.getBoundingClientRect();return {width:r.width,left:r.left,right:r.right};}),left:box.left,right:box.right};
+  });
+  expect(layout.stageScroll).toBe(0);expect(layout.top).toBeGreaterThanOrEqual(layout.headerBottom);expect(layout.overflow).toBeLessThanOrEqual(1);expect(layout.cards).toHaveLength(2);
+  for(const card of layout.cards){expect(card.width).toBeGreaterThan(110);expect(card.left).toBeGreaterThanOrEqual(layout.left);expect(card.right).toBeLessThanOrEqual(layout.right);}
+  const caption=page.locator('.scene-dress-code .dress-card:last-child figcaption');await caption.scrollIntoViewIfNeeded();
+  expect(await caption.evaluate(n=>{const r=n.getBoundingClientRect(),s=n.closest('.scene-scroll').getBoundingClientRect();return r.top>=s.top-1 && r.bottom<=s.bottom+1;})).toBe(true);
+  await page.evaluate(()=>{location.hash='beranda';});await expect(page.locator('.festival-immersive')).toHaveAttribute('data-current-scene','beranda');
+  expect(await page.locator('.hero-wordmark').evaluate(n=>n.getBoundingClientRect().top>=document.querySelector('.header').getBoundingClientRect().bottom)).toBe(true);
+  expect(await page.locator('.festival-stage').evaluate(n=>n.scrollTop)).toBe(0);
+ }
 });
