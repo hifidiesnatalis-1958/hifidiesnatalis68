@@ -73,9 +73,9 @@ Acara utama: 24 Oktober 2026, 09.00 WIB, Auditorium Bale Santika, Universitas Pa
 
 ## Presentasi undian
 
-Buka `/admin`, lalu **Undian → Buka presentasi undian**, atau kunjungi `/presentasi/undian` setelah masuk sebagai panitia. Isi hadiah, tutup pendaftaran, lalu pilih **Undi pemenang**. Tombol **Layar penuh** dan **Sembunyikan kontrol** menyiapkan layar proyektor; pintasan F dan H tersedia. Riwayat pemenang dapat ditayangkan kembali tanpa mengundi ulang.
+Buka `/admin`, lalu **Undian → Buka presentasi undian**, atau kunjungi `/presentasi/undian` setelah masuk sebagai panitia. Tutup pendaftaran dari panel panitia, lalu buka presentasi dan tekan **Spasi** untuk mengundi doorprize. Presentasi tidak memuat tombol atau input hadiah; Spasi juga membuka layar penuh jika didukung peramban. Pengaturan pendaftaran, muat ulang dan **Tampilkan hasil** pada riwayat pemenang berada di panel panitia. Riwayat dapat ditayangkan kembali tanpa mengundi ulang.
 
-Pemenang dipilih dan disimpan melalui endpoint undian yang sudah ada. Animasi nomor hanya tampilan. Jika koneksi gagal, gunakan **Muat ulang** untuk memeriksa hasil tersimpan sebelum mengundi kembali. Fitur ini tidak memerlukan perubahan atau deployment ulang `apps-script/app.gs`.
+Pemenang dipilih dan disimpan melalui endpoint undian yang sudah ada. Animasi nomor hanya tampilan. Jika respons pengundian gagal, presentasi menghentikan pengundian. Gunakan **Muat ulang undian** di panel panitia untuk memeriksa hasil tersimpan, lalu buka kembali presentasi. Fitur ini tidak memerlukan perubahan atau deployment ulang `apps-script/app.gs`.
 
 ## Arsip berkas kerja
 
