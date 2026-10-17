@@ -1,0 +1,51 @@
+.raffle-presentation{background:var(--teal);color:var(--white)}
+.raffle-presentation::before{opacity:.08}
+.raffle-presentation .presentation-brand{border-color:#f1cd8850}
+.raffle-presentation .presentation-brand p{color:var(--white)}
+.raffle-presentation .presentation-brand span{color:#f1cd88}
+.raffle-presentation .presentation-stage{min-height:46vh;padding:40px 0}
+.raffle-stage-content{width:min(1100px,100%);text-align:center;overflow-wrap:anywhere}
+.raffle-stage-flourish{width:120px;height:52px;object-fit:contain;margin:0 auto 24px}
+.raffle-stage-label{font-size:16px;color:#f1cd88;margin-bottom:22px}
+.raffle-standby-title,.raffle-winner-name{font:400 clamp(32px,5vw,76px)/1.3 var(--display);color:var(--white);text-wrap:balance}
+.raffle-ticket-number{display:block;font:700 clamp(32px,7vw,104px)/1.25 var(--body);font-variant-numeric:tabular-nums;letter-spacing:.035em;color:#f1cd88;margin:22px 0}
+.raffle-stage-prize{font-size:clamp(18px,2.2vw,30px);line-height:1.6;color:var(--white);margin-top:20px}
+.raffle-number-rolling{animation:raffle-rolling .8s ease-in-out infinite alternate}
+.raffle-revealed{animation:raffle-reveal .35s ease-out both}
+.raffle-presentation .presentation-controls{padding:20px;border:0;border-radius:24px;background:var(--paper);color:var(--ink)}
+.raffle-presentation-form{display:flex;gap:12px;align-items:end;flex-wrap:wrap;margin-bottom:16px}
+.raffle-presentation-form label{flex:1;max-width:480px;min-width:min(220px,100%);font-size:12px;font-weight:600}
+.raffle-presentation-form input{margin:7px 0 0;border-radius:12px;font-size:14px}
+.raffle-presentation-form .button{min-height:46px;font-size:12px;padding:12px 20px}
+.raffle-presentation .form-error{margin-bottom:15px}
+.raffle-presentation-history{margin-top:18px;border-top:1px solid var(--line);padding-top:12px;font-size:12px}
+.raffle-presentation-history summary{cursor:pointer;color:var(--teal);font-weight:600}
+.raffle-presentation-history ol{list-style:none;padding:0;margin:12px 0 0;max-height:200px;overflow:auto}
+.raffle-presentation-history li{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.raffle-presentation-history li>span{min-width:0;overflow-wrap:anywhere}
+.raffle-presentation-history small{display:block;color:var(--muted);margin-top:3px}
+.raffle-presentation-history .button{font-size:11px;padding:8px 12px;flex-shrink:0}
+.raffle-presentation.presentation-clean .presentation-stage{min-height:75vh}
+@keyframes raffle-rolling{from{opacity:.65}to{opacity:1}}
+@keyframes raffle-reveal{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:700px){
+ .raffle-presentation .presentation-brand{flex-wrap:wrap;gap:12px}
+ .raffle-presentation .presentation-brand .presentation-count{width:100%;margin:0;font-size:12px}
+ .raffle-presentation .presentation-stage{min-height:44vh;padding:32px 0}
+ .raffle-stage-label{font-size:13px}.raffle-stage-flourish{width:100px;height:44px;margin-bottom:20px}
+ .raffle-presentation .presentation-controls{padding:16px;border-radius:20px}
+ .raffle-presentation-form label{max-width:none;width:100%;flex-basis:100%}
+ .raffle-presentation-form input{font-size:16px}
+ .raffle-presentation-history li{align-items:start;flex-wrap:wrap;gap:10px}
+}
+@media(prefers-reduced-motion:reduce){.raffle-revealed,.raffle-number-rolling{animation:none}}
+@media(min-width:701px) and (min-height:500px){
+ .raffle-presentation.presentation-clean{height:100dvh}
+ .raffle-presentation.presentation-clean .presentation-stage{min-height:0;padding:16px 0}
+ .presentation-clean .raffle-stage-flourish{height:32px;margin-bottom:12px}
+ .presentation-clean .raffle-stage-label{font-size:14px;margin-bottom:12px}
+ .presentation-clean .raffle-winner-name,.presentation-clean .raffle-standby-title{font-size:clamp(28px,min(4vw,6vh),64px);line-height:1.2}
+ .presentation-clean .raffle-winner-name.long{font-size:clamp(28px,min(3vw,4.7vh),46px)}
+ .presentation-clean .raffle-ticket-number{font-size:clamp(32px,10vh,90px);margin:14px 0}
+ .presentation-clean .raffle-stage-prize{font-size:clamp(18px,3vh,26px);line-height:1.4;margin-top:12px}
+}

@@ -70,3 +70,13 @@ node scripts/check-backend.mjs
 Tes memakai Apps Script dalam memori dan fixture browser; tidak membuat NPM, pesan, atau tiket produksi. Bridge mempertahankan HMAC, timestamp, nonce, lock dan pembatas percobaan. Koneksi yang gagal sebelum POST terkirim dapat dicoba ulang; POST yang mungkin sudah tersimpan tidak dikirim ulang ketika responsnya gagal diambil.
 
 Acara utama: 24 Oktober 2026, 09.00 WIB, Auditorium Bale Santika, Universitas Padjadjaran, Jatinangor. Busana: Tradisional Sunda (Kebaya, Pangsi, Batik Sunda). Kegiatan online 17 Oktober. Isi resmi tetap mengikuti data panitia.
+
+## Presentasi undian
+
+Buka `/admin`, lalu **Undian → Buka presentasi undian**, atau kunjungi `/presentasi/undian` setelah masuk sebagai panitia. Isi hadiah, tutup pendaftaran, lalu pilih **Undi pemenang**. Tombol **Layar penuh** dan **Sembunyikan kontrol** menyiapkan layar proyektor; pintasan F dan H tersedia. Riwayat pemenang dapat ditayangkan kembali tanpa mengundi ulang.
+
+Pemenang dipilih dan disimpan melalui endpoint undian yang sudah ada. Animasi nomor hanya tampilan. Jika koneksi gagal, gunakan **Muat ulang** untuk memeriksa hasil tersimpan sebelum mengundi kembali. Fitur ini tidak memerlukan perubahan atau deployment ulang `apps-script/app.gs`.
+
+## Arsip berkas kerja
+
+Berkas kerja web yang sebelumnya berada di folder Mata Kuliah Machine Learning telah dipindahkan ke `S:\Code\hifidiesnatalis68-workspace\archive-2026-10-17`. Arsip memuat 737 berkas beserta `manifest.json` untuk pemeriksaan SHA-256. Proyek aktif tetap di `S:\Code\hifidiesnatalis68`; berkas tugas kuliah dan aset media nonweb tidak dipindahkan.
