@@ -11,7 +11,7 @@ async function signIn(context,role='admin') {
 const savedWinner={id:'draw-test',name:'Peserta Uji',number:'DN68-00002',prize:'Doorprize',createdAt:'2026-10-24T04:00:00.000Z'};
 async function mockStatus(page,state) {await page.route('**/api/raffle',route=>route.fulfill({json:{...state,ticket:null}}));}
 
-async function expectClean(page) {await expect(page.locator('.raffle-presentation').locator('button,input,select,textarea,a')).toHaveCount(0);}
+async function expectClean(page) {await expect(page.locator('.raffle-presentation').getByText(/tiket|belum menang/i)).toHaveCount(0);await expect(page.locator('.raffle-presentation').locator('button,input,select,textarea,a')).toHaveCount(0);}
 
 test('raffle presentation and drawing remain committee-only',async({page,context,request})=>{
   await page.goto('/presentasi/undian');await expect(page.getByRole('heading')).toHaveText('Presentasi khusus operator.');
@@ -45,7 +45,7 @@ test('only Space draws once, opens fullscreen and shows the saved winner without
   await page.route('**/api/admin',async route=>{
     draws.push(route.request().postDataJSON());await pending;state.winners=[savedWinner];await route.fulfill({json:{winner:savedWinner}});
   });
-  await page.goto('/presentasi/undian');await expect(page.locator('.presentation-count')).toHaveText('3 tiket · 3 belum menang');await expectClean(page);
+  await page.goto('/presentasi/undian');await expect(page.locator('.raffle-standby-title')).toHaveText('Doorprize');await expectClean(page);
   await page.keyboard.press('Enter');await page.keyboard.press('h');await page.keyboard.press('f');expect(draws).toHaveLength(0);await expectClean(page);
   await page.keyboard.press('Space');await expect(page.locator('.presentation-stage').getByRole('status')).toHaveText('Sedang mengundi…');
   await page.keyboard.press('Space');await page.keyboard.press('Space');
@@ -53,7 +53,7 @@ test('only Space draws once, opens fullscreen and shows the saved winner without
   expect(draws).toEqual([{action:'draw'}]);release();
   await expect(page.locator('.raffle-winner-name')).toHaveText(savedWinner.name);
   await expect(page.locator('.raffle-ticket-number')).toHaveText(savedWinner.number);
-  await expect(page.locator('.presentation-count')).toHaveText('3 tiket · 2 belum menang');
+  await expect(page.locator('.presentation-count')).toHaveCount(0);
   await expect.poll(()=>page.evaluate(()=>Boolean(document.fullscreenElement))).toBe(true);
   await expect(page.locator('.raffle-stage-prize')).toHaveCount(0);await expectClean(page);
   await page.evaluate(()=>document.dispatchEvent(new KeyboardEvent('keydown',{code:'Space',key:' ',repeat:true,bubbles:true})));
@@ -63,18 +63,18 @@ test('only Space draws once, opens fullscreen and shows the saved winner without
 test('Space reads registration changes from the admin tab and cannot draw after all participants won',async({page,context})=>{
   await signIn(context);await page.emulateMedia({reducedMotion:'reduce'});const state={open:true,total:1,winners:[]};await mockStatus(page,state);const actions=[];
   await page.route('**/api/admin',route=>{actions.push(route.request().postDataJSON());state.winners=[savedWinner];return route.fulfill({json:{winner:savedWinner}});});
-  await page.goto('/presentasi/undian');await expect(page.locator('.presentation-count')).toHaveText('1 tiket · 1 belum menang');
+  await page.goto('/presentasi/undian');await expect(page.locator('.raffle-standby-title')).toHaveText('Doorprize');
   await page.keyboard.press('Space');await expect(page.locator('.raffle-stage-error')).toContainText('Tutup pendaftaran dari panel panitia');expect(actions).toHaveLength(0);
   state.open=false;await page.keyboard.press('Space');await expect(page.locator('.raffle-ticket-number')).toHaveText(savedWinner.number);
   await expect(page.locator('.raffle-revealed')).toHaveCSS('animation-name','none');
-  await expect(page.locator('.presentation-count')).toHaveText('1 tiket · 0 belum menang');
+  await expect(page.locator('.presentation-count')).toHaveCount(0);
   await page.keyboard.press('Space');expect(actions).toEqual([{action:'draw'}]);await expectClean(page);
 });
 
 test('a failed draw blocks further Space presses and saved results can be replayed from the admin link',async({page,context})=>{
   await signIn(context);const state={open:false,total:3,winners:[]};await mockStatus(page,state);let requests=0;
   await page.route('**/api/admin',route=>{requests++;state.winners=[savedWinner];return route.fulfill({status:502,json:{error:{message:'Layanan belum dapat dijangkau.'}}});});
-  await page.goto('/presentasi/undian');await expect(page.locator('.presentation-count')).toHaveText('3 tiket · 3 belum menang');await page.keyboard.press('Space');
+  await page.goto('/presentasi/undian');await expect(page.locator('.raffle-standby-title')).toHaveText('Doorprize');await page.keyboard.press('Space');
   await expect(page.locator('.raffle-stage-error')).toContainText('Periksa riwayat di panel panitia');
   await page.keyboard.press('Space');await page.keyboard.press('Space');expect(requests).toBe(1);
   await page.goto('/presentasi/undian?hasil=draw-test');await expect(page.locator('.raffle-ticket-number')).toHaveText(savedWinner.number);expect(requests).toBe(1);await expectClean(page);

@@ -49,7 +49,7 @@ export default function RafflePresentation({resultId=''}) {
   },[]);
   const remaining=stats ? Math.max(0,stats.total-stats.winners.length) : 0;
   return <main ref={root} className="presentation raffle-presentation presentation-clean">
-    <div className="presentation-brand"><img src="/assets/kasundaan/logo-68.webp" alt="Dies Natalis ke-68"/><div><p>HIFI FMIPA UNPAD</p><span>Doorprize</span></div><span className="presentation-count">{stats ? `${stats.total} tiket · ${remaining} belum menang` : 'Memuat tiket…'}</span></div>
+    <div className="presentation-brand"><img src="/assets/kasundaan/logo-68.webp" alt="Dies Natalis ke-68"/><div><p>HIFI FMIPA UNPAD</p><span>Doorprize</span></div></div>
     <section className="presentation-stage" aria-label="Undian yang dipresentasikan" aria-busy={drawing}>
       <div className={`raffle-stage-content ${winner && !drawing ? 'raffle-revealed' : ''}`}>
         <img className="raffle-stage-flourish" src="/assets/kasundaan/flourish-gold.webp" alt=""/>
